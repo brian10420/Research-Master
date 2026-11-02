@@ -521,8 +521,8 @@ id: DECISION_010
 title: No red-team role — the pilot found no detection gain over sparring-partner and seven false positives on sound work; the two residual triggers become a dispatch mode of sparring-partner
 date: 2026-11-02
 proposer: human   # the "black-faced bear" critic idea, in chat 2026-11-02 (provenance to be confirmed by the operator); the pilot design, PREREG.md and this entry drafted by Fable 5.1
-decided_by: ""           # the human operator flips the status
-status: proposed
+decided_by: human        # accepted by the human operator 2026-11-02 (in chat: "DECISION_010 接受")
+status: accepted
 evidence: [eval/pilots/red-team-2026-11-02/PREREG.md, eval/pilots/red-team-2026-11-02/RESULT.md, eval/pilots/red-team-2026-11-02/reports/GRADES.md, eval/pilots/red-team-2026-11-02/RED_TEAM_DRAFT.md]
 supersedes: ""
 superseded_by: ""
@@ -561,17 +561,16 @@ material was written twice after a designer agent survived a session reset,
 and the arms' one-line verdicts reached the orchestrator before grading);
 neither touches a grade.
 
-**Decision (proposed).** Verdict `mode`: no `red-team` role; the roster stays
-at fourteen. On acceptance, `core/roles/sparring-partner.md` "When it is
-dispatched" gains the two residual triggers as a named dispatch mode — (a) after
+**Decision (accepted).** Verdict `mode`: no `red-team` role; the roster stays
+at fourteen. `core/roles/sparring-partner.md` "When it is dispatched" gains the two residual triggers as a named dispatch mode — (a) after
 a surprising result and (b) on request before submission — in both cases with
 the proposal "lock the claims in `RESEARCH_STATE.md` as written" and the state
 files as the evidence paths; `core/roles/README.md`'s roster line for
 `sparring-partner` names the mode. The draft contract stays in the pilot
 directory as a record and is not a role.
 
-**Consequences.** Until acceptance nothing in `core/roles/` changes. On
-acceptance: the spec and the roster line change, adapters are regenerated,
+**Consequences.** Accepted 2026-11-02 and shipped in 0.5.1: the spec and the
+roster line change (both READMEs' team tables name the mode), adapters are regenerated,
 `SCIENTIFIC_RULES.md` stays untouched (RULES_HASH `0f0b1f5cddf7`). The pilot
 directory (pre-registration, draft, briefs, bundles, raw and blind reports,
 grades, result) is committed as the record; the key and the map stay sealed.

@@ -54,7 +54,7 @@ English version: [README.md](README.md)
 | | 被派工的角色 | 它做什麼 | 它絕不會… |
 | --- | --- | --- | --- |
 | <img src="assets/roles/blind-reviewer.png" width="28" alt=""> | `blind-reviewer` | 像陌生人一樣審閱你匿名化後的論文稿 | 接受專案的背景資訊 |
-| <img src="assets/roles/sparring-partner.png" width="28" alt=""> | `sparring-partner` | 在決策做成之前，稽核它的前提 | 否決；看到提案者的推理 |
+| <img src="assets/roles/sparring-partner.png" width="28" alt=""> | `sparring-partner` | 在決策做成之前，稽核它的前提；也可應要求在投稿前稽核你的主張集 | 否決；看到提案者的推理 |
 | <img src="assets/roles/regression-guardian.png" width="28" alt=""> | `regression-guardian` | 跑完整套測試；認證或駁回一項變更 | 修正程式碼；憑部分執行結果就認證 |
 | <img src="assets/roles/experiment-runner.png" width="28" alt=""> | `experiment-runner` | 啟動並看顧各次執行；寫入帳本（ledger）的列 | 只挑好看的結果；偏離協定 |
 | <img src="assets/roles/repo-maintainer.png" width="28" alt=""> | `repo-maintainer` | 處理 git 與 GitHub，並遵守一份「絕不推送」清單（never-push list） | 推送受保護的內容；未經要求就強制推送 |

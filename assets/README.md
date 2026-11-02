@@ -378,3 +378,15 @@ Verified by a fresh-context checker that drew none of the icons (verdict and fin
 | Note "Every bear is the logo's head with the mortarboard taken off; the prop is the only difference." | `assets/roles/<role>.svg` (bear block comment + transform); `assets/logo.svg:7-27` vs `:29-43` | checked: eyes, nose, mouth and muzzle are pixel-identical to the logo at 256 px in all fourteen icons (`blind-reviewer`: nose, mouth, lower muzzle; the blindfold covers the eyes) |
 | Note "A prop is the illustrator's metaphor … the role specification, not the picture, is the authority." | `core/roles/README.md:5-6`; `core/SCIENTIFIC_RULES.md:29`, `:204` | "the spec text is the authority, the wrapper is a pointer"; "role specifications \| `core/roles/<role>.md`"; "A figure accompanies its derivation or rule; it never replaces it." |
 | Footer file pointers | this deliverable | `assets/roles/<role>.svg`, `assets/roles/symbols.svg`, `assets/README.md` (this section; the table was first written as `assets/claims-role-bears.md` and merged here after the check) |
+
+## Character illustrations — `roles/illustrations/<name>.png`
+
+Hand-drawn by the operator on 2026-11-02, committed as 512 px renders of 1254 px
+originals that stay outside version control. One expressive bear per role, in the
+same palette as the icons, plus `critical-auditor.png`: the black bear drawn for
+the red-team candidate while its pilot ran (`eval/pilots/red-team-2026-11-02/`);
+after DECISION_010 (verdict `mode`) no role stands behind it and it is kept as
+art. These are portraits, not figures: they state nothing, so §9's claims-table
+rule does not apply. The icon set (`roles/<role>.svg`) stays the figure-grade
+representation of each role; the illustrations are for pages where a character
+is wanted (scenario figures, decks).

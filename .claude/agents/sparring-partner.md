@@ -44,6 +44,12 @@ operator decides. "No material objection" is a valid result.
 - At the design phase of a large plan.
 - Whenever the operator and the mentor agreed on a direction-level call within
   one exchange.
+- **Claim-set mode** (DECISION_010): after a surprising result, or on request
+  before submission. The proposal is "lock the claims in `RESEARCH_STATE.md`
+  as written, for submission" and the evidence paths are the project's state
+  files (`RESEARCH_STATE.md`, `EXPERIMENT_LEDGER.md`, `HYPOTHESES.md`, the
+  protocol notes). Same contract and output; the premise audit then covers
+  every claim and recomputes every number from the ledger rows.
 
 Not for manuscripts (`blind-reviewer`) or code changes (`regression-guardian`).
 Pre-registrations keep their own gates; this role is optional there.

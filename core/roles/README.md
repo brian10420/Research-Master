@@ -20,7 +20,7 @@ spec text is the authority, the wrapper is a pointer.
 | [`experiment-runner`](experiment-runner.md) | **isolated** | launch and babysit runs; protocol verbatim; ledger rows | cherry-pick; deviate from protocol |
 | [`regression-guardian`](regression-guardian.md) | **isolated** | the silent-bug gate; whole suite; writes missing tests | fix code; certify from a partial run |
 | [`repo-maintainer`](repo-maintainer.md) | **isolated** | git/GitHub with the never-push list | push protected content; forced push unasked |
-| [`sparring-partner`](sparring-partner.md) | **isolated** | premise audit of a decision before it is made: verdict, kill criteria, do-nothing option | veto; see the proposer's reasoning |
+| [`sparring-partner`](sparring-partner.md) | **isolated** | premise audit of a decision before it is made: verdict, kill criteria, do-nothing option; claim-set mode after a surprising result or on request before submission (DECISION_010) | veto; see the proposer's reasoning |
 | [`memory-curator`](memory-curator.md) | shared-context | janitor for the recall layer: route facts, audit memory against git, propose session-end distillation | gatekeep; edit `core/`; commit a scientific claim |
 | [`conductor`](conductor.md) | shared-context | run a multi-stage pipeline from the operator's session: dispatch each stage, read condensed returns, stop at named checkpoints with a decision dashboard, keep the tracker | do substantive work; skip a MANDATORY stop; override a HARD-STOP |
 

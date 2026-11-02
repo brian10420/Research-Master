@@ -2,6 +2,29 @@
 
 Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
 
+## 0.5.1 — 2026-11-02
+
+- **DECISION_010 accepted** by the human operator 2026-11-02 (in chat). The
+  verdict `mode` takes effect: `sparring-partner` gains the **claim-set mode**
+  in "When it is dispatched" — after a surprising result, or on request before
+  submission, with the proposal "lock the claims in `RESEARCH_STATE.md` as
+  written, for submission" and the state files as the evidence paths; the
+  roster line and both READMEs' team tables say so. No new role; the roster
+  stays at fourteen. Wrappers regenerated; `core/SCIENTIFIC_RULES.md` unchanged
+  (RULES_HASH stays `0f0b1f5cddf7`).
+- **Character illustrations** (`assets/roles/illustrations/`): 512 px PNG
+  renders of the operator's hand-drawn 1254 px originals (the originals and
+  their archive stay outside version control) — one expressive bear per role
+  plus `critical-auditor`, the black bear drawn for the red-team candidate,
+  which after DECISION_010 has no role behind it and is kept as art. Not
+  claim-bearing, so no claims table; noted in `assets/README.md`.
+- Release note for 0.5.0's push: the public leak-gate reported seven hits, all
+  in the pilot's synthetic bundles and reports and all coincidental numeric
+  matches (two Student-t critical values, one arithmetic difference, one
+  synthetic standard deviation, one invented ledger row). The graded record was
+  not edited; the operator reviewed the lines and said "push anyway".
+- Manifests 0.5.1.
+
 ## 0.5.0 — 2026-11-02
 
 - **Red-team pilot run and decided** (DECISION_010, proposed): a fifteenth role

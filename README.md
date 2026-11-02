@@ -74,7 +74,7 @@ agents never dispatch:
 | | dispatched role | what it does | it will never… |
 | --- | --- | --- | --- |
 | <img src="assets/roles/blind-reviewer.png" width="28" alt=""> | `blind-reviewer` | reviews your anonymized manuscript like a stranger | accept project context |
-| <img src="assets/roles/sparring-partner.png" width="28" alt=""> | `sparring-partner` | audits the premises of a decision before it is made | veto; see the proposer's reasoning |
+| <img src="assets/roles/sparring-partner.png" width="28" alt=""> | `sparring-partner` | audits the premises of a decision before it is made; on request, your claim set before submission | veto; see the proposer's reasoning |
 | <img src="assets/roles/regression-guardian.png" width="28" alt=""> | `regression-guardian` | runs the whole test suite; certifies or rejects a change | fix code; certify from a partial run |
 | <img src="assets/roles/experiment-runner.png" width="28" alt=""> | `experiment-runner` | launches and babysits runs; writes the ledger rows | cherry-pick; deviate from protocol |
 | <img src="assets/roles/repo-maintainer.png" width="28" alt=""> | `repo-maintainer` | git and GitHub, with a never-push list | push protected content; forced push unasked |
