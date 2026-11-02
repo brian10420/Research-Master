@@ -2,6 +2,16 @@
 
 Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
 
+## 0.4.1 — 2026-11-02
+
+- **Effort policy amended** (DECISION_009, accepted by the human operator
+  2026-11-02 in chat): `experiment-runner` and `repo-maintainer` move from
+  Opus @ `medium` to Opus @ `xhigh` — the operator's standing rule is that Opus
+  never runs below `high`, and he chose `xhigh` for the plugin's two operations
+  roles. Wrappers regenerated; the team map's two badges and the roster
+  doctrine sentence updated; `SCIENTIFIC_RULES.md` unchanged (RULES_HASH stays
+  `0f0b1f5cddf7`). Manifests 0.4.1.
+
 ## 0.4.0 — 2026-11-02
 
 - **Plan-tier dispatch profile** (DECISION_008, proposed): new

@@ -249,7 +249,7 @@ inherits the session effort). The doctrine is *task shape decides, up front*:
 | task shape | setting | why |
 | --- | --- | --- |
 | closed, single-answer verification (`math-reviewer`, `blind-reviewer`, `regression-guardian`, `sparring-partner`) | `xhigh` | the curve saturates here; `max` buys about one point for ~40 % more tokens |
-| operations (`experiment-runner`, `repo-maintainer`) | strong model (`opus`), `medium` | the reasoning is light, but an error (a wrong launch, a protected path pushed) is expensive — DECISION_004 |
+| operations (`experiment-runner`, `repo-maintainer`) | strong model (`opus`), `xhigh` | the reasoning is light, but an error (a wrong launch, a protected path pushed) is irreversible, and the operator's rule is that Opus never runs below high — DECISION_009 (was `medium`, DECISION_004) |
 | everything else | inherits the session | authoring, analysis and dialogue happen at the operator's default |
 | long-horizon work with a signed plan | session default | verification comes from the plan, the pre-registration and the regression gate — not from effort |
 

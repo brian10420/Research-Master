@@ -17,9 +17,11 @@
 #   closed / single-answer work (a derivation check, a referee report, a
 #   certification, a premise audit)
 #       -> saturates at xhigh; max buys ~1 point for ~40 % more tokens.
-#   operations (launch runs, git hygiene) -> medium on the strong model: the
+#   operations (launch runs, git hygiene) -> xhigh on the strong model: the
 #       reasoning is light, but a wrong launch or a pushed protected path is
-#       expensive (DECISION_004; was low on a smaller model under DECISION_003).
+#       irreversible, and the operator's standing rule is that Opus never runs
+#       below high (DECISION_009; medium under DECISION_004, low on a smaller
+#       model under DECISION_003).
 #   long-horizon agentic work with a signed plan -> stays at the session default;
 #       the operator raises the SESSION effort (`/effort max`) for an
 #       unbounded-judgement step and lowers it again; roles never pin max.
@@ -40,9 +42,9 @@ sparring-partner:
   rationale: one closed premise audit per proposal; a missed false premise costs the whole experiment it licenses
 experiment-runner:
   model: opus
-  effort: medium
-  rationale: launch / poll / collect is light reasoning, but a wrong launch wastes a campaign (DECISION_004)
+  effort: xhigh
+  rationale: launch / poll / collect is light reasoning, but a wrong launch wastes a campaign; Opus never below high by the operator's rule (DECISION_009)
 repo-maintainer:
   model: opus
-  effort: medium
-  rationale: the never-push list is a checklist, but one pushed protected path is irreversible (DECISION_004)
+  effort: xhigh
+  rationale: the never-push list is a checklist, but one pushed protected path is irreversible; Opus never below high by the operator's rule (DECISION_009)

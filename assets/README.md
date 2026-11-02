@@ -126,8 +126,8 @@ A leading `/` and a teal card mean posture `shared-context` (a skill). No slash,
 | `xhigh` on blind-reviewer | EP:32–33 | "blind-reviewer: / effort: xhigh" |
 | `xhigh` on regression-guardian | EP:35–36 | "regression-guardian: / effort: xhigh" |
 | `xhigh` on sparring-partner | EP:38–39 | "sparring-partner: / effort: xhigh" |
-| `opus · medium` on experiment-runner | EP:41–43 | "experiment-runner: / model: opus / effort: medium" |
-| `opus · medium` on repo-maintainer | EP:45–47 | "repo-maintainer: / model: opus / effort: medium" |
+| `opus · xhigh` on experiment-runner | EP:43–45 | "experiment-runner: / model: opus / effort: xhigh" |
+| `opus · xhigh` on repo-maintainer | EP:47–49 | "repo-maintainer: / model: opus / effort: xhigh" |
 | `session` on /conductor, /research-mentor, /dl-engineer, /results-analyst, /paper-writer, /study-coach, /science-presenter, /memory-curator | EP:11 | "Roles NOT listed here inherit the session's effort — the default." (none of the eight is listed in EP) |
 | No badge reads `max` | EP:25 | "roles never pin max." |
 
@@ -167,7 +167,7 @@ A leading `/` and a teal card mean posture `shared-context` (a skill). No slash,
 | Narrative: "The nine skills share your whole conversation; each of the five subagents gets one brief and returns one report" | RR:27–30 | "join the operator's session and see everything"; "see only their dispatch prompt and its inputs, and return one report" |
 | Narrative: "one at a time under the guarded profile, independent ones in parallel under open." | DP:20, DP:25 | "one isolated dispatch at a time"; "independent stages in parallel" |
 | Narrative: "Effort is chosen by task shape up front; no role pins max — a role can only ask, and you raise the session effort, then lower it." | EP:15–16, EP:24–25; OT:119–123 | "effort is chosen by TASK SHAPE, up front"; "the operator raises the SESSION effort … and lowers it again; roles never pin max"; "the role stops and asks the operator" |
-| Footnote "effort follows task shape — closed verification xhigh · operations opus · medium · everything else inherits the session" | EP:17–22, EP:11 | "closed / single-answer work … -> saturates at xhigh"; "operations (launch runs, git hygiene) -> medium on the strong model"; "Roles NOT listed here inherit the session's effort" |
+| Footnote "effort follows task shape — closed verification xhigh · operations opus · xhigh · everything else inherits the session" | EP:17–24, EP:11 | "closed / single-answer work … -> saturates at xhigh"; "operations (launch runs, git hygiene) -> xhigh on the strong model"; "Roles NOT listed here inherit the session's effort" |
 | Root `aria-label` and `<title>` (fourteen roles, nine skills, five subagents, task brief / one report, dispatch profile, switch) | the rows above | restates the claims above; nothing new |
 
 

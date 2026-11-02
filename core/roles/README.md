@@ -85,8 +85,8 @@ paid tier or a vendor; the `runtime:` block in each spec is a recommendation.
 
 What Claude Code actually *enforces* is `core/effort_policy.yaml`: the roles
 listed there get `effort:` / `model:` in their generated wrapper (closed
-verification at `xhigh`, operations roles at `medium` on the strong model since
-DECISION_004); everyone else inherits the session. Effort is chosen by task shape up front, never by
+verification at `xhigh`; operations roles on the strong model, at `xhigh` since
+DECISION_009, `medium` under DECISION_004); everyone else inherits the session. Effort is chosen by task shape up front, never by
 "it got stuck"; no role pins `max` — the operator raises the session effort for
 an unbounded-judgement step and lowers it again (DECISION_003, amended by
 DECISION_004).

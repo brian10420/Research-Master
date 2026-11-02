@@ -178,7 +178,7 @@ claude plugin validate .              # the plugin-directory checks
 | 任務形態 | 設定 | 原因 |
 | --- | --- | --- |
 | 封閉、單一答案的驗證（`math-reviewer`、`blind-reviewer`、`regression-guardian`、`sparring-partner`） | `xhigh` | 曲線在這裡已經飽和；`max` 只多換來大約一個點，卻要多花約 40 % 的 token |
-| 維運操作（`experiment-runner`、`repo-maintainer`） | 強模型（`opus`）、`medium` | 推理負擔輕，但一出錯（啟動了錯誤的執行、推送了受保護的路徑）代價很高——DECISION_004 |
+| 維運操作（`experiment-runner`、`repo-maintainer`） | 強模型（`opus`）、`xhigh` | 推理負擔輕，但一出錯（啟動了錯誤的執行、推送了受保護的路徑）代價很高，且操作者規定 Opus 不低於 high——DECISION_009（原為 `medium`，DECISION_004） |
 | 其他所有工作 | 沿用工作階段設定 | 撰寫、分析和對話都在操作者的預設值下進行 |
 | 有已簽核計畫的長時程工作 | 工作階段預設值 | 驗證來自計畫、預先註冊和回歸關卡——而不是來自推理強度 |
 

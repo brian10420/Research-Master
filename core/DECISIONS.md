@@ -478,3 +478,40 @@ source project reports after one chapter run on `open`.
   methodology, and the hash bump would stale every project adapter.
 - Keep the tier in each project's state files — it is an operator fact, not
   a scientific record; the overlay is where operator facts already live.
+
+```yaml
+id: DECISION_009
+title: Operations roles run Opus at xhigh — the operator's "Opus never below high" rule applied to experiment-runner and repo-maintainer
+date: 2026-11-02
+proposer: human   # the human operator, in chat 2026-11-02 ("Opus at least high" → "raise to xhigh"); entry drafted by Fable 5.1
+decided_by: human        # accepted by the human operator 2026-11-02 (in chat)
+status: accepted
+evidence: [core/effort_policy.yaml, core/DECISIONS.md]
+supersedes: ""   # amends only the effort line of DECISION_004; the model choice (opus) stands
+superseded_by: ""
+```
+
+**Context.** DECISION_004 moved the two operations roles from a smaller model
+at `low` to the strong model at `medium`: light reasoning, but a wrong launch
+or a pushed protected path is expensive. On 2026-11-02, on an Ultra plan, the
+operator set a standing rule for his own sessions that Opus never runs below
+`high`, and when asked whether the plugin should follow, chose `xhigh` for
+these two roles.
+
+**Decision (accepted).** `experiment-runner` and `repo-maintainer` keep
+`model: opus` and move to `effort: xhigh` in `core/effort_policy.yaml`. The
+task-shape doctrine keeps its shape: closed verification at `xhigh`, operations
+on the strong model now also at `xhigh`, everything else inherits the session;
+no role pins `max`.
+
+**Consequences.** Both wrappers are regenerated with `effort: xhigh`; the team
+map's two badges and the roster doctrine sentence change; `SCIENTIFIC_RULES.md`
+is unchanged (RULES_HASH stays `0f0b1f5cddf7`). Each operations dispatch costs
+more tokens than under DECISION_004; the difference is unmeasured and the
+source project reports it after a campaign.
+
+**Alternatives rejected.**
+- `high`, the minimum the operator's rule allows — the operator chose `xhigh`
+  explicitly.
+- Leave the plugin at `medium` and keep the rule personal — the operator's
+  own sessions would then run the plugin's roles below his own floor.
