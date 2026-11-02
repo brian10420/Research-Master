@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="sparring-partner: a polar bear with a boxing glove">
+  <!-- research-kernel role bear: sparring-partner (isolated subagent). Family rule: same head on all fourteen, the prop is the only difference. -->
+  <!-- backdrop: the logo's rounded square, halved; indigo tint = isolated subagent -->
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="#E6EAF3"/>
+  <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+       the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+  <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ears (right ear sits a touch lower) -->
+    <g stroke="#435954" stroke-width="14">
+      <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+      <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+    </g>
+    <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+    <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+    <!-- head -->
+    <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+    <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+    <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+    <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+    <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+    <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+      <circle cx="198" cy="300" r="25"/>
+      <circle cx="314" cy="300" r="25"/>
+    </g>
+    <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+    <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+  </g>
+  <!-- prop: boxing glove raised in guard -->
+  <g transform="translate(198 184) rotate(-16) scale(1.1)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+    <rect x="-25" y="26" width="52" height="28" rx="6" fill="#FDFEFD"/>
+    <path d="M-25 39 H27" fill="none" stroke="#41507A" stroke-width="5"/>
+    <path d="M-24 30 C-38 14 -40 -14 -30 -30 C-18 -50 22 -50 34 -30 C44 -12 40 14 28 30 Z" fill="#41507A"/>
+    <path d="M-34 -6 C-46 2 -42 24 -24 22 C-12 20 -10 6 -20 0" fill="#41507A"/>
+    <path d="M-12 -36 Q4 -42 18 -36" fill="none" stroke="#FDFEFD" stroke-width="5"/>
+  </g>
+</svg>

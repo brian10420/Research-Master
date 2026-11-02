@@ -2,6 +2,53 @@
 
 Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
 
+## 0.5.0 — 2026-11-02
+
+- **Red-team pilot run and decided** (DECISION_010, proposed): a fifteenth role
+  — an adversarial critic of the claim set — was tested against
+  `sparring-partner` on five synthetic mini-projects (three with planted threats
+  to validity, two sound controls; key sealed before dispatch), ten dispatches
+  in one batch, same model and effort, reports blinded and graded against the
+  key by an agent that ran no arm, decision rule pre-registered. Result: both
+  arms found all 7 planted threats (7 / 7, every grade full); the candidate made
+  7 false positives on the two sound controls against 0 for `sparring-partner`,
+  at about 1.6× the tokens and 3.5× the text. Verdict `mode`: no new role; on
+  acceptance the two residual triggers ("after a surprising result", "on
+  request") become a named dispatch mode of `sparring-partner`. Record in
+  `eval/pilots/red-team-2026-11-02/` (`PREREG.md`, `RESULT.md`,
+  `reports/GRADES.md`, bundles, raw and blind reports); the key and the label
+  map stay sealed in `eval/.sealed/`. Two protocol deviations are written down
+  in `RESULT.md` §5 (a designer agent survived a session reset and its material
+  was discarded and rewritten; the arms' one-line verdicts reached the
+  orchestrator before grading); neither touches a grade.
+- **Role bears** (`assets/role-bears.svg`; `assets/roles/<role>.svg` with 128 px
+  PNG renders; `assets/roles/symbols.svg`): fourteen icons, each the logo's head
+  without the mortarboard plus one prop per role, on a contact sheet with the
+  two posture bands and the gate. The §9 claims table is the sixth section of
+  `assets/README.md`. Fresh-context §9 check: `VERDICT: PASS-WITH-FIXES` — 37
+  claims rows checked; 9 findings (1 added claim, 4 dropped conditions, 1 stale
+  line reference, 0 misquotes, 3 unsourced labels, 0 sheet/icon mismatches),
+  every fix applied verbatim: four purpose labels re-worded so a dropped
+  condition is kept (`/conductor` "dispatch each stage", `sparring-partner`
+  "premise audit before a decision", `blind-reviewer` "peer review of an
+  anonymized bundle", `/study-coach` "teach you your project"), the gate legend
+  now reads "isolated; regression-guardian only" (the gate is a mark on an
+  isolated role, not a third posture), three legend/note rows gained their
+  sources, the table's commit pin updated. After the check, the sheet's footer
+  pointer moved from the standalone claims file to `assets/README.md` because
+  the file was merged (path only; no claim changed).
+- **READMEs (EN + zh-TW):** the role icons as a first column of both "Meet the
+  team" tables and the bears contact sheet under the team map. Heading and
+  details parity kept (8 / 10).
+- **`tools/sync.py`:** the isolated-role list in `AGENTS.md` is rendered from
+  the roster; the hand-typed list it replaces had omitted `sparring-partner`
+  since the role was added (found by the sparring audit of the red-team
+  proposal). `AGENTS.md` regenerated.
+- Pilot hygiene for the public tree: `DISPATCH_BRIEFS.md` uses
+  repository-relative paths and "the human operator".
+- Manifests 0.5.0; `core/SCIENTIFIC_RULES.md` unchanged (RULES_HASH stays
+  `0f0b1f5cddf7`).
+
 ## 0.4.1 — 2026-11-02
 
 - **Effort policy amended** (DECISION_009, accepted by the human operator

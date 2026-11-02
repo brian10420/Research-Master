@@ -51,31 +51,33 @@ the role did not load the current rules.
 
 ![The team map: nine skills inside your conversation, five isolated subagents behind the boundary, the guardian as the only gate](assets/team-map.svg)
 
+![The team, as bears: fourteen polar-bear icons, one per role. Nine skills share your session on the teal-green band; five subagents run isolated on the indigo band, the gate regression-guardian on an amber hexagon. Every bear has the logo's head; only the prop differs.](assets/role-bears.svg)
+
 Ask by need, not by name. Nine roles work **inside** your conversation:
 
-| you want to… | call | it will never… |
-| --- | --- | --- |
-| understand your own project; rehearse a defense | `/research-kernel:study-coach` | verify, build or present |
-| discuss direction; test an idea against the literature | `/research-kernel:research-mentor` | assert its own ideas as facts |
-| check a derivation, shapes, numerics | `/research-kernel:math-reviewer` | implement |
-| write or debug model, training or data code | `/research-kernel:dl-engineer` | certify its own code |
-| turn runs into statistics, tables, figures | `/research-kernel:results-analyst` | massage a number |
-| draft and revise the manuscript | `/research-kernel:paper-writer` | invent a number; re-inflate a downgraded claim |
-| make a talk, poster or one-pager | `/research-kernel:science-presenter` | compute a new statistic; skip the brief |
-| run a multi-stage pipeline with checkpoints | `/research-kernel:conductor` | do the stages' work itself; skip a MANDATORY stop; override a HARD-STOP |
-| keep the recall layer tidy | `/research-kernel:memory-curator` | gatekeep; edit `core/`; commit a scientific claim |
+| | you want to… | call | it will never… |
+| --- | --- | --- | --- |
+| <img src="assets/roles/study-coach.png" width="28" alt=""> | understand your own project; rehearse a defense | `/research-kernel:study-coach` | verify, build or present |
+| <img src="assets/roles/research-mentor.png" width="28" alt=""> | discuss direction; test an idea against the literature | `/research-kernel:research-mentor` | assert its own ideas as facts |
+| <img src="assets/roles/math-reviewer.png" width="28" alt=""> | check a derivation, shapes, numerics | `/research-kernel:math-reviewer` | implement |
+| <img src="assets/roles/dl-engineer.png" width="28" alt=""> | write or debug model, training or data code | `/research-kernel:dl-engineer` | certify its own code |
+| <img src="assets/roles/results-analyst.png" width="28" alt=""> | turn runs into statistics, tables, figures | `/research-kernel:results-analyst` | massage a number |
+| <img src="assets/roles/paper-writer.png" width="28" alt=""> | draft and revise the manuscript | `/research-kernel:paper-writer` | invent a number; re-inflate a downgraded claim |
+| <img src="assets/roles/science-presenter.png" width="28" alt=""> | make a talk, poster or one-pager | `/research-kernel:science-presenter` | compute a new statistic; skip the brief |
+| <img src="assets/roles/conductor.png" width="28" alt=""> | run a multi-stage pipeline with checkpoints | `/research-kernel:conductor` | do the stages' work itself; skip a MANDATORY stop; override a HARD-STOP |
+| <img src="assets/roles/memory-curator.png" width="28" alt=""> | keep the recall layer tidy | `/research-kernel:memory-curator` | gatekeep; edit `core/`; commit a scientific claim |
 
 Five roles run **outside** it, as subagents with a fresh context, so they cannot
 inherit your assumptions. Your session dispatches them — you or the conductor;
 agents never dispatch:
 
-| dispatched role | what it does | it will never… |
-| --- | --- | --- |
-| `blind-reviewer` | reviews your anonymized manuscript like a stranger | accept project context |
-| `sparring-partner` | audits the premises of a decision before it is made | veto; see the proposer's reasoning |
-| `regression-guardian` | runs the whole test suite; certifies or rejects a change | fix code; certify from a partial run |
-| `experiment-runner` | launches and babysits runs; writes the ledger rows | cherry-pick; deviate from protocol |
-| `repo-maintainer` | git and GitHub, with a never-push list | push protected content; forced push unasked |
+| | dispatched role | what it does | it will never… |
+| --- | --- | --- | --- |
+| <img src="assets/roles/blind-reviewer.png" width="28" alt=""> | `blind-reviewer` | reviews your anonymized manuscript like a stranger | accept project context |
+| <img src="assets/roles/sparring-partner.png" width="28" alt=""> | `sparring-partner` | audits the premises of a decision before it is made | veto; see the proposer's reasoning |
+| <img src="assets/roles/regression-guardian.png" width="28" alt=""> | `regression-guardian` | runs the whole test suite; certifies or rejects a change | fix code; certify from a partial run |
+| <img src="assets/roles/experiment-runner.png" width="28" alt=""> | `experiment-runner` | launches and babysits runs; writes the ledger rows | cherry-pick; deviate from protocol |
+| <img src="assets/roles/repo-maintainer.png" width="28" alt=""> | `repo-maintainer` | git and GitHub, with a never-push list | push protected content; forced push unasked |
 
 ## The workflows
 

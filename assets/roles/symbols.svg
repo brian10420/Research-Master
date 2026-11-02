@@ -1,0 +1,499 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- research-kernel role bears as reusable symbols. Copy the whole defs block below into a figure, then draw
+       <use href="#bear-backdrop-shared" width="64" height="64" x=".." y=".."/>
+       <use href="#bear-<role>" width="64" height="64" x=".." y=".."/>
+       Backdrops: bear-backdrop-shared (9 skills), bear-backdrop-isolated (4 subagents),
+       bear-backdrop-gate (regression-guardian). Self-contained: no ids inside a symbol, no classes. -->
+  <defs>
+    <!-- backdrop, shared: the logo's rounded square, halved; teal-green tint = shared-context skill -->
+    <symbol id="bear-backdrop-shared" viewBox="0 0 256 256">
+      <rect x="8" y="8" width="240" height="240" rx="54" fill="#E3EDE9"/>
+    </symbol>
+    <!-- backdrop, isolated: the logo's rounded square, halved; indigo tint = isolated subagent -->
+    <symbol id="bear-backdrop-isolated" viewBox="0 0 256 256">
+      <rect x="8" y="8" width="240" height="240" rx="54" fill="#E6EAF3"/>
+    </symbol>
+    <!-- backdrop, gate: indigo tint plus the amber-stroked hexagon = the gate -->
+    <symbol id="bear-backdrop-gate" viewBox="0 0 256 256">
+      <rect x="8" y="8" width="240" height="240" rx="54" fill="#E6EAF3"/>
+      <polygon points="242,128 185,226.7 71,226.7 14,128 71,29.3 185,29.3" fill="#FBF4E4" stroke="#A9761C" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="bear-research-mentor" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: compass, needle pointing up-right (direction) -->
+      <g transform="translate(194 190) rotate(-12)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="0" cy="-50" r="8" fill="none" stroke-width="6"/>
+        <circle r="42" fill="#0F6B62" stroke-width="6"/>
+        <circle r="30" fill="#FDFEFD" stroke="none"/>
+        <path d="M0 -29 V-22 M0 29 V22 M-29 0 H-22 M29 0 H22" fill="none" stroke-width="4"/>
+        <g transform="rotate(45)">
+          <path d="M0 -27 L10 0 H-10 Z" fill="#1D2523" stroke="none"/>
+          <path d="M0 27 L10 0 H-10 Z" fill="#FDFEFD" stroke-width="3"/>
+        </g>
+        <circle r="4.5" fill="#0F6B62" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="bear-math-reviewer" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: card showing a square-root sign, magnifying glass over it -->
+      <g stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="rotate(-6 196 186)">
+          <rect x="154" y="150" width="84" height="70" rx="8" fill="#FDFEFD" stroke-width="6"/>
+          <path d="M163 190 L171 186 L180 207 L194 163 H228" fill="none" stroke="#1D2523" stroke-width="7"/>
+        </g>
+        <circle cx="191" cy="182" r="25" fill="#0F6B62" fill-opacity="0.1" stroke="#0F6B62" stroke-width="9"/>
+        <path d="M212 203 L230 221" fill="none" stroke="#1D2523" stroke-width="13"/>
+      </g>
+    </symbol>
+    <symbol id="bear-dl-engineer" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: open-end wrench, jaw up-right -->
+      <g transform="translate(202 180) rotate(-45)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-26.2 -10 H-78 A10 10 0 0 0 -78 10 H-26.2 A28 28 0 0 0 26.2 10 H9 V-10 H26.2 A28 28 0 0 0 -26.2 -10 Z" fill="#0F6B62" stroke-width="6"/>
+        <circle cx="-78" cy="0" r="3.5" fill="#E3EDE9" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="bear-results-analyst" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: card with a three-bar chart -->
+      <g stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="152" y="146" width="84" height="80" rx="8" fill="#FDFEFD" stroke-width="6"/>
+        <g fill="#0F6B62" stroke="none">
+          <rect x="164" y="186" width="15" height="26" rx="2"/>
+          <rect x="186.5" y="170" width="15" height="42" rx="2"/>
+          <rect x="209" y="156" width="15" height="56" rx="2"/>
+        </g>
+        <path d="M160 213 H228" fill="none" stroke-width="4"/>
+      </g>
+    </symbol>
+    <symbol id="bear-paper-writer" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: page with a dog-ear and lines, pen writing on it -->
+      <g stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M156 146 H206 L226 166 V232 H156 Z" fill="#FDFEFD" stroke-width="6"/>
+        <path d="M206 146 V166 H226" fill="#E4E8E6" stroke-width="5"/>
+        <path d="M168 170 H194 M168 184 H212 M168 198 H212 M168 212 H190" fill="none" stroke-width="4"/>
+        <g transform="translate(190 214) rotate(-48)">
+          <rect x="17" y="-10" width="55" height="20" rx="5" fill="#0F6B62" stroke-width="5"/>
+          <path d="M17 -10 L0 0 L17 10 Z" fill="#FDFEFD" stroke-width="5"/>
+          <path d="M30 -10 V10" fill="none" stroke-width="4"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="bear-study-coach" viewBox="0 0 256 256">
+      <!-- lanyard: drawn before the bear so it disappears behind the chin -->
+      <path d="M80 186 Q100 238 162 202 M150 186 Q156 198 162 202" fill="none" stroke="#0F6B62" stroke-width="5" stroke-linecap="round"/>
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: coach's whistle hanging from the lanyard -->
+      <g transform="translate(196 208) rotate(-14) scale(1.2)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="-26" cy="-12" r="6" fill="none" stroke-width="4"/>
+        <path d="M46 -22 H0 A22 22 0 1 0 21.2 -6 H46 Z" fill="#0F6B62" stroke-width="6"/>
+        <path d="M4 -22 V-15 H14 V-22" fill="#1D2523" stroke-width="3"/>
+        <circle cx="-6" cy="4" r="7" fill="#FDFEFD" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="bear-science-presenter" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: tiny slide on a tripod, pointer stick touching it -->
+      <g stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M199 206 V240 M199 210 L183 240 M199 210 L215 240" fill="none" stroke-width="6"/>
+        <rect x="156" y="146" width="86" height="62" rx="6" fill="#FDFEFD" stroke-width="6"/>
+        <circle cx="180" cy="172" r="11" fill="#0F6B62" stroke="none"/>
+        <path d="M200 166 H228 M200 180 H222 M168 194 H228" fill="none" stroke-width="4"/>
+        <path d="M130 242 L174 182" fill="none" stroke="#1D2523" stroke-width="6"/>
+      </g>
+    </symbol>
+    <symbol id="bear-memory-curator" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: broom leaning right, bristles down -->
+      <g transform="translate(182 190) rotate(35)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 -4 V-96" fill="none" stroke-width="8"/>
+        <path d="M-13 0 H13 L28 42 Q0 50 -28 42 Z" fill="#0F6B62" stroke-width="6"/>
+        <path d="M-6 9 L-13 40 M0 9 V42 M6 9 L13 40" fill="none" stroke="#E3EDE9" stroke-width="3"/>
+        <rect x="-15" y="-8" width="30" height="12" rx="3" fill="#FDFEFD" stroke-width="5"/>
+      </g>
+    </symbol>
+    <symbol id="bear-conductor" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: conductor's baton, grip low, tip up; two motion marks -->
+      <g transform="translate(184 226) rotate(-62)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M119.5 -10.5 A120 120 0 0 0 111.3 -45.0 M99.3 -12.2 A100 100 0 0 0 94.0 -34.2" fill="none" stroke="#0F6B62" stroke-width="7"/>
+        <path d="M14 -5 L112 -2 L112 2 L14 5 Z" fill="#1D2523" stroke="#1D2523" stroke-width="3"/>
+        <ellipse cx="0" cy="0" rx="19" ry="11" fill="#0F6B62" stroke-width="5"/>
+      </g>
+    </symbol>
+    <symbol id="bear-blind-reviewer" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: blindfold over both eyes, knot and tails on the right -->
+      <g stroke="#435954" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" fill="#41507A">
+        <path d="M196 126 L238 140 L230 154 Z M196 132 L230 166 L216 174 Z"/>
+        <path d="M33 114 Q114 96 195 112 V150 H156 Q114 126 72 150 L33 152 Z"/>
+        <circle cx="196" cy="130" r="9"/>
+      </g>
+    </symbol>
+    <symbol id="bear-sparring-partner" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: boxing glove raised in guard -->
+      <g transform="translate(198 184) rotate(-16) scale(1.1)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+        <rect x="-25" y="26" width="52" height="28" rx="6" fill="#FDFEFD"/>
+        <path d="M-25 39 H27" fill="none" stroke="#41507A" stroke-width="5"/>
+        <path d="M-24 30 C-38 14 -40 -14 -30 -30 C-18 -50 22 -50 34 -30 C44 -12 40 14 28 30 Z" fill="#41507A"/>
+        <path d="M-34 -6 C-46 2 -42 24 -24 22 C-12 20 -10 6 -20 0" fill="#41507A"/>
+        <path d="M-12 -36 Q4 -42 18 -36" fill="none" stroke="#FDFEFD" stroke-width="5"/>
+      </g>
+    </symbol>
+    <symbol id="bear-regression-guardian" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: amber shield with a check mark -->
+      <g transform="translate(196 186)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 -44 C12 -36 26 -34 38 -34 V2 C38 26 20 42 0 52 C-20 42 -38 26 -38 2 V-34 C-26 -34 -12 -36 0 -44 Z" fill="#A9761C" stroke-width="6"/>
+        <path d="M-17 4 L-5 17 L19 -12" fill="none" stroke="#FDFEFD" stroke-width="10"/>
+      </g>
+    </symbol>
+    <symbol id="bear-experiment-runner" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop 1/2: lab goggles pushed up on the forehead -->
+      <g stroke="#41507A" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 104 Q60 94 78 92 M150 92 Q168 94 180 104 M108 92 H120" fill="none" stroke-width="9"/>
+        <g fill="#E6EAF3" stroke-width="7">
+          <rect x="78" y="80" width="30" height="24" rx="10"/>
+          <rect x="120" y="80" width="30" height="24" rx="10"/>
+        </g>
+        <path d="M85 89 L92 85 M127 89 L134 85" fill="none" stroke="#FDFEFD" stroke-width="4"/>
+      </g>
+      <!-- prop 2/2: conical flask, indigo liquid -->
+      <g transform="translate(190 232)" stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M-10 -72 V-46 L-36 -6 Q-40 2 -31 2 H31 Q40 2 36 -6 L10 -46 V-72 Z" fill="#FDFEFD" stroke="none"/>
+        <path d="M-24.3 -24 L-36 -6 Q-40 2 -31 2 H31 Q40 2 36 -6 L24.3 -24 Z" fill="#41507A" stroke="none"/>
+        <circle cx="-6" cy="-12" r="3.5" fill="#FDFEFD" stroke="none"/>
+        <circle cx="9" cy="-16" r="2.5" fill="#FDFEFD" stroke="none"/>
+        <path d="M-10 -72 V-46 L-36 -6 Q-40 2 -31 2 H31 Q40 2 36 -6 L10 -46 V-72" fill="none" stroke-width="6"/>
+        <path d="M-15 -74 H15" fill="none" stroke-width="7"/>
+      </g>
+    </symbol>
+    <symbol id="bear-repo-maintainer" viewBox="0 0 256 256">
+      <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;
+           the logo's translate(0 -12), halved, shifted left/up to make room for the prop -->
+      <g transform="translate(-14 -16) scale(0.5) translate(0 -12)" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears (right ear sits a touch lower) -->
+        <g stroke="#435954" stroke-width="14">
+          <circle cx="146" cy="214" r="38" fill="#FDFEFD"/>
+          <circle cx="368" cy="228" r="38" fill="#FDFEFD"/>
+        </g>
+        <circle cx="142" cy="210" r="17" fill="#E4E8E6"/>
+        <circle cx="372" cy="224" r="17" fill="#E4E8E6"/>
+        <!-- head -->
+        <ellipse cx="256" cy="316" rx="156" ry="126" fill="#FDFEFD" stroke="#435954" stroke-width="14"/>
+        <!-- face: muzzle, nose, mouth, cross-eyed eyes -->
+        <ellipse cx="256" cy="366" rx="62" ry="46" fill="#E4E8E6"/>
+        <path d="M236 338 Q256 330 276 338 Q272 356 256 358 Q240 356 236 338 Z" fill="#1D2523"/>
+        <path d="M256 358 V372 M238 371 Q247 381 256 372 Q277 398 302 361" fill="none" stroke="#1D2523" stroke-width="8"/>
+        <g fill="#FDFEFD" stroke="#1D2523" stroke-width="8">
+          <circle cx="198" cy="300" r="25"/>
+          <circle cx="314" cy="300" r="25"/>
+        </g>
+        <circle cx="208" cy="305" r="13" fill="#1D2523"/>
+        <circle cx="304" cy="305" r="13" fill="#1D2523"/>
+      </g>
+      <!-- prop: padlock, key lying beneath it -->
+      <g stroke="#435954" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M182 162 V148 A20 20 0 0 1 222 148 V162" fill="none" stroke-width="13"/>
+        <path d="M182 162 V148 A20 20 0 0 1 222 148 V162" fill="none" stroke="#E4E8E6" stroke-width="4"/>
+        <rect x="168" y="158" width="66" height="54" rx="9" fill="#41507A" stroke-width="6"/>
+        <circle cx="201" cy="179" r="7" fill="#FDFEFD" stroke="none"/>
+        <path d="M201 181 V197" fill="none" stroke="#FDFEFD" stroke-width="7"/>
+        <circle cx="157" cy="229" r="11" fill="#FDFEFD" stroke-width="7"/>
+        <path d="M168 229 H224 M208 229 V240 M218 229 V238" fill="none" stroke-width="8"/>
+      </g>
+    </symbol>
+  </defs>
+  <!-- preview when opened alone: the logo-derived research-mentor bear -->
+  <use href="#bear-backdrop-shared" width="256" height="256"/>
+  <use href="#bear-research-mentor" width="256" height="256"/>
+</svg>

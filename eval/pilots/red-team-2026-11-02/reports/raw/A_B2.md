@@ -1,0 +1,86 @@
+ACK RULES_HASH=0f0b1f5cddf7
+
+# Sparring-partner audit — bundle B2, proposal: "Lock the claims in RESEARCH_STATE.md as written, for submission"
+
+All paths below are relative to `eval/pilots/red-team-2026-11-02/bundles/B2/`. Every aggregate was recomputed from the ledger rows (`python3 -c`, outputs quoted); summary numbers in the four files are treated as claims.
+
+## 1. Verdict
+
+PROCEED-WITH-CHANGES — the premise that decides it is "91.3 is the Sable 3-seed test mean" (RESEARCH_STATE.md:31, :37, :56): it is FALSE (91.3 is seed 1 alone; the 3-seed mean is 90.40 ± 0.79, +1.87 over the baseline), but H_001 still passes its own pre-registered rule on the recomputed numbers (1.87 >= 1.0, Welch p = 0.037), so the primary comparison survives a text-only correction; C2 and C3, however, cannot be locked as written (ablation n = 1, baseline never swept).
+
+## 2. Premise audit
+
+### P1 — what the measured quantity really is
+- Premise: "Metrics are micro span-F1 (exact match), scored at the selected checkpoint" with checkpoint = best validation epoch, test read once per run (EXPERIMENT_LEDGER.md:16-18; PROTOCOL.md:7-8, :22-23, :48).
+- Status: VERIFIED at the row level; UNVERIFIED beyond it.
+- Evidence: `grep -c -- '--select val' EXPERIMENT_LEDGER.md` -> 18 and `grep -c 'best val'` -> 18, i.e. every one of the 18 rows (RUN_001..RUN_020) selects on validation; sweep rows RUN_004..RUN_011 carry `test F1 = —` (EXPERIMENT_LEDGER.md:27-34), so the sweep never touched test. `scripts/eval_test.py`, `scripts/report_p1.py` and the run logs are not in the bundle (`ls` of the bundle directory shows only the four .md files), so "scored once" rests on the ledger's declaration. Check that would settle it: the per-run eval_test.py invocation count in the run logs at code_rev 9b4d0f3.
+
+### P2 — the C1 headline is the 3-seed mean
+- Premise: "Sable reaches micro span-F1 91.3 against 88.5 for BiLSTM-CRF (+2.8 points; protocol P1, 3 seeds per arm; RUN_012, RUN_014, RUN_015 vs RUN_001–RUN_003)" (RESEARCH_STATE.md:37-39); table row "91.3 ± 0.8" (RESEARCH_STATE.md:56); guard "91.3 is the Sable test span-F1 headline" (RESEARCH_STATE.md:31).
+- Status: FALSE.
+- Evidence: per-seed test F1 from the rows — RUN_012 = 91.3, RUN_014 = 89.8, RUN_015 = 90.1 (EXPERIMENT_LEDGER.md:35, :37, :38). Recomputed: `Sable test: n=3 mean=90.400 sd=0.794`; `BiLSTM-CRF test: n=3 mean=88.533 sd=0.404`; `diff=1.867`. Assumed: 91.3 and +2.8. Found: 90.40 and +1.87. 91.3 is the best seed (RUN_012, seed 1) paired with the 3-seed sd (0.8) — a best-seed-as-result, which PROTOCOL.md:19 and SCIENTIFIC_RULES §4 forbid. The ledger's own aggregate already says 90.40 ± 0.79 (EXPERIMENT_LEDGER.md:48), so the state file contradicts the ledger it cites. The reported test statistics are, by contrast, correct: recomputed Welch `t=3.630`, `df=2.972`, two-sided `p = 0.0366` (hand-rolled regularized incomplete beta; sanity check t=3.182, df=3 -> 0.0500), matching "p = 0.04 (df ≈ 3.0)" (RESEARCH_STATE.md:40). The test was therefore run on the per-seed values and the headline was swapped afterwards. H_001's decision rule (HYPOTHESES.md:17) still passes on the true numbers.
+
+### P3 — the C2 ablation is a 3-seed comparison with a Welch test
+- Premise: "Removing the boundary-aware term costs 1.6 F1 on average (88.8 against 90.4 over three seeds; RUN_016–RUN_018 vs RUN_012, RUN_014, RUN_015)" (RESEARCH_STATE.md:41-42); "Sable − boundary term | RUN_016–RUN_018 | 88.8" (RESEARCH_STATE.md:57); H_002 "linked_runs: [RUN_016, RUN_017, RUN_018] ... outcome: confirmed (−1.6)" (HYPOTHESES.md:27-28).
+- Status: FALSE.
+- Evidence: run ids present in the ledger rows: `RUN_001 ... RUN_016 RUN_019 RUN_020` (grep output); `grep -n 'RUN_017\|RUN_018' EXPERIMENT_LEDGER.md` returns nothing — the only hits are the two RESEARCH_STATE lines and HYPOTHESES.md:27. The ablation arm has exactly one complete row, RUN_016, test F1 88.8 (EXPERIMENT_LEDGER.md:39). Recomputed: `Ablation test: n=1 mean=88.800 sd=nan`; 90.4 − 88.8 = 1.6 is arithmetic on one run. H_002's own rule — "confirmed iff mean difference over 3 seeds >= 1.0 and Welch p < 0.05" (HYPOTHESES.md:25; PROTOCOL.md:30-31) — cannot be evaluated with n = 1 (variance undefined), so "confirmed" is unsupported. Under the row-before-launch rule (EXPERIMENT_LEDGER.md:11), rows that do not exist are runs that did not start.
+
+### P4 — both arms received the same tuning budget (C3)
+- Premise: "Both arms received the same tuning budget (PROTOCOL §7: an 8-configuration random search on the validation split, then 3 seeds of the best configuration), so the C1 gain is not a tuning artefact" (RESEARCH_STATE.md:44-46); PROTOCOL.md:41 "Each arm receives an 8-configuration random search"; H_001 test_plan "8-configuration sweep per arm" (HYPOTHESES.md:18).
+- Status: FALSE.
+- Evidence: `grep -n -i bilstm EXPERIMENT_LEDGER.md` returns only RUN_001, RUN_002, RUN_003 and the aggregate line; all three use `cfg/bilstm_crf_default.yaml` with notes "library defaults (lr 1e-3, dropout 0.5, hidden 256)" (EXPERIMENT_LEDGER.md:24-26). All eight sweep rows RUN_004..RUN_011 are "Sable sweep S1..S8" (EXPERIMENT_LEDGER.md:27-34); zero BiLSTM-CRF sweep rows exist. Assumed: 8 configurations per arm. Found: 8 for Sable, 0 for the baseline. This is an undisclosed deviation from the frozen protocol, and it is exactly the alternative explanation C3 claims to exclude: the selected Sable configuration S4 is lr 2e-3, dropout 0.3, hidden 384 (EXPERIMENT_LEDGER.md:30) against a baseline at lr 1e-3, dropout 0.5, hidden 256 — a capacity and learning-rate difference the baseline sweep was meant to neutralise.
+
+### P5 — scope (C4)
+- Premise: "All results are on one dataset (Corvid-NER v3, 9 flat entity types) at a fixed 40-epoch budget; RUN_019 (character CNN) is exploratory and excluded" (RESEARCH_STATE.md:47-49).
+- Status: VERIFIED.
+- Evidence: PROTOCOL.md:4 "Corvid-NER v3, 22,000 sentences, 9 flat entity types (no nesting)"; PROTOCOL.md:14 "40 epochs"; RUN_019 row carries `pre_reg = false`, "exploratory; single seed; not in any claim" (EXPERIMENT_LEDGER.md:40); H_003 "proposer: fable | status: proposed" (HYPOTHESES.md:31). No claim cites RUN_019 or RUN_020.
+
+### Other FALSE premises found (one line each)
+- RESEARCH_STATE.md:32 guard and :51 caption "n = 3 seeds per arm": FALSE for the ablation arm (n = 1, P3).
+- RESEARCH_STATE.md:18 "sources: [RUN_001-RUN_020 ...]": RUN_017 and RUN_018 have no ledger rows.
+- RESEARCH_STATE.md:63 "the intervals above are sample sd over 3 values": the ablation row (:57) carries no interval and the Sable interval is attached to a non-mean (:56).
+- RESEARCH_STATE.md:24 "claim numbers frozen 2026-10-29 from scripts/report_p1.py at 9b4d0f3": the ledger aggregate attributed to the same script (EXPERIMENT_LEDGER.md:43, :48) prints 90.40, so at most one of the two files is the script's output; which one is UNVERIFIED (script absent from the bundle).
+- HYPOTHESES.md:28 "outcome: confirmed (−1.6; RESEARCH_STATE C2)": not evaluable under HYPOTHESES.md:25 with one seed.
+
+## 3. Strongest alternative
+
+Two competing plans, both cheaper than a lock that later unravels.
+
+**A — text-only lock today (zero compute).** Lock a reduced claim set: C1 restated with the recomputed numbers (Sable 90.4 ± 0.8 vs BiLSTM-CRF 88.5 ± 0.4, +1.9, Welch p = 0.04, n = 3 per arm; H_001 confirmed under its own rule); C3 rewritten as a disclosed protocol deviation (baseline run at library defaults, no sweep; Sable swept over 8 configurations; the gain may partly reflect tuning and capacity, hidden 384 vs 256); C2 downgraded from "confirmed" to a single-seed observation (RUN_016, 88.8, no test) with H_002 outcome reset to open; C4 unchanged. Cost: editing one page and one hypothesis line.
+
+**B — fill the rows the protocol already requires (about 25 GPU-hours, 19 days before 2026-11-21).** Launch RUN_017 and RUN_018 (2 × 40 epochs, roughly 5–6 GPU-h by H_001's ~30 GPU-h for eleven run-equivalents), then the BiLSTM-CRF 8-configuration sweep (8 × 20 epochs, about 10 GPU-h) and, if its best validation configuration differs from the defaults, 3 seeds at 40 epochs (about 8 GPU-h). No new pre-registration is needed: H_002 and PROTOCOL §7 already state the rules. Then lock C1–C4 with whatever the rows say.
+
+**Do nothing (lock as written).** Dominated: three of four claims are contradicted by the ledger the paper will cite, and a reviewer holding the ledger finds all three with two greps and one mean.
+
+**Which dominates.** B dominates if the compute is available before the deadline, because it answers the paper's own questions (C2, C3) instead of retracting them; A is the floor and should be applied immediately regardless, so that no draft is written from 91.3 or from "three seeds" in the meantime. Neither keeps "as written".
+
+## 4. Kill criteria
+
+- For the lock as written: the kill result is already observed — recomputed Sable mean 90.40 ≠ 91.3; no RUN_017/RUN_018 rows; no BiLSTM-CRF sweep rows. Test that produced it: one `python3 -c` on the per-seed values and two `grep` calls; cost: minutes, zero compute.
+- For C1 under plan B: a tuned BiLSTM-CRF whose 3-seed test mean is >= 89.4 (difference to 90.40 < 1.0) or Welch p >= 0.05 refutes H_001 under its own rule (HYPOTHESES.md:17). Cheapest test before the full spend: the 8 × 20-epoch baseline sweep (about 10 GPU-h) — if its best 20-epoch validation F1 does not exceed the Sable sweep's runner-up region (RUN_010, 91.0; RUN_007, 91.2; EXPERIMENT_LEDGER.md:30, :33) the 3-seed confirmation is still worth running; if it does, expect C1 to shrink below the margin.
+- For C2 under plan B: ablation 3-seed test mean >= 89.4 or Welch p >= 0.05 refutes H_002 (HYPOTHESES.md:25). Cheapest test: RUN_017 alone (one 40-epoch run, about 3 GPU-h) — if seed 2 of the ablation lands at or above 90.0, the 3-seed mean cannot clear the margin and RUN_018 is still owed to the ledger but C2 is dead.
+
+## 5. Regret list
+
+1. Not running `scripts/report_p1.py` at 9b4d0f3 and reading its stdout: if it prints 90.40, RESEARCH_STATE.md:37/:56 were hand-edited; if it prints 91.3, the source of record takes a max where it should take a mean, and every number it emits is suspect.
+2. Not checking whether RUN_017/RUN_018 were ever launched (run logs, ledger git history): runs without rows violate the row-before-launch rule, and rows deleted after a bad result would be worse than rows never opened.
+3. Not checking the same for a BiLSTM-CRF sweep that may have run off-ledger with its result discarded.
+4. Not confronting the capacity/learning-rate confound in C1: S4 is hidden 384 / lr 2e-3 vs the baseline's 256 / 1e-3 (EXPERIMENT_LEDGER.md:24, :30); without the baseline sweep the paper cannot say the boundary-aware loss, rather than a wider encoder, produced the +1.9.
+5. Not verifying the single test look per run (eval_test.py invocations in the logs) before submitting a "test read once" statement (PROTOCOL.md:7-8).
+
+## 6. What is solid
+
+- BiLSTM-CRF test 88.53 ± 0.40 (recomputed from 88.6 / 88.1 / 88.9) matches EXPERIMENT_LEDGER.md:47 and RESEARCH_STATE.md:55 ("88.5 ± 0.4"); Sable 3-seed sd 0.79 (recomputed) matches both files' 0.8.
+- Validation means recomputed: BiLSTM-CRF 89.17 (89.2), Sable 91.10 (91.1) — RESEARCH_STATE.md:55-56 and EXPERIMENT_LEDGER.md:47-48 are right on these.
+- H_001 passes its pre-registered rule on the true numbers: difference 1.87 >= 1.0; Welch t = 3.63, df = 2.97, two-sided p = 0.037 < 0.05. The state file's "p = 0.04 (df ≈ 3.0)" is correct as a statistic; only the headline mean is wrong.
+- Every row selects its checkpoint on validation (18/18 `--select val`, 18/18 `best val`); sweep rows never score test; the selected S4 (lr 2e-3, dropout 0.3, hidden 384) lies inside the PROTOCOL.md:41-42 grid.
+- RUN_013 failure row kept with reason and relaunched as a new row rather than resumed (EXPERIMENT_LEDGER.md:36-37; PROTOCOL.md:24-25 honoured); RESEARCH_STATE.md:64-65 describes it accurately.
+- RUN_019 is `pre_reg = false`, single seed, cited by no claim; H_003 carries model provenance (`fable`) and `status: proposed` — SCIENTIFIC_RULES §1.3 honoured.
+- Dates are in order: PROTOCOL frozen 2026-09-24 before the first run (2026-10-01); H_001 (09-20) precedes RUN_001; H_002 (10-10) precedes RUN_016 (10-12); H_003 (10-16) precedes RUN_019 (10-17).
+- C4's scope statement matches PROTOCOL.md:4 and :14 exactly.
+
+## 7. Minor
+
+- RESEARCH_STATE.md:57 is the only table row without a "±": that is the visible tell for n = 1; a per-arm `n` column in the summary table would have made P3 impossible to miss.
+- The same arm is 91.3 in C1 (RESEARCH_STATE.md:37) and 90.4 in C2 (RESEARCH_STATE.md:42) on one page; the two claims cannot both be quoting the mean.
+- EXPERIMENT_LEDGER.md:57 "Anomalies: none recorded in RUN_001–RUN_016 logs" stops exactly where the rows stop; the note should say that RUN_017 and RUN_018 were never opened, if that is the case.

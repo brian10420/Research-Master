@@ -502,6 +502,7 @@ def render_claude(h: str, blocks, roles, dispatch) -> str:
 
 
 def render_agents(h: str, blocks, roles, dispatch) -> str:
+    isolated = ", ".join(f"`{r['role']}`" for r in roles if r["posture"] == "isolated")
     parts = [
         banner("any harness (AGENTS.md convention)"),
         render_common_head("AGENTS.md — harness-neutral adapter for research-os", h),
@@ -513,7 +514,7 @@ def render_agents(h: str, blocks, roles, dispatch) -> str:
         "Do not rely on the runtime inheriting this file.\n"
         f"3. Expect `ACK RULES_HASH={h}` as the agent's first output line; anything else means the rules were "
         "not loaded — stop and re-dispatch.\n"
-        "4. Isolated roles (`blind-reviewer`, `experiment-runner`, `regression-guardian`, `repo-maintainer`) run "
+        f"4. Isolated roles ({isolated}) run "
         "in a fresh context with only their inputs; shared-context roles run inside the operator's session.\n"
         "5. `blind-reviewer` receives only the output of `tools/anonymize.py`; no runtime may read `eval/.sealed/` "
         "on a reviewer's behalf.\n"

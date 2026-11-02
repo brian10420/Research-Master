@@ -1,0 +1,78 @@
+ACK RULES_HASH=0f0b1f5cddf7
+
+# Sparring-partner audit — bundle B4, proposal "Lock the claims in RESEARCH_STATE.md as written, for submission"
+
+Evidence opened: `bundles/B4/RESEARCH_STATE.md`, `bundles/B4/EXPERIMENT_LEDGER.md`, `bundles/B4/HYPOTHESES.md`, `bundles/B4/PROTOCOL.md` only. Every number below was recomputed with `python3 -c` from the per-seed test-MASE cells of ledger lines 23–51; `file:line` references are to the B4 bundle.
+
+## 1. Verdict
+
+PROCEED
+
+Every number in C1, C2 and C4 recomputes from the per-seed ledger rows, C2's "inconclusive" label is what the pre-registered rule yields, and no load-bearing premise is FALSE; the only open item is C3, whose timings cannot be recomputed from the bundle (consistent with its row, UNVERIFIED beyond it).
+
+## 2. Premise audit
+
+**P1 — What the measured quantity really is, and that all of it is present.**
+Quoted: RESEARCH_STATE.md:55 "test windows, 24-h horizon, MASE; seed means per fold, n = 3 seeds; naive is deterministic"; PROTOCOL.md:31–33 "MASE at horizon 24 h, averaged over the 12 sites and all forecast origins inside the window; scale = in-sample MAE of the seasonal-naive (m = 168) on the training part of the fold"; PROTOCOL.md:26–27 "checkpoint = epoch with the lowest validation-window MASE (`--select val`)"; PROTOCOL.md:36–39 unit of analysis = fold, paired two-sided t-test, n = 4.
+Status: VERIFIED at the record level.
+Evidence: `grep -- "--select" EXPERIMENT_LEDGER.md | grep -v "select val"` returns only the header line 16; `grep -c -- "--select test"` returns 0, so all 24 learned-arm rows select on validation. Fold/seed/status listing for Tidewater rows: 1/7, 1/8, 1/9, 2/7, 2/8 aborted, 2/8 complete, 2/9, 3/7, 3/8, 3/9, 4/7, 4/8, 4/9 — 12 complete, every (fold, seed) ∈ {1..4}×{7,8,9} exactly once; GBT: 12 complete, same coverage. The aborted row RUN_021 keeps its reason (EXPERIMENT_LEDGER.md:43) and its relaunch is RUN_022 (line 44). Sanity check on the metric: seasonal-naive test MASE is 0.981 / 1.042 / 1.118 / 0.973 (lines 23–26), i.e. near 1, as a MASE scaled by the in-sample seasonal-naive MAE must be — the recorded metric behaves as PROTOCOL §5 says. Pre-registration precedes data: H_001/H_002 dated 2026-09-25 (HYPOTHESES.md:15, 23), protocol frozen 2026-09-29 (PROTOCOL.md:1), first run 2026-10-02 (EXPERIMENT_LEDGER.md:23).
+Not checkable here: the code path. `scripts/report_p1.py`, `scripts/eval_test.py`, `train_tw.py` at `7d2a8c4` are not in the bundle (`ls scripts` → "No such file or directory"); that the selector and the single test scoring behave as the protocol states is UNVERIFIED and is settled by reading those three files at `7d2a8c4` (environment note, not a defect of the proposal).
+
+**P2 — C1 numbers and label.**
+Quoted: RESEARCH_STATE.md:37–41 "0.766 against 1.029 … fold-paired difference is −0.263 ± 0.012 (n = 4 folds, paired t = −43, p < 0.001), past the pre-registered margin of 0.10".
+Status: VERIFIED.
+Evidence (recomputed): Tidewater fold means 0.7213 / 0.7643 / 0.8697 / 0.7087 → fold mean 0.7660; naive fold mean 1.0285. Paired diffs −0.2597 / −0.2777 / −0.2483 / −0.2643; mean −0.2625, sd 0.01214, se 0.00607, t = −43.25, two-sided p (df = 3, closed-form CDF) = 2.7e-5. Rule HYPOTHESES.md:17 "confirmed iff mean fold-paired difference <= −0.10 and paired t-test p < 0.05" → both conditions hold → confirmed.
+
+**P3 — C2 numbers and label.**
+Quoted: RESEARCH_STATE.md:42–46 "fold mean 0.782 … −0.016 with 95% CI −0.039 to +0.007 (paired t = −2.21, p = 0.11, n = 4 folds). The pre-registered margin of 0.03 is not met. No claim of superiority or parity is made".
+Status: VERIFIED.
+Evidence (recomputed): GBT fold means 0.7437 / 0.7880 / 0.8640 / 0.7323 → 0.7820. Paired diffs Tidewater − GBT −0.0223 / −0.0237 / +0.0057 / −0.0237; mean −0.01600, sd 0.01446, se 0.00723, t = −2.213, p = 0.114; t_{0.975,3} = 3.1824 → 95% CI [−0.0390, +0.0070]. Rule HYPOTHESES.md:25 / PROTOCOL.md:42–43: mean ≤ −0.03? no; mean > 0? no → inconclusive. PROTOCOL.md:43 "No equivalence test is pre-registered", so "no parity claim" is the only admissible statement (SCIENTIFIC_RULES §4).
+
+**P4 — C4 as found.**
+Quoted: RESEARCH_STATE.md:50–53 "Fold 3 (origin 2025-11-24; holiday weeks inside the test window) is the worst fold for every arm and the only fold where Tidewater is behind GBT (0.870 against 0.864, seed means). RUN_030 … exploratory and excluded".
+Status: VERIFIED.
+Evidence: argmax fold of the seed means is 3 for naive, GBT and Tidewater; the only fold with Tidewater > GBT is fold 3 (0.8697 vs 0.8640), and it holds per seed too (0.869 > 0.861, 0.882 > 0.874, 0.858 > 0.857). PROTOCOL.md:6 origin 2025-11-24; date arithmetic: test window 2025-11-24..2026-01-19 contains 2025-12-25 and 2026-01-01. RUN_030 has `pre_reg` false (EXPERIMENT_LEDGER.md:52); H_003 status `proposed`, "no decision is taken from it" (HYPOTHESES.md:31, 33).
+
+**P5 — C3 cost claim.**
+Quoted: RESEARCH_STATE.md:47–49 "0.21 M parameters and scores one site-day in 1.8 ± 0.1 ms on one CPU core, against 14.6 ± 0.3 ms for the GBT ensemble (5 repeats each)".
+Status: UNVERIFIED.
+Evidence: the only record is the notes cell of RUN_031 (EXPERIMENT_LEDGER.md:53), which carries the same three summary numbers; the five raw repeat timings, the CPU model, the thread count, the library versions and which trained checkpoint (fold, seed) was scored appear in none of the four files, so nothing can be recomputed. Consistent with its row and with PROTOCOL.md:46–47 (one core, 5 repeats, mean ± sd), but a copied number is a claim. Settle by attaching `scripts/bench.py`'s raw output and a hardware line to the RUN_031 row, or by re-running `scripts/bench.py --repeats 5 --cores 1` (minutes of one CPU core).
+
+Other FALSE premises found: none.
+
+## 3. Strongest alternative
+
+Three competing plans. (a) Do nothing more: lock the four claims today as written. (b) A sub-hour, zero-compute verification pass, then lock: run `scripts/report_p1.py` at `7d2a8c4` and diff its output against RESEARCH_STATE.md:59–61 and EXPERIMENT_LEDGER.md:60–65; grep the 29 run logs of RUN_001–RUN_029 for the ACK line, the `--select val` flag and the split-hash line; attach RUN_031's five raw timings and the hardware line to its row. (c) Strengthen C2 before locking by adding rolling origins or seeds to raise power on the GBT comparison.
+
+(c) is dominated: the protocol is frozen (PROTOCOL.md:1), adding folds after the result is known is a post-hoc protocol change that needs a fresh pre-registration and compute before 2026-11-24, and the honest statement of C2 already exists; the sanctioned extension is already H_004 / RUN_032 after the deadline (HYPOTHESES.md:38–44, EXPERIMENT_LEDGER.md:54).
+
+(b) dominates (a). It costs under an hour and no compute, changes no claim text, and is the only action that can move C3 from UNVERIFIED to VERIFIED and that can catch a divergence between the source-of-record script and the ledger before a reviewer does. If it finds nothing, its outcome is identical to (a); if it finds something, (a) would have locked a wrong number. So: do (b), then lock — which is still "PROCEED", since none of (b) is a change to the claims.
+
+## 4. Kill criteria
+
+- Observable: `scripts/report_p1.py` at `7d2a8c4` prints any fold mean, paired difference, t or CI that differs from the recomputed values above beyond the last printed digit. Cheapest test: run the script once (minutes). Stops the lock until the discrepancy is explained — the script, not the ledger, is the declared source of record (PROTOCOL.md:50–51).
+- Observable: any run log of RUN_001–RUN_029 lacks the ACK line, shows a selector other than `val`, or shows a split-hash mismatch that was not aborted. Cheapest test: `grep` over the 29 logs (minutes). Under SCIENTIFIC_RULES §3.3 such a row becomes `rejected` and every aggregate built on it must be recomputed.
+- Observable: re-running `scripts/bench.py --repeats 5 --cores 1` gives GBT / Tidewater timings whose ratio is not about 8× (for instance because the GBT was benchmarked multi-threaded, or a different checkpoint was scored). Cheapest test: the re-run itself (minutes of one CPU core). C3 as written falls.
+
+## 5. Regret list
+
+1. Not diffing `report_p1.py`'s output against the four files before locking — the files name the script as the source of record, and the bundle contains no script.
+2. Not confirming the regression-guardian check of the 29 run logs: EXPERIMENT_LEDGER.md:14–15 asserts "ack line present as line 1 of every run log (checked 2026-10-30)", which is a claim with no log in the bundle behind it.
+3. Not recording in RUN_031 which checkpoint (fold, seed), CPU model, thread count and library versions were benchmarked; as the row stands C3 is not reproducible from the record.
+4. Letting the paper juxtapose C2 and C3 as "comparable accuracy at 8× lower cost": PROTOCOL.md:43 pre-registers no equivalence test, so that sentence would be a parity claim by implication. The guard at RESEARCH_STATE.md:31 has to reach the abstract and the conclusion, not only the captions.
+5. Not stating that the four fold differences are not independent: fold 4's training set ends 2025-12-29, inside fold 3's test window (2025-11-24..2026-01-19), and fold 4's validation window (2025-12-29..2026-01-26) overlaps it too. The limitation at RESEARCH_STATE.md:67–68 says "low-powered" but not "overlapping"; a reviewer will raise it against the n = 4 paired t-test.
+
+## 6. What is solid
+
+- C1: Tidewater 0.7660 vs naive 1.0285; paired difference −0.2625, sd 0.0121, t = −43.2, p = 2.7e-5; margin 0.10 met; "confirmed" under the pre-registered rule.
+- C2: −0.0160, 95% CI [−0.0390, +0.0070], t = −2.21, p = 0.114; "inconclusive" under the rule; no superiority or parity claim is made and none is admissible.
+- C4: fold 3 is the worst fold for all three arms and the only fold where Tidewater trails GBT, at fold level and on every seed.
+- The result table (RESEARCH_STATE.md:59–61) and the ledger aggregates (EXPERIMENT_LEDGER.md:60–65) match the recomputation to the printed digit, including the per-fold sds and the all-12 descriptive sds (GBT 0.0544, Tidewater 0.0665).
+- 24 completed learned-arm rows cover every (fold, seed) once; RUN_021 is retained with its reason; RUN_030 is `pre_reg: false` and enters no claim; hypotheses and protocol are dated before the first run; every learned-arm row selects on `val`.
+- Fold geometry is internally consistent: fold 4's test window ends 2026-03-23, inside the dataset end 2026-03-31 (PROTOCOL.md:4–8).
+
+## 7. Minor
+
+- RESEARCH_STATE.md:39 "−0.263 ± 0.012": the ± is a sample sd (EXPERIMENT_LEDGER.md:9–10); write "(sd)" in the paper, where ± is often read as SE or CI. The exact mean is −0.2625 and the naive fold mean is 1.0285; the printed −0.263 / 1.029 are half-up roundings, banker's rounding gives −0.262 / 1.028 — print four decimals or state the rounding.
+- EXPERIMENT_LEDGER.md:65 "sd 0.015" for the GBT differences: from the unrounded seed means the sd is 0.0145 (0.015 arises only from the already-rounded differences); the t and CI quoted in C2 use the unrounded value, so C2 is right and the ledger line is one rounding step off.
+- RESEARCH_STATE.md:48 says "GBT ensemble"; every other line says "GBT (tuned)". One name.

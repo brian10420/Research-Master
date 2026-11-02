@@ -33,29 +33,31 @@ English version: [README.md](README.md)
 
 ![團隊地圖：九個技能在你的對話之內，五個隔離的子代理人在邊界之外，守護者是唯一的關卡](assets/team-map.svg)
 
+![團隊化身為熊：十四個北極熊圖示，每個角色一個。九個技能在青綠色帶上共享你的工作階段；五個子代理人在靛藍色帶上隔離執行，關卡 regression-guardian 在琥珀色六角形上。每隻熊都是標誌的頭，只有道具不同。](assets/role-bears.svg)
+
 依需求來找，而不是依名字。有九個角色在你的對話**之內**工作：
 
-| 你想要… | 呼叫 | 它絕不會… |
-| --- | --- | --- |
-| 弄懂你自己的專案；排練口試 | `/research-kernel:study-coach` | 驗證、建置或做簡報 |
-| 討論方向；拿文獻檢驗一個點子 | `/research-kernel:research-mentor` | 把自己的點子當成事實宣稱 |
-| 檢查推導、張量形狀（shapes）、數值計算（numerics） | `/research-kernel:math-reviewer` | 動手實作 |
-| 撰寫或除錯模型、訓練或資料處理的程式碼 | `/research-kernel:dl-engineer` | 認證自己的程式碼 |
-| 把執行（run）結果變成統計、表格與圖 | `/research-kernel:results-analyst` | 粉飾數字 |
-| 撰寫並修改論文稿 | `/research-kernel:paper-writer` | 捏造數字；把已降級的主張重新誇大 |
-| 製作演講、海報或一頁式摘要 | `/research-kernel:science-presenter` | 算出新的統計量；跳過需求簡報（brief） |
-| 執行帶有檢查點（checkpoint）的多階段管線（pipeline） | `/research-kernel:conductor` | 自己動手做各階段的工作；跳過 MANDATORY 停止點；推翻 HARD-STOP |
-| 保持回憶層（recall layer）整潔 | `/research-kernel:memory-curator` | 當守門人；編輯 `core/`；提交（commit）一項科學主張 |
+| | 你想要… | 呼叫 | 它絕不會… |
+| --- | --- | --- | --- |
+| <img src="assets/roles/study-coach.png" width="28" alt=""> | 弄懂你自己的專案；排練口試 | `/research-kernel:study-coach` | 驗證、建置或做簡報 |
+| <img src="assets/roles/research-mentor.png" width="28" alt=""> | 討論方向；拿文獻檢驗一個點子 | `/research-kernel:research-mentor` | 把自己的點子當成事實宣稱 |
+| <img src="assets/roles/math-reviewer.png" width="28" alt=""> | 檢查推導、張量形狀（shapes）、數值計算（numerics） | `/research-kernel:math-reviewer` | 動手實作 |
+| <img src="assets/roles/dl-engineer.png" width="28" alt=""> | 撰寫或除錯模型、訓練或資料處理的程式碼 | `/research-kernel:dl-engineer` | 認證自己的程式碼 |
+| <img src="assets/roles/results-analyst.png" width="28" alt=""> | 把執行（run）結果變成統計、表格與圖 | `/research-kernel:results-analyst` | 粉飾數字 |
+| <img src="assets/roles/paper-writer.png" width="28" alt=""> | 撰寫並修改論文稿 | `/research-kernel:paper-writer` | 捏造數字；把已降級的主張重新誇大 |
+| <img src="assets/roles/science-presenter.png" width="28" alt=""> | 製作演講、海報或一頁式摘要 | `/research-kernel:science-presenter` | 算出新的統計量；跳過需求簡報（brief） |
+| <img src="assets/roles/conductor.png" width="28" alt=""> | 執行帶有檢查點（checkpoint）的多階段管線（pipeline） | `/research-kernel:conductor` | 自己動手做各階段的工作；跳過 MANDATORY 停止點；推翻 HARD-STOP |
+| <img src="assets/roles/memory-curator.png" width="28" alt=""> | 保持回憶層（recall layer）整潔 | `/research-kernel:memory-curator` | 當守門人；編輯 `core/`；提交（commit）一項科學主張 |
 
 另外五個角色在對話**之外**執行：它們是帶著全新上下文（context）的子代理人，所以不會繼承你的假設。由你的工作階段派工（dispatch）給它們——你或指揮（conductor）；代理人絕不派工：
 
-| 被派工的角色 | 它做什麼 | 它絕不會… |
-| --- | --- | --- |
-| `blind-reviewer` | 像陌生人一樣審閱你匿名化後的論文稿 | 接受專案的背景資訊 |
-| `sparring-partner` | 在決策做成之前，稽核它的前提 | 否決；看到提案者的推理 |
-| `regression-guardian` | 跑完整套測試；認證或駁回一項變更 | 修正程式碼；憑部分執行結果就認證 |
-| `experiment-runner` | 啟動並看顧各次執行；寫入帳本（ledger）的列 | 只挑好看的結果；偏離協定 |
-| `repo-maintainer` | 處理 git 與 GitHub，並遵守一份「絕不推送」清單（never-push list） | 推送受保護的內容；未經要求就強制推送 |
+| | 被派工的角色 | 它做什麼 | 它絕不會… |
+| --- | --- | --- | --- |
+| <img src="assets/roles/blind-reviewer.png" width="28" alt=""> | `blind-reviewer` | 像陌生人一樣審閱你匿名化後的論文稿 | 接受專案的背景資訊 |
+| <img src="assets/roles/sparring-partner.png" width="28" alt=""> | `sparring-partner` | 在決策做成之前，稽核它的前提 | 否決；看到提案者的推理 |
+| <img src="assets/roles/regression-guardian.png" width="28" alt=""> | `regression-guardian` | 跑完整套測試；認證或駁回一項變更 | 修正程式碼；憑部分執行結果就認證 |
+| <img src="assets/roles/experiment-runner.png" width="28" alt=""> | `experiment-runner` | 啟動並看顧各次執行；寫入帳本（ledger）的列 | 只挑好看的結果；偏離協定 |
+| <img src="assets/roles/repo-maintainer.png" width="28" alt=""> | `repo-maintainer` | 處理 git 與 GitHub，並遵守一份「絕不推送」清單（never-push list） | 推送受保護的內容；未經要求就強制推送 |
 
 ## 工作流程
 

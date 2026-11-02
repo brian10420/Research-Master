@@ -515,3 +515,78 @@ source project reports it after a campaign.
   explicitly.
 - Leave the plugin at `medium` and keep the rule personal — the operator's
   own sessions would then run the plugin's roles below his own floor.
+
+```yaml
+id: DECISION_010
+title: No red-team role — the pilot found no detection gain over sparring-partner and seven false positives on sound work; the two residual triggers become a dispatch mode of sparring-partner
+date: 2026-11-02
+proposer: human   # the "black-faced bear" critic idea, in chat 2026-11-02 (provenance to be confirmed by the operator); the pilot design, PREREG.md and this entry drafted by Fable 5.1
+decided_by: ""           # the human operator flips the status
+status: proposed
+evidence: [eval/pilots/red-team-2026-11-02/PREREG.md, eval/pilots/red-team-2026-11-02/RESULT.md, eval/pilots/red-team-2026-11-02/reports/GRADES.md, eval/pilots/red-team-2026-11-02/RED_TEAM_DRAFT.md]
+supersedes: ""
+superseded_by: ""
+```
+
+**Context.** A fifteenth role was proposed: a dedicated adversarial critic
+(`red-team`, the black-faced bear) that attacks a project's claim set and its
+evidence before a reviewer does. An isolated `sparring-partner` audit of that
+proposal (2026-11-02, in chat; gist recorded here because the audit text lives
+only in the chat) returned `RETHINK`: the proposal's premises overlapped
+`sparring-partner` (premise audit of a decision, evidence rule, read-only, never
+a veto) and `blind-reviewer` (the manuscript) almost entirely; the residue that
+neither covers is two triggers — *after a surprising result* and *on request
+before submission* — and an output shape (ranked attacks, each with the cheapest
+refuting test). The audit amended the draft before any pilot: isolated posture,
+effort pinned at `xhigh`, no manuscript input, `sparring-partner`'s data-contact
+rule; and it found that `AGENTS.md` had omitted `sparring-partner` from its
+isolated-role list (a hand-typed list in `tools/sync.py`, now rendered from the
+roster). The operator's rule was "pilot first, add only if it wins", then "run
+the pilot now" on synthetic material rather than on a live project.
+
+**Pilot (pre-registered in `PREREG.md`).** Five synthetic mini-projects, three
+with one to three planted threats to validity and two sound controls, the key
+sealed before any dispatch; ten dispatches in one batch — arm A
+`sparring-partner` with the proposal "lock the claims as written, for
+submission", arm B the amended draft contract — same model, same effort, same
+four input files, same forbidden reads; reports blinded and graded against the
+key by a fresh agent that ran no arm; the decision rule declared in advance:
+add the role only if B finds strictly more planted threats (full + ½ partial)
+than A **and** B's false positives on the controls are not greater than A's.
+Result (`RESULT.md`): found A 7 = B 7, all seven graded full for both arms;
+false positives on the controls A 0, B 7; a concrete refuting test named for
+7 / 7 by both; arm B used about 1.6× the tokens and wrote about 3.5× the text.
+Neither condition holds. Two deviations are recorded in `RESULT.md` §5 (the
+material was written twice after a designer agent survived a session reset,
+and the arms' one-line verdicts reached the orchestrator before grading);
+neither touches a grade.
+
+**Decision (proposed).** Verdict `mode`: no `red-team` role; the roster stays
+at fourteen. On acceptance, `core/roles/sparring-partner.md` "When it is
+dispatched" gains the two residual triggers as a named dispatch mode — (a) after
+a surprising result and (b) on request before submission — in both cases with
+the proposal "lock the claims in `RESEARCH_STATE.md` as written" and the state
+files as the evidence paths; `core/roles/README.md`'s roster line for
+`sparring-partner` names the mode. The draft contract stays in the pilot
+directory as a record and is not a role.
+
+**Consequences.** Until acceptance nothing in `core/roles/` changes. On
+acceptance: the spec and the roster line change, adapters are regenerated,
+`SCIENTIFIC_RULES.md` stays untouched (RULES_HASH `0f0b1f5cddf7`). The pilot
+directory (pre-registration, draft, briefs, bundles, raw and blind reports,
+grades, result) is committed as the record; the key and the map stay sealed.
+The operator's hand-drawn illustration set carries a fifteenth figure
+(`critical-auditor`) with no role behind it; what to do with it is the
+operator's call.
+
+**Alternatives rejected.**
+- Add the role for its output shape (ranked attacks with the cheapest refuting
+  test) — the shape is reachable by wording the `sparring-partner` proposal,
+  and the pilot shows the attack framing bought seven false positives on sound
+  work and no extra detection.
+- Run a larger pilot — the stopping rule was one run; a 7 = 7 tie on detection
+  with a 7-vs-0 gap in false positives is not a close call that more bundles
+  would flip.
+- Fold "after a surprising result" into `research-mentor` — the mentor is
+  shared-context and sees the proposer's reasoning; the trigger needs the
+  isolation `sparring-partner` already has.
