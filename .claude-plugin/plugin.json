@@ -1,13 +1,13 @@
 {
-  "name": "research-kernel",
-  "version": "0.5.1",
-  "description": "Provider-neutral Research OS for Claude Code: fourteen canonical research roles (math-reviewer, dl-engineer, research-mentor, results-analyst, paper-writer, study-coach, science-presenter, memory-curator, conductor + isolated blind-reviewer, experiment-runner, regression-guardian, repo-maintainer, sparring-partner), a methodological constitution with a canary handshake, per-project state templates, a task-shape effort policy, and a plan-tier dispatch profile (guarded | open) declared in your overlay. Project facts live in your project's .claude/research-kernel.overlay.md, never in the plugin.",
+  "name": "research-master",
+  "version": "0.6.0",
+  "description": "Provider-neutral Research OS for Claude Code: fourteen canonical research roles (math-reviewer, dl-engineer, research-mentor, results-analyst, paper-writer, study-coach, science-presenter, memory-curator, conductor + isolated blind-reviewer, experiment-runner, regression-guardian, repo-maintainer, sparring-partner), a methodological constitution with a canary handshake, per-project state templates, a task-shape effort policy, and a plan-tier dispatch profile (guarded | open) declared in your overlay. Project facts live in your project's .claude/research-master.overlay.md, never in the plugin.",
   "author": {
     "name": "Ting-Yi Lin",
     "url": "https://github.com/brian10420"
   },
-  "homepage": "https://github.com/brian10420/research-kernel",
-  "repository": "https://github.com/brian10420/research-kernel",
+  "homepage": "https://github.com/brian10420/research-master",
+  "repository": "https://github.com/brian10420/research-master",
   "license": "MIT",
   "icon": "./assets/logo.png",
   "keywords": [

@@ -8,3 +8,8 @@ eval/.sealed/*
 !eval/.sealed/README.md
 !eval/.sealed/.gitkeep
 .~lock.*#
+
+# the operator's illustration originals (1254 px) and their archive stay outside
+# version control; assets/roles/illustrations/ holds the committed 512 px renders
+assets/roles/agent-illustrations-15/
+assets/roles/agent-illustrations-15.zip

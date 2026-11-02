@@ -11,14 +11,14 @@
 
   <rect x="0" y="0" width="1400" height="448" fill="#F3F5F4"/>
 
-    <text class="mono" x="24" y="28" font-size="11" fill="#5A6663" letter-spacing="2">RESEARCH-KERNEL · DECISION_008 (accepted)</text>
+    <text class="mono" x="24" y="28" font-size="11" fill="#5A6663" letter-spacing="2">RESEARCH-MASTER · DECISION_008 (accepted)</text>
     <text class="sans" x="24" y="60" font-size="26" font-weight="700" fill="#1D2523">Which dispatch profile?</text>
 
   <g id="overlay">
     <rect x="20" y="80" width="344" height="260" rx="8" fill="#FDFEFD" stroke="#C6CFCB" stroke-width="1.3"/>
     <path d="M 38 96 H 49 L 54 101 V 117 H 38 Z" fill="none" stroke="#77827E" stroke-width="1.3"/>
     <path d="M 49 96 V 101 H 54" fill="none" stroke="#77827E" stroke-width="1.3"/>
-    <text class="mono" x="64" y="113" font-size="12" fill="#1D2523">.claude/research-kernel.overlay.md</text>
+    <text class="mono" x="64" y="113" font-size="12" fill="#1D2523">.claude/research-master.overlay.md</text>
     <rect x="28" y="130" width="328" height="80" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
     <text class="mono" x="38" y="149.5" font-size="12" fill="#1D2523">## Runtime budget</text>
     <text class="mono" x="38" y="166.5" font-size="12" fill="#1D2523">- **Plan tier:** &lt;free | pro | max |</text>

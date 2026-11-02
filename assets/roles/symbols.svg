@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
-  <!-- research-kernel role bears as reusable symbols. Copy the whole defs block below into a figure, then draw
+  <!-- research-master role bears as reusable symbols. Copy the whole defs block below into a figure, then draw
        <use href="#bear-backdrop-shared" width="64" height="64" x=".." y=".."/>
        <use href="#bear-<role>" width="64" height="64" x=".." y=".."/>
        Backdrops: bear-backdrop-shared (9 skills), bear-backdrop-isolated (4 subagents),

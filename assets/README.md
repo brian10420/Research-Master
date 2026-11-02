@@ -19,7 +19,7 @@ To re-render a preview: `inkscape --export-type=png --export-width=1400 assets/<
 
 ## Logo — `logo.svg`, `logo.png` (1024 px, the plugin icon), `logo-256.png`
 
-SCIENTIFIC_RULES §9 claims list for the research-kernel logo. One row per drawn element and per colour value.
+SCIENTIFIC_RULES §9 claims list for the research-master logo. One row per drawn element and per colour value.
 "Owner brief" means the project owner's chat decision of 2026-11-02, as relayed in the illustrator's task brief.
 That brief is the only source for the design. Line numbers in `logo.svg` are given so you can trace each row to the drawing.
 Exports: `assets/logo.png` (1024×1024), `assets/logo-256.png` (256×256).
@@ -52,7 +52,7 @@ Line numbers as of 2026-11-02 (README.md was being edited while the figure was d
 
 | # | element on the figure | source (file:line) | quoted source words |
 | --- | --- | --- | --- |
-| 1 | kicker `RESEARCH-KERNEL` | README.md:5 | `# research-kernel` |
+| 1 | kicker `RESEARCH-MASTER` | README.md:6 | `# research-master` |
 | 2 | title "Your first ten minutes" | — | README heading, authored (README.md:21 `## Your first ten minutes`) |
 | 3 | badges 1–4 and their left-to-right order | README.md:25, 31, 35, 41 | "1. **Install**" · "2. **Seed your project's state files**" · "3. **Seed the overlay**" · "4. **Talk to the mentor:**" |
 | 4 | badge 5 (the outcome of step 4) | README.md:42–43 | "what it proposes is filed in your `HYPOTHESES.md` as `status: proposed`" |
@@ -60,23 +60,23 @@ Line numbers as of 2026-11-02 (README.md was being edited while the figure was d
 | 6 | solid arrow 4→5 | core/roles/research-mentor.md:37–38 | "Any new idea the mentor originates → a `HYPOTHESES.md` entry drafted with `status: proposed` and the mentor's model as `proposer` (principle 3)." |
 | 7 | card 1 title "Install" | README.md:25 | "1. **Install**, inside Claude Code:" |
 | 8 | card 1 plain line "inside Claude Code" | README.md:25 | "inside Claude Code" |
-| 9 | `/plugin marketplace add` ↳ `brian10420/research-kernel` | README.md:27 | `/plugin marketplace add brian10420/research-kernel` |
-| 10 | `/plugin install` ↳ `research-kernel@research-kernel` | README.md:28 | `/plugin install research-kernel@research-kernel` |
+| 9 | `/plugin marketplace add` ↳ `brian10420/research-master` | README.md:27 | `/plugin marketplace add brian10420/research-master` |
+| 10 | `/plugin install` ↳ `research-master@research-master` | README.md:28 | `/plugin install research-master@research-master` |
 | 11 | `/reload-plugins` | README.md:29 | `/reload-plugins` |
 | 12 | card 2 title "Seed the state files" | README.md:31; templates/project-state/README.md:6 | "2. **Seed your project's state files**" (condensed: "your project's" → "the"); "seeded from these templates" |
 | 13 | card 2 plain line "from the root of your research project" | templates/project-state/README.md:12 | `# from the root of your research project` |
 | 14 | `mkdir -p project-state` | templates/project-state/README.md:13 | `mkdir -p project-state` |
 | 15 | the `cp` command, wrapped over 7 lines | templates/project-state/README.md:14 | `cp <research-os>/templates/project-state/{RESEARCH_STATE,DECISIONS,EXPERIMENT_LEDGER,HYPOTHESES,FAILED_IDEAS,OPEN_QUESTIONS}.md project-state/` |
 | 16 | card 3 title "Seed the overlay" | README.md:35; README.md:282 | "3. **Seed the overlay** — copy"; "3. Seed the overlay: copy" |
-| 17 | card 3 plain line "with the state files, the only place project-specific facts belong" | templates/research-kernel.overlay.template.md:7–8 | "With the state files, this is the only place project-specific facts belong" ("this is" dropped) |
-| 18 | `copy templates/` ↳ `research-kernel.overlay.template.md` / `to .claude/` ↳ `research-kernel.overlay.md` | templates/project-state/README.md:22–24; README.md:35–37 | "copy `templates/research-kernel.overlay.template.md` to `.claude/research-kernel.overlay.md` in the project and fill the slots" |
+| 17 | card 3 plain line "with the state files, the only place project-specific facts belong" | templates/research-master.overlay.template.md:7–8 | "With the state files, this is the only place project-specific facts belong" ("this is" dropped) |
+| 18 | `copy templates/` ↳ `research-master.overlay.template.md` / `to .claude/` ↳ `research-master.overlay.md` | templates/project-state/README.md:22–24; README.md:35–37 | "copy `templates/research-master.overlay.template.md` to `.claude/research-master.overlay.md` in the project and fill the slots" |
 | 19 | label "and fill the slots, e.g.:" | templates/project-state/README.md:24 | "and fill the slots". ", e.g." is an authored connective: the well below shows one slot, not all of them (README.md:37–38 also names the `## Project` block) |
-| 20 | `## Runtime budget` | templates/research-kernel.overlay.template.md:24 | `## Runtime budget` |
-| 21 | `- **Plan tier:** <free \| pro \|` ↳ `max \| ultra \| team-standard \|` ↳ `team-premium \| enterprise \| api>` | templates/research-kernel.overlay.template.md:38 | `- **Plan tier:** <free \| pro \| max \| ultra \| team-standard \| team-premium \| enterprise \| api>` |
+| 20 | `## Runtime budget` | templates/research-master.overlay.template.md:24 | `## Runtime budget` |
+| 21 | `- **Plan tier:** <free \| pro \|` ↳ `max \| ultra \| team-standard \|` ↳ `team-premium \| enterprise \| api>` | templates/research-master.overlay.template.md:38 | `- **Plan tier:** <free \| pro \| max \| ultra \| team-standard \| team-premium \| enterprise \| api>` |
 | 22 | card 4 title "Talk to the mentor" | README.md:41 | "4. **Talk to the mentor:**" |
 | 23 | card 4 plain lines "direction, pressure-testing, concepts; literature-verified claims" | core/roles/README.md:14 | roster row `research-mentor`, "what it is for": "direction, pressure-testing, concepts; literature-verified claims" |
-| 24 | `/research-kernel:research-mentor` | README.md:41 | "`/research-kernel:research-mentor`" |
-| 25 | note "skills appear as `/research-kernel:<role>`" | tools/sync.py:470–471 (generated into CLAUDE.md:177) | "skills then appear as `/research-kernel:<role>`" ("then" dropped) |
+| 24 | `/research-master:research-mentor` | README.md:41 | "`/research-master:research-mentor`" |
+| 25 | note "skills appear as `/research-master:<role>`" | tools/sync.py:470–471 (generated into CLAUDE.md:177) | "skills then appear as `/research-master:<role>`" ("then" dropped) |
 | 26 | teal outline on card 4 | core/roles/research-mentor.md:4; core/roles/README.md:14 | "posture: shared-context"; roster posture column "shared-context" (teal = the team map's shared-session zone colour) |
 | 27 | card 5 file icon + title `HYPOTHESES.md` | core/SCIENTIFIC_RULES.md:46 | "Model-generated research ideas enter `HYPOTHESES.md` as `status: proposed`" |
 | 28 | card 5 plain lines "its own ideas are filed as proposals, never as facts" | core/roles/research-mentor.md:6 | "its own ideas are filed as proposals, never as facts." |
@@ -92,7 +92,7 @@ Line numbers as of 2026-11-02 (README.md was being edited while the figure was d
 
 SCIENTIFIC_RULES §9: every label, badge, tag, number and arrow direction on the figure traces to a source line.
 Line numbers are as of 2026-11-02. `RR` = `core/roles/README.md`, `EP` = `core/effort_policy.yaml`,
-`DP` = `core/dispatch_policy.yaml`, `OT` = `templates/research-kernel.overlay.template.md`.
+`DP` = `core/dispatch_policy.yaml`, `OT` = `templates/research-master.overlay.template.md`.
 The root `README.md` is not cited, because it describes this figure (a citation there would be circular).
 
 ### Roles (name + posture), descriptions, hard-rule tags
@@ -139,9 +139,9 @@ A leading `/` and a teal card mean posture `shared-context` (a skill). No slash,
 | Right zone label "DISPATCHED — ISOLATED CONTEXT" | RR:29–30 | "*Isolated* roles get a fresh context, see only their dispatch prompt and its inputs, and return one report" |
 | Dashed context boundary between the zones | RR:29–30 | same as above: the isolated roles see "only their dispatch prompt" |
 | "YOU" / "the operator" | RR:27–28 | "join the operator's session" |
-| Outer frame label "role cards = the research-kernel plugin — replaced wholesale on update, never hand-edited" | OT:8–9; `core/DECISIONS.md`:151–153 | "never edit the plugin or the generated wrappers, they are replaced wholesale on every update"; "A Claude Code plugin lives in an immutable, wholesale-replaced cache directory, so that path — and any hand-edit inside the plugin — breaks on install or update." |
-| Overlay document `.claude/research-kernel.overlay.md` in the session zone, "your project's facts — kept in your project; a plugin update never touches it" | OT:4–9; `core/DECISIONS.md`:161–164 | "Copy this file to `.claude/research-kernel.overlay.md` at the root of YOUR research project … This is the ONLY place project-specific facts belong"; "Project-specific facts live in the consuming project's `.claude/research-kernel.overlay.md` … nothing inside the plugin is ever edited." |
-| Arrow overlay → skills, "injected when a skill loads" | OT:5–6; `core/DECISIONS.md`:163 | "Every research-kernel skill injects this file when it loads"; "injected by every skill at load time" |
+| Outer frame label "role cards = the research-master plugin — replaced wholesale on update, never hand-edited" | OT:8–9; `core/DECISIONS.md`:151–153 | "never edit the plugin or the generated wrappers, they are replaced wholesale on every update"; "A Claude Code plugin lives in an immutable, wholesale-replaced cache directory, so that path — and any hand-edit inside the plugin — breaks on install or update." |
+| Overlay document `.claude/research-master.overlay.md` in the session zone, "your project's facts — kept in your project; a plugin update never touches it" | OT:4–9; `core/DECISIONS.md`:161–164 | "Copy this file to `.claude/research-master.overlay.md` at the root of YOUR research project … This is the ONLY place project-specific facts belong"; "Project-specific facts live in the consuming project's `.claude/research-master.overlay.md` … nothing inside the plugin is ever edited." |
+| Arrow overlay → skills, "injected when a skill loads" | OT:5–6; `core/DECISIONS.md`:163 | "Every research-master skill injects this file when it loads"; "injected by every skill at load time" |
 | Membership line /conductor — YOU (conductor adjacent to YOU) | `core/roles/conductor.md`:20–22, :27–29 | "Run a multi-stage research pipeline … from the operator's session"; "In a session wearing this role, the orchestrator is the conductor." |
 | Membership spine YOU — skill grid | RR:27–28 | "*Shared-context* roles join the operator's session" |
 | Dispatch bus out, starting at the YOU/conductor pair (top of /conductor) and leaving to every subagent | `core/roles/conductor.md`:22–23; RR:99 | "sends each stage to whoever does that work"; "the main session remains the only dispatcher, agents never dispatch" |
@@ -159,7 +159,7 @@ A leading `/` and a teal card mean posture `shared-context` (a skill). No slash,
 
 | element on figure | source | quoted source words |
 | --- | --- | --- |
-| "RESEARCH-KERNEL · TEAM MAP · V3"; "How the team works with you" | the task brief (figure name/version) | — (identification only, no claim) |
+| "RESEARCH-MASTER · TEAM MAP · V3"; "How the team works with you" | the task brief (figure name/version) | — (identification only, no claim) |
 | Subtitle "…every role's effort is chosen by its task shape, never by how stuck it is." | EP:15–16, EP:26 | "effort is chosen by TASK SHAPE, up front."; "\"stuck\" is not a reason to raise effort" |
 | Legend "hand-off carrying work (always via you)" | RR:99 | "the main session remains the only dispatcher, agents never dispatch" |
 | Legend "membership — no arrowhead, nothing moves"; "context boundary (the only dashed line)"; "a role asking you to move the switch" | figure line grammar (v2, kept by the brief); RR:29–30; OT:121–122 | notation keys; the boundary and the request carry the sources above |
@@ -181,7 +181,7 @@ Glyph grammar follows `assets/team-map.svg`: teal rounded box with `/` = skill; 
 
 | # | element (as drawn) | svg | source `file:line` | quoted source words |
 | --- | --- | --- | --- | --- |
-| 1 | kicker "RESEARCH-KERNEL · TEAM FLOWS · V2" | 12 | `assets/team-map.svg@HEAD:15`; brief | "RESEARCH-KERNEL · TEAM MAP · V2" (kicker style); brief: "version 2" |
+| 1 | kicker "RESEARCH-MASTER · TEAM FLOWS · V2" | 12 | `assets/team-map.svg@HEAD:15`; brief | "RESEARCH-KERNEL · TEAM MAP · V2" (kicker style); brief: "version 2" |
 | 2 | title "The six workflows" | 13 | v1 `assets/team-flows.svg:13`; brief | v1: "The five workflows"; brief: six lanes in "Lanes in order" (structural count, no system claim) |
 | 3 | subtitle "Same glyphs as the map. Numbered steps;" | 14 | v1 `assets/team-flows.svg:14` | "Same glyphs as the map. Numbered steps" |
 | 4 | subtitle "every hand-off goes back through your session — the main session is the only dispatcher, agents never dispatch" | 14 | `core/roles/README.md:99–100` | "the main session remains the only dispatcher, agents never dispatch" |
@@ -252,19 +252,19 @@ Glyph grammar follows `assets/team-map.svg`: teal rounded box with `/` = skill; 
 | 64 | footnote: "MANDATORY — at the stops the overlay names; never skipped, never downgraded · FULL — after 4 consecutive SLIM continues, after any failed gate, after any SOFT-GATE override, before any deviation from the pipeline of record · SLIM — every other stage transition (the default)" | 248–249 | `core/roles/conductor.md:65–67` | "at the stops the overlay names"; "never skipped, never downgraded"; "after 4 consecutive SLIM continues (…); after any failed gate; after any SOFT-GATE override; before any deviation from the pipeline of record"; "every other stage transition (the default)" |
 | 65 | footnote: "judgement turns in between are worn roles (/research-mentor, /paper-writer, …), announced" | 250 | `core/roles/README.md:121–122` | "Judgement turns in between are worn roles (`research-mentor`, `paper-writer`, …), announced." |
 | **Lane 6** | | | | |
-| 66 | lane title "Stuck: method first, not effort" | 257 | `templates/research-kernel.overlay.template.md:123–124` | "\"Stuck\" is handled by changing method first (…), not by raising effort." |
-| 67 | grey state "a role is stuck" | 258–259 | `templates/research-kernel.overlay.template.md:123` | "\"Stuck\" is handled by changing method first" |
-| 68 | step 1 → "restate the claim as a checkable test" | 260–261, 264–265 | `templates/research-kernel.overlay.template.md:123–124` | "(restate the claim as a checkable test;" |
-| 69 | step 2 → "dispatch a fresh-context role" | 262–263, 266–267 | `templates/research-kernel.overlay.template.md:124` | "dispatch a fresh-context role)" |
-| 70 | "changing method first — not by raising effort" | 268 | `templates/research-kernel.overlay.template.md:123–124` | "changing method first (…), not by raising effort." |
+| 66 | lane title "Stuck: method first, not effort" | 257 | `templates/research-master.overlay.template.md:124–125` | "\"Stuck\" is handled by changing method first (…), not by raising effort." |
+| 67 | grey state "a role is stuck" | 258–259 | `templates/research-master.overlay.template.md:124` | "\"Stuck\" is handled by changing method first" |
+| 68 | step 1 → "restate the claim as a checkable test" | 260–261, 264–265 | `templates/research-master.overlay.template.md:124–125` | "(restate the claim as a checkable test;" |
+| 69 | step 2 → "dispatch a fresh-context role" | 262–263, 266–267 | `templates/research-master.overlay.template.md:125` | "dispatch a fresh-context role)" |
+| 70 | "changing method first — not by raising effort" | 268 | `templates/research-master.overlay.template.md:124–125` | "changing method first (…), not by raising effort." |
 | 71 | thin divider between the two rows | 269 | — | separator only; no claim |
-| 72 | "unbounded-judgement step" · "e.g. interpreting a blind readout" | 270–272 | `core/roles/README.md:91`; `templates/research-kernel.overlay.template.md:119–120` | "an unbounded-judgement step"; "When a step needs unbounded judgement (interpreting a blind readout, …" |
-| 73 | step 1 → "role stops" · "asks you to run /effort max" | 273–275, 284–285 | `templates/research-kernel.overlay.template.md:121–122` | "the role stops and asks the operator to run `/effort max`" |
+| 72 | "unbounded-judgement step" · "e.g. interpreting a blind readout" | 270–272 | `core/roles/README.md:91`; `templates/research-master.overlay.template.md:120–121` | "an unbounded-judgement step"; "When a step needs unbounded judgement (interpreting a blind readout, …" |
+| 73 | step 1 → "role stops" · "asks you to run /effort max" | 273–275, 284–285 | `templates/research-master.overlay.template.md:122–123` | "the role stops and asks the operator to run `/effort max`" |
 | 74 | step 2 dotted arrow → YOU · "you raise it" | 276–277, 286–287, 292 | `core/roles/README.md:90–91`; `assets/team-map.svg@HEAD:192–193` | "the operator raises the session effort for an unbounded-judgement step"; dotted = "a role asking you to move the switch" |
-| 75 | step 3 → "step done" · "role asks for /effort high / (or the session default)" | 278–281, 288–289 | `templates/research-kernel.overlay.template.md:122–123` | "and asks for `/effort high` (or the session default) when the step is done" |
+| 75 | step 3 → "step done" · "role asks for /effort high / (or the session default)" | 278–281, 288–289 | `templates/research-master.overlay.template.md:123–124` | "and asks for `/effort high` (or the session default) when the step is done" |
 | 76 | step 4 dotted arrow → YOU · "you lower it again" | 282–283, 290–291, 293 | `core/roles/README.md:91–92` | "and lowers it again" |
 | 77 | footnote: "effort is chosen by task shape up front, never by \"it got stuck\"; no role pins max — you raise the session effort for an unbounded-judgement step and lower it again" | 294 | `core/roles/README.md:89–92` | "Effort is chosen by task shape up front, never by \"it got stuck\"; no role pins `max` — the operator raises the session effort for an unbounded-judgement step and lowers it again" |
-| 78 | footnote: "unbounded judgement: interpreting a blind readout · resolving a record-vs-code contradiction · designing a new statistical instrument" | 295 | `templates/research-kernel.overlay.template.md:119–121` | "(interpreting a blind readout, resolving a record-vs-code contradiction, designing a new statistical instrument)" |
+| 78 | footnote: "unbounded judgement: interpreting a blind readout · resolving a record-vs-code contradiction · designing a new statistical instrument" | 295 | `templates/research-master.overlay.template.md:120–122` | "(interpreting a blind readout, resolving a record-vs-code contradiction, designing a new statistical instrument)" |
 | **Legend** | | | | |
 | 79 | teal box "/" · "skill — shares your session" | 299–301 | `assets/team-map.svg@HEAD:17` | "Eight skills share your session" |
 | 80 | doubled-left-edge box · "subagent — runs isolated" | 302–303 | `assets/team-map.svg@HEAD:17, 142–144` | "four subagents run isolated" (glyph: doubled left edge) |
@@ -282,7 +282,7 @@ Glyph grammar follows `assets/team-map.svg`: teal rounded box with `/` = skill; 
 
 - v1's "blind-reviewer · PDF only" is dropped: `core/roles/blind-reviewer.md:30` says "the manuscript (PDF or sources)". The redraw shows the bundle crossing a context boundary instead (rows 29–32).
 - v1's "step 5 runs only before a defense — otherwise the deck ships at step 4" is dropped. No source states the second half. The arrow now carries only "for a defense" (`core/roles/README.md:115`).
-- v1's Stuck lane chained "role is stuck → … → ask you to run /effort max → you lower it back to high" under "escalate the method before the effort". That contradicts `core/roles/README.md:89–90` ("never by \"it got stuck\"") and `templates/research-kernel.overlay.template.md:123–124` ("not by raising effort"). Lane 6 now draws two separate rows: a stuck role changes method; only an unbounded-judgement step asks for `/effort max`, then for `/effort high` (or the session default). For the same reason the lane title is "method first, not effort" rather than the brief's wording "method before effort".
+- v1's Stuck lane chained "role is stuck → … → ask you to run /effort max → you lower it back to high" under "escalate the method before the effort". That contradicts `core/roles/README.md:89–90` ("never by \"it got stuck\"") and `templates/research-master.overlay.template.md:124–125` ("not by raising effort"). Lane 6 now draws two separate rows: a stuck role changes method; only an unbounded-judgement step asks for `/effort max`, then for `/effort high` (or the session default). For the same reason the lane title is "method first, not effort" rather than the brief's wording "method before effort".
 - v1's lane titles ("Build & test an idea", "Write the paper", "Learn your own results", "Present it to others") are replaced by the flow names in `core/roles/README.md:104–124`.
 
 
@@ -293,13 +293,13 @@ Line numbers as of 2026-11-02.
 
 | # | element on the figure | source (file:line) | quoted source words |
 | --- | --- | --- | --- |
-| 1 | kicker `RESEARCH-KERNEL · DECISION_008 (accepted)` | README.md:5; core/DECISIONS.md:420 | `# research-kernel`; `status: accepted` |
+| 1 | kicker `RESEARCH-MASTER · DECISION_008 (accepted)` | README.md:6; core/DECISIONS.md:420 | `# research-master`; `status: accepted` |
 | 2 | title "Which dispatch profile?" | — | README heading, authored (README.md:107 `## Pick your plan tier`; alt text README.md:109 "Which dispatch profile: …") |
-| 3 | file icon + `.claude/research-kernel.overlay.md` | templates/research-kernel.overlay.template.md:4 | "Copy this file to `.claude/research-kernel.overlay.md`" |
-| 4 | `## Runtime budget` | templates/research-kernel.overlay.template.md:24 | `## Runtime budget` |
-| 5 | `- **Plan tier:** <free \| pro \| max \|` ↳ `ultra \| team-standard \| team-premium \|` ↳ `enterprise \| api>` | templates/research-kernel.overlay.template.md:38 | `- **Plan tier:** <free \| pro \| max \| ultra \| team-standard \| team-premium \| enterprise \| api>` |
-| 6 | "The harness does not tell the plugin which plan you are on, so say it here once." | templates/research-kernel.overlay.template.md:27 | verbatim |
-| 7 | "Change the line when your plan changes; nothing else needs to." | templates/research-kernel.overlay.template.md:35 | verbatim |
+| 3 | file icon + `.claude/research-master.overlay.md` | templates/research-master.overlay.template.md:4 | "Copy this file to `.claude/research-master.overlay.md`" |
+| 4 | `## Runtime budget` | templates/research-master.overlay.template.md:24 | `## Runtime budget` |
+| 5 | `- **Plan tier:** <free \| pro \| max \|` ↳ `ultra \| team-standard \| team-premium \|` ↳ `enterprise \| api>` | templates/research-master.overlay.template.md:38 | `- **Plan tier:** <free \| pro \| max \| ultra \| team-standard \| team-premium \| enterprise \| api>` |
+| 6 | "The harness does not tell the plugin which plan you are on, so say it here once." | templates/research-master.overlay.template.md:27 | verbatim |
+| 7 | "Change the line when your plan changes; nothing else needs to." | templates/research-master.overlay.template.md:35 | verbatim |
 | 8 | two solid arrows, overlay card → `guarded` / `open` | core/roles/conductor.md:178–180 | "The overlay's Runtime budget names the operator's plan tier; the conductor derives the dispatch profile from it" |
 | 9 | branch label "the conductor derives the dispatch profile" | core/roles/conductor.md:178–180 | "the conductor derives the dispatch profile from it" ("from it" carried by the arrows) |
 | 10 | chips `free` `pro` `max` `team-standard` `team-premium` on the `guarded` branch | core/dispatch_policy.yaml:19 | "plans: free, pro, max, team-standard, team-premium" (also overlay template:29) |
@@ -365,7 +365,7 @@ Verified by a fresh-context checker that drew none of the icons (verdict and fin
 | Amber `#A9761C` only on `regression-guardian`: hexagon stroke, shield, card stroke; hexagon fill `#FBF4E4` | `assets/team-map.svg:192-193` | `<polygon points="956,446 … 930,494" fill="#A9761C"/>`, `<polygon … fill="#FBF4E4"/>` (the gate). The icon's regular hexagon is a shape echo; its proportions are the illustrator's |
 | Fonts: `.mono` / `.sans` / `.serif` classes | `assets/team-map.svg:9-11` | `ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`; `system-ui, -apple-system, "Segoe UI", sans-serif`; `Georgia, "Times New Roman", serif` |
 | Line grammar: page `#F3F5F4`, kicker mono 11 letter-spacing 2, title sans 26 bold, subtitle sans 13.5, role name mono 600, purpose sans `#5A6663`, serif-italic note `#4A5651` | `assets/team-map.svg:14,16,17,18,91-92,237` | `fill="#F3F5F4"`; `font-size="11" letter-spacing="2"`; `font-size="26" font-weight="700"`; `font-size="13.5"`; `font-weight="600"`; `class="serif" font-size="14" font-style="italic" fill="#4A5651"` |
-| Kicker "RESEARCH-KERNEL · ROLE BEARS" | `assets/team-map.svg:16` (form); dispatch brief (content) | "RESEARCH-KERNEL · TEAM MAP · V3"; brief: "a family of fourteen polar-bear icons, one per role" |
+| Kicker "RESEARCH-MASTER · ROLE BEARS" | `assets/team-map.svg:16` (form); dispatch brief (content) | "RESEARCH-MASTER · TEAM MAP · V3"; brief: "a family of fourteen polar-bear icons, one per role" |
 | Title "The team, as bears" | dispatch brief, 2026-11-02 | "Title "The team, as bears"" |
 | Subtitle "Nine skills share your session; five subagents run isolated." | `assets/team-map.svg:18`; counts from `core/roles/README.md:12-25` | "Nine skills share your session; five subagents run isolated — …"; nine rows "shared-context", five rows "**isolated**" |
 | Band labels "YOUR SESSION — ONE SHARED CONTEXT" / "DISPATCHED — ISOLATED CONTEXT" | `assets/team-map.svg:27-28` | verbatim |
@@ -381,12 +381,17 @@ Verified by a fresh-context checker that drew none of the icons (verdict and fin
 
 ## Character illustrations — `roles/illustrations/<name>.png`
 
-Hand-drawn by the operator on 2026-11-02, committed as 512 px renders of 1254 px
-originals that stay outside version control. One expressive bear per role, in the
-same palette as the icons, plus `critical-auditor.png`: the black bear drawn for
-the red-team candidate while its pilot ran (`eval/pilots/red-team-2026-11-02/`);
-after DECISION_010 (verdict `mode`) no role stands behind it and it is kept as
-art. These are portraits, not figures: they state nothing, so §9's claims-table
-rule does not apply. The icon set (`roles/<role>.svg`) stays the figure-grade
+Generated with GPT at the operator's request on 2026-11-02 (operator, in chat
+2026-11-03: "熊是我以防萬一請生圖模型生成的", "允許散佈我是使用gpt生成的" — the
+operator confirms the output may be redistributed under this repository's MIT
+licence), committed as 512 px renders of 1254 px originals that stay outside
+version control. One expressive bear per role, in the same palette as the
+icons, plus `critical-auditor.png`: the black bear generated for the red-team
+candidate while its pilot ran (`eval/pilots/red-team-2026-11-02/`); after
+DECISION_010 (verdict `mode`) no role stands behind it and it is kept as art.
+These are portraits, not figures: they state nothing, so §9's claims-table rule
+does not apply. The icon set (`roles/<role>.svg`) stays the figure-grade
 representation of each role; the illustrations are for pages where a character
-is wanted (scenario figures, decks).
+is wanted (scenario figures, decks). (0.5.1's note and its CHANGELOG entry said
+"hand-drawn"; corrected here and in `core/DECISIONS.md` DECISION_010 with a
+dated note, never by rewriting the record.)

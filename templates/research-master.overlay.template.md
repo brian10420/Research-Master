@@ -1,9 +1,9 @@
-# research-kernel project overlay
+# research-master project overlay
 
 <!--
-Copy this file to `.claude/research-kernel.overlay.md` at the root of YOUR research
-project and fill the slots. Every research-kernel skill injects this file when it
-loads (the wrapper runs `cat ${CLAUDE_PROJECT_DIR}/.claude/research-kernel.overlay.md`);
+Copy this file to `.claude/research-master.overlay.md` at the root of YOUR research
+project and fill the slots. Every research-master skill injects this file when it
+loads (the wrapper runs `cat ${CLAUDE_PROJECT_DIR}/.claude/research-master.overlay.md`);
 isolated roles receive it through the dispatch prompt. With the state files, this is
 the only place project-specific facts belong — never edit the plugin or the generated
 wrappers, they are replaced wholesale on every update.
@@ -77,6 +77,7 @@ Fill only the roles you use; delete the rest. Each role spec ends with a
 - Manuscript paths: <main.tex, sections, bib>; build command: `<latexmk …>`
 - Headline numbers and their sources: <metric name → state-file row>
 - Honest-framing guardrails: <claims deliberately downgraded; phrasings to keep>
+- Outward-document templates and fill tool: <class → template path, tool> (document mode, DECISION_012)
 
 ### study-coach
 - Study Log path: <vault path>

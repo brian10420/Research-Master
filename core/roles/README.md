@@ -13,7 +13,7 @@ spec text is the authority, the wrapper is a pointer.
 | [`dl-engineer`](dl-engineer.md) | shared-context | write and reactively debug model / training / pipeline code | self-certify |
 | [`research-mentor`](research-mentor.md) | shared-context | direction, pressure-testing, concepts; literature-verified claims | assert its own ideas as facts |
 | [`results-analyst`](results-analyst.md) | shared-context | publication-grade statistics, tables, figures; ledger metric blocks | massage a number |
-| [`paper-writer`](paper-writer.md) | shared-context | discuss, revise, compile the manuscript | invent a number; re-inflate a downgraded claim |
+| [`paper-writer`](paper-writer.md) | shared-context | discuss, revise, compile the manuscript; document mode: proposals, protocols, consent forms, reports (DECISION_012) | invent a number; re-inflate a downgraded claim |
 | [`study-coach`](study-coach.md) | shared-context | teach the operator their own project; persistent Study Log | verify, build, or present |
 | [`science-presenter`](science-presenter.md) | shared-context | audience-facing decks, posters, one-pagers | compute a new statistic; skip the brief |
 | [`blind-reviewer`](blind-reviewer.md) | **isolated** | memoryless peer-review panel on an anonymized bundle | accept project context |

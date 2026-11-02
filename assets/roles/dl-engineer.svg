@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="dl-engineer: a polar bear with a wrench">
-  <!-- research-kernel role bear: dl-engineer (shared-context skill). Family rule: same head on all fourteen, the prop is the only difference. -->
+  <!-- research-master role bear: dl-engineer (shared-context skill). Family rule: same head on all fourteen, the prop is the only difference. -->
   <!-- backdrop: the logo's rounded square, halved; teal-green tint = shared-context skill -->
   <rect x="8" y="8" width="240" height="240" rx="54" fill="#E3EDE9"/>
   <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;

@@ -1,16 +1,16 @@
 {
-  "name": "research-kernel",
+  "name": "research-master",
   "owner": {
     "name": "Ting-Yi Lin",
     "url": "https://github.com/brian10420"
   },
-  "description": "research-kernel — a provider-neutral Research OS: canonical research roles, a methodological constitution, per-project state templates, a task-shape effort policy and a plan-tier dispatch profile for Claude Code.",
+  "description": "research-master — a provider-neutral Research OS: canonical research roles, a methodological constitution, per-project state templates, a task-shape effort policy and a plan-tier dispatch profile for Claude Code.",
   "plugins": [
     {
-      "name": "research-kernel",
+      "name": "research-master",
       "source": "./",
-      "description": "Fourteen canonical research roles (9 in-session skills + 5 isolated subagents) with the canary handshake, project-state templates, the effort policy and the plan-tier dispatch profile. Install, then seed .claude/research-kernel.overlay.md in your project.",
-      "version": "0.5.1",
+      "description": "Fourteen canonical research roles (9 in-session skills + 5 isolated subagents) with the canary handshake, project-state templates, the effort policy and the plan-tier dispatch profile. Install, then seed .claude/research-master.overlay.md in your project.",
+      "version": "0.6.0",
       "license": "MIT"
     }
   ]

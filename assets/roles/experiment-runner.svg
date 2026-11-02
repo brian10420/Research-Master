@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="experiment-runner: a polar bear with lab goggles pushed up on the forehead and a flask">
-  <!-- research-kernel role bear: experiment-runner (isolated subagent). Family rule: same head on all fourteen, the prop is the only difference. -->
+  <!-- research-master role bear: experiment-runner (isolated subagent). Family rule: same head on all fourteen, the prop is the only difference. -->
   <!-- backdrop: the logo's rounded square, halved; indigo tint = isolated subagent -->
   <rect x="8" y="8" width="240" height="240" rx="54" fill="#E6EAF3"/>
   <!-- bear: assets/logo.svg lines 7-27 verbatim (same cx/cy/r), mortarboard left out;

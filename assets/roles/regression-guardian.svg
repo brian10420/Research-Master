@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="regression-guardian: a polar bear with an amber shield with a check mark">
-  <!-- research-kernel role bear: regression-guardian (isolated subagent, the gate). Family rule: same head on all fourteen, the prop is the only difference. -->
+  <!-- research-master role bear: regression-guardian (isolated subagent, the gate). Family rule: same head on all fourteen, the prop is the only difference. -->
   <!-- backdrop: indigo tint plus the amber-stroked hexagon = the gate -->
   <rect x="8" y="8" width="240" height="240" rx="54" fill="#E6EAF3"/>
   <polygon points="242,128 185,226.7 71,226.7 14,128 71,29.3 185,29.3" fill="#FBF4E4" stroke="#A9761C" stroke-width="6" stroke-linejoin="round"/>

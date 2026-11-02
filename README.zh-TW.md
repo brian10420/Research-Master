@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="assets/logo-256.png" width="160" alt="research-kernel 標誌：一隻戴著歪斜畢業帽的北極熊">
+  <img src="assets/logo-256.png" width="160" alt="research-master 標誌：一隻戴著歪斜畢業帽的北極熊">
 </p>
+<p align="center"><a href="README.md">English</a> · <a href="README.zh-TW.md">繁體中文</a></p>
 
-# research-kernel
+# research-master
 
 **一支開箱即用、給 Claude Code 的 AI 研究團隊——而且它不會讓你只挑自己好看的結果（cherry-pick）。**
 
 十四個角色（一位導師、一位數學審查者、一位工程師、一位同儕盲審者、一道回歸關卡……）、一份每個角色開工前都必須先確認的簡短憲章，以及存放你專案真實狀態的檔案。採用 MIT 授權。
-English version: [README.md](README.md)
 
 ## 這適合你嗎？
 
@@ -19,13 +19,13 @@ English version: [README.md](README.md)
 
 1. **安裝**，在 Claude Code 中執行：
    ```
-   /plugin marketplace add brian10420/research-kernel
-   /plugin install research-kernel@research-kernel
+   /plugin marketplace add brian10420/research-master
+   /plugin install research-master@research-master
    /reload-plugins
    ```
 2. **建立專案的狀態檔（state files）**——六個 Markdown 檔案，用來記錄結果、決策、假說和未解問題。從 [`templates/project-state/`](templates/project-state/) 複製過來；那裡的 README 寫有確切的指令。
-3. **建立覆蓋檔（overlay）**——把 [`templates/research-kernel.overlay.template.md`](templates/research-kernel.overlay.template.md) 複製到你專案裡的 `.claude/research-kernel.overlay.md`，並填好 `## Project` 區塊和 `Plan tier:`（方案等級，plan tier）這一行（見「選擇你的方案等級」）。它和狀態檔一起存放*你的*專案的事實，外掛（plugin）更新也永遠不會覆寫它。
-4. **和導師對話：** `/research-kernel:research-mentor`。說說你想弄清楚什麼。它會和你討論方向，並對點子做壓力測試；它提出的東西會以 `status: proposed` 記入你的 `HYPOTHESES.md`，並署上它的名字——絕不會被當成事實。
+3. **建立覆蓋檔（overlay）**——把 [`templates/research-master.overlay.template.md`](templates/research-master.overlay.template.md) 複製到你專案裡的 `.claude/research-master.overlay.md`，並填好 `## Project` 區塊和 `Plan tier:`（方案等級，plan tier）這一行（見「選擇你的方案等級」）。它和狀態檔一起存放*你的*專案的事實，外掛（plugin）更新也永遠不會覆寫它。
+4. **和導師對話：** `/research-master:research-mentor`。說說你想弄清楚什麼。它會和你討論方向，並對點子做壓力測試；它提出的東西會以 `status: proposed` 記入你的 `HYPOTHESES.md`，並署上它的名字——絕不會被當成事實。
 
 每個角色回覆的第一行都是 `ACK RULES_HASH=…`。這就是證明它已載入規則的握手（handshake）；如果少了這一行，或其中的雜湊值不是目前的版本，就表示這個角色沒有載入目前的規則。
 
@@ -39,15 +39,15 @@ English version: [README.md](README.md)
 
 | | 你想要… | 呼叫 | 它絕不會… |
 | --- | --- | --- | --- |
-| <img src="assets/roles/study-coach.png" width="28" alt=""> | 弄懂你自己的專案；排練口試 | `/research-kernel:study-coach` | 驗證、建置或做簡報 |
-| <img src="assets/roles/research-mentor.png" width="28" alt=""> | 討論方向；拿文獻檢驗一個點子 | `/research-kernel:research-mentor` | 把自己的點子當成事實宣稱 |
-| <img src="assets/roles/math-reviewer.png" width="28" alt=""> | 檢查推導、張量形狀（shapes）、數值計算（numerics） | `/research-kernel:math-reviewer` | 動手實作 |
-| <img src="assets/roles/dl-engineer.png" width="28" alt=""> | 撰寫或除錯模型、訓練或資料處理的程式碼 | `/research-kernel:dl-engineer` | 認證自己的程式碼 |
-| <img src="assets/roles/results-analyst.png" width="28" alt=""> | 把執行（run）結果變成統計、表格與圖 | `/research-kernel:results-analyst` | 粉飾數字 |
-| <img src="assets/roles/paper-writer.png" width="28" alt=""> | 撰寫並修改論文稿 | `/research-kernel:paper-writer` | 捏造數字；把已降級的主張重新誇大 |
-| <img src="assets/roles/science-presenter.png" width="28" alt=""> | 製作演講、海報或一頁式摘要 | `/research-kernel:science-presenter` | 算出新的統計量；跳過需求簡報（brief） |
-| <img src="assets/roles/conductor.png" width="28" alt=""> | 執行帶有檢查點（checkpoint）的多階段管線（pipeline） | `/research-kernel:conductor` | 自己動手做各階段的工作；跳過 MANDATORY 停止點；推翻 HARD-STOP |
-| <img src="assets/roles/memory-curator.png" width="28" alt=""> | 保持回憶層（recall layer）整潔 | `/research-kernel:memory-curator` | 當守門人；編輯 `core/`；提交（commit）一項科學主張 |
+| <img src="assets/roles/study-coach.png" width="28" alt=""> | 弄懂你自己的專案；排練口試 | `/research-master:study-coach` | 驗證、建置或做簡報 |
+| <img src="assets/roles/research-mentor.png" width="28" alt=""> | 討論方向；拿文獻檢驗一個點子 | `/research-master:research-mentor` | 把自己的點子當成事實宣稱 |
+| <img src="assets/roles/math-reviewer.png" width="28" alt=""> | 檢查推導、張量形狀（shapes）、數值計算（numerics） | `/research-master:math-reviewer` | 動手實作 |
+| <img src="assets/roles/dl-engineer.png" width="28" alt=""> | 撰寫或除錯模型、訓練或資料處理的程式碼 | `/research-master:dl-engineer` | 認證自己的程式碼 |
+| <img src="assets/roles/results-analyst.png" width="28" alt=""> | 把執行（run）結果變成統計、表格與圖 | `/research-master:results-analyst` | 粉飾數字 |
+| <img src="assets/roles/paper-writer.png" width="28" alt=""> | 撰寫並修改論文稿；文件模式（document mode）：計畫書、研究方案、同意書、報告 | `/research-master:paper-writer` | 捏造數字；把已降級的主張重新誇大 |
+| <img src="assets/roles/science-presenter.png" width="28" alt=""> | 製作演講、海報或一頁式摘要 | `/research-master:science-presenter` | 算出新的統計量；跳過需求簡報（brief） |
+| <img src="assets/roles/conductor.png" width="28" alt=""> | 執行帶有檢查點（checkpoint）的多階段管線（pipeline） | `/research-master:conductor` | 自己動手做各階段的工作；跳過 MANDATORY 停止點；推翻 HARD-STOP |
+| <img src="assets/roles/memory-curator.png" width="28" alt=""> | 保持回憶層（recall layer）整潔 | `/research-master:memory-curator` | 當守門人；編輯 `core/`；提交（commit）一項科學主張 |
 
 另外五個角色在對話**之外**執行：它們是帶著全新上下文（context）的子代理人，所以不會繼承你的假設。由你的工作階段派工（dispatch）給它們——你或指揮（conductor）；代理人絕不派工：
 
@@ -98,7 +98,7 @@ Claude Code 無法告訴外掛你用的是哪個方案，所以你要在覆蓋�
 | free, pro, max, team-standard, team-premium | `guarded` | 一次只讓一個隔離角色在執行中；等它交回報告；工作流程保持精簡 |
 | ultra, enterprise, api | `open` | 獨立的階段平行執行，品質與相依關係允許多少就跑多少，絕不為了速度，且不超過執行框架上限 |
 
-少了這一行或值無法辨識 → 在你回答指揮於工作階段開始時的那一次詢問前先用 `guarded`；可選的 `Dispatch profile override:` 一行可指定任一設定檔。**open 絕不代表用量無上限：** 每個方案都保有每週用量上限。不會隨設定檔改變的事：只有你的工作階段（session）能派工、提交或發布；代理人（agent）絕不會再產生代理人；每個代理人只負責一項交付成果；閒置時限照樣適用；每次派工都附上規格與雜湊值；盲審者始終維持盲審。`claude plugin details research-kernel` 會列出 9 個技能與 5 個子代理人，以及它們常駐的 token 成本。
+少了這一行或值無法辨識 → 在你回答指揮於工作階段開始時的那一次詢問前先用 `guarded`；可選的 `Dispatch profile override:` 一行可指定任一設定檔。**open 絕不代表用量無上限：** 每個方案都保有每週用量上限。不會隨設定檔改變的事：只有你的工作階段（session）能派工、提交或發布；代理人（agent）絕不會再產生代理人；每個代理人只負責一項交付成果；閒置時限照樣適用；每次派工都附上規格與雜湊值；盲審者始終維持盲審。`claude plugin details research-master` 會列出 9 個技能與 5 個子代理人，以及它們常駐的 token 成本。
 
 <details>
 <summary><b>東西放在哪裡——兩層、兩個家</b></summary>
@@ -108,7 +108,7 @@ Claude Code 無法告訴外掛你用的是哪個方案，所以你要在覆蓋�
 | **跨專案** | *本儲存庫* | `core/SCIENTIFIC_RULES.md`（憲章）、`core/roles/`（角色規格正本）、跨專案的 `core/DECISIONS.md`、推理強度政策與派工政策、每種狀態檔的結構定義（schema）、編譯層、評估骨架（scaffold） |
 | **個別專案** | *每個研究專案自己的儲存庫* | `RESEARCH_STATE.md`、`DECISIONS.md`、`EXPERIMENT_LEDGER.md`、`HYPOTHESES.md`、`FAILED_IDEAS.md`、`OPEN_QUESTIONS.md`，從 [`templates/project-state/`](templates/project-state/) 複製建立，再加上覆蓋檔 |
 
-模型記憶（不論哪家供應商）是回憶層，絕不是權威層。Git、筆記庫（notes vault）和實驗帳本才是唯一的科學真實來源（`core/SCIENTIFIC_RULES.md` §0–§1）。本專案原名 `claude_research_team`，後來在 GitHub 上改名為 `research-kernel`——見 [`MIGRATION_AUDIT.md`](MIGRATION_AUDIT.md)。它建立在不綁定供應商的 **research-os** 架構之上；內部的結構定義仍沿用 `research-os/` 命名空間。
+模型記憶（不論哪家供應商）是回憶層，絕不是權威層。Git、筆記庫（notes vault）和實驗帳本才是唯一的科學真實來源（`core/SCIENTIFIC_RULES.md` §0–§1）。本專案原名 `claude_research_team`，後來在 GitHub 上改名為 `research-kernel`（0.6.0 再改名為 `research-master`）——見 [`MIGRATION_AUDIT.md`](MIGRATION_AUDIT.md)。它建立在不綁定供應商的 **research-os** 架構之上；內部的結構定義仍沿用 `research-os/` 命名空間。
 
 </details>
 
@@ -200,7 +200,7 @@ claude plugin validate .              # the plugin-directory checks
 
 1. 把 [`templates/project-state/`](templates/project-state/) 複製到專案中（那裡的 README 寫有確切的指令），並寫下第一份 `RESEARCH_STATE.md` 快照。
 2. 用於 Claude Code：從這裡複製 `CLAUDE.md` 和 `.claude/`（或用 `tools/sync.py` 就地產生）。包裝檔是自給自足的——每個技能目錄都帶著 `role.md` 和 `RULES.md`——所以從專案根目錄**不需要**能存取到 `core/`。
-3. 建立覆蓋檔：把 `templates/research-kernel.overlay.template.md` 複製到 `.claude/research-kernel.overlay.md`，填好每份角色規格最後列出的欄位（路徑、協定（protocol）區塊、不變量（invariants）、防護規則（guards）），以及 `## Runtime budget` 這一行。專案的事實放在那裡和狀態檔中，絕不放進 `core/`。
+3. 建立覆蓋檔：把 `templates/research-master.overlay.template.md` 複製到 `.claude/research-master.overlay.md`，填好每份角色規格最後列出的欄位（路徑、協定（protocol）區塊、不變量（invariants）、防護規則（guards）），以及 `## Runtime budget` 這一行。專案的事實放在那裡和狀態檔中，絕不放進 `core/`。
 4. 用於其他任何執行框架（harness）：來源是 `AGENTS.md` + `core/roles/`（`adapters/codex/README.md`）。
 5. 可選、只用來記錄環境怪癖的代理人記憶（agent memory）：[`docs/memory-setup.md`](docs/memory-setup.md)。
 

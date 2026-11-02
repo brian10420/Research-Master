@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="assets/logo-256.png" width="160" alt="research-kernel logo: a polar bear wearing a crooked graduation cap">
+  <img src="assets/logo-256.png" width="160" alt="research-master logo: a polar bear wearing a crooked graduation cap">
 </p>
+<p align="center"><a href="README.md">English</a> · <a href="README.zh-TW.md">繁體中文</a></p>
 
-# research-kernel
+# research-master
 
 **An AI research team in a box for Claude Code — one that will not let you cherry-pick your own results.**
 
 Fourteen roles (a mentor, a math reviewer, an engineer, a blind peer reviewer, a
 regression gate, …), a short constitution every role must acknowledge before it
 works, and the files where your project's real state lives. MIT-licensed.
-繁體中文版：[README.zh-TW.md](README.zh-TW.md).
 
 ## Is this for you?
 
@@ -24,8 +24,8 @@ you call it.
 
 1. **Install**, inside Claude Code:
    ```
-   /plugin marketplace add brian10420/research-kernel
-   /plugin install research-kernel@research-kernel
+   /plugin marketplace add brian10420/research-master
+   /plugin install research-master@research-master
    /reload-plugins
    ```
 2. **Seed your project's state files** — six Markdown files where results,
@@ -33,12 +33,12 @@ you call it.
    [`templates/project-state/`](templates/project-state/); its README has the
    exact commands.
 3. **Seed the overlay** — copy
-   [`templates/research-kernel.overlay.template.md`](templates/research-kernel.overlay.template.md)
-   to `.claude/research-kernel.overlay.md` in your project and fill the
+   [`templates/research-master.overlay.template.md`](templates/research-master.overlay.template.md)
+   to `.claude/research-master.overlay.md` in your project and fill the
    `## Project` block and the `Plan tier:` line (see "Pick your plan tier").
    With the state files, it holds *your* project's facts, and a plugin update
    never overwrites it.
-4. **Talk to the mentor:** `/research-kernel:research-mentor`. Say what you are
+4. **Talk to the mentor:** `/research-master:research-mentor`. Say what you are
    trying to find out. It discusses direction and pressure-tests the idea; what
    it proposes is filed in your `HYPOTHESES.md` as `status: proposed`, with its
    name on it — never as a fact.
@@ -57,15 +57,15 @@ Ask by need, not by name. Nine roles work **inside** your conversation:
 
 | | you want to… | call | it will never… |
 | --- | --- | --- | --- |
-| <img src="assets/roles/study-coach.png" width="28" alt=""> | understand your own project; rehearse a defense | `/research-kernel:study-coach` | verify, build or present |
-| <img src="assets/roles/research-mentor.png" width="28" alt=""> | discuss direction; test an idea against the literature | `/research-kernel:research-mentor` | assert its own ideas as facts |
-| <img src="assets/roles/math-reviewer.png" width="28" alt=""> | check a derivation, shapes, numerics | `/research-kernel:math-reviewer` | implement |
-| <img src="assets/roles/dl-engineer.png" width="28" alt=""> | write or debug model, training or data code | `/research-kernel:dl-engineer` | certify its own code |
-| <img src="assets/roles/results-analyst.png" width="28" alt=""> | turn runs into statistics, tables, figures | `/research-kernel:results-analyst` | massage a number |
-| <img src="assets/roles/paper-writer.png" width="28" alt=""> | draft and revise the manuscript | `/research-kernel:paper-writer` | invent a number; re-inflate a downgraded claim |
-| <img src="assets/roles/science-presenter.png" width="28" alt=""> | make a talk, poster or one-pager | `/research-kernel:science-presenter` | compute a new statistic; skip the brief |
-| <img src="assets/roles/conductor.png" width="28" alt=""> | run a multi-stage pipeline with checkpoints | `/research-kernel:conductor` | do the stages' work itself; skip a MANDATORY stop; override a HARD-STOP |
-| <img src="assets/roles/memory-curator.png" width="28" alt=""> | keep the recall layer tidy | `/research-kernel:memory-curator` | gatekeep; edit `core/`; commit a scientific claim |
+| <img src="assets/roles/study-coach.png" width="28" alt=""> | understand your own project; rehearse a defense | `/research-master:study-coach` | verify, build or present |
+| <img src="assets/roles/research-mentor.png" width="28" alt=""> | discuss direction; test an idea against the literature | `/research-master:research-mentor` | assert its own ideas as facts |
+| <img src="assets/roles/math-reviewer.png" width="28" alt=""> | check a derivation, shapes, numerics | `/research-master:math-reviewer` | implement |
+| <img src="assets/roles/dl-engineer.png" width="28" alt=""> | write or debug model, training or data code | `/research-master:dl-engineer` | certify its own code |
+| <img src="assets/roles/results-analyst.png" width="28" alt=""> | turn runs into statistics, tables, figures | `/research-master:results-analyst` | massage a number |
+| <img src="assets/roles/paper-writer.png" width="28" alt=""> | draft and revise the manuscript; document mode: proposals, protocols, consent forms, reports | `/research-master:paper-writer` | invent a number; re-inflate a downgraded claim |
+| <img src="assets/roles/science-presenter.png" width="28" alt=""> | make a talk, poster or one-pager | `/research-master:science-presenter` | compute a new statistic; skip the brief |
+| <img src="assets/roles/conductor.png" width="28" alt=""> | run a multi-stage pipeline with checkpoints | `/research-master:conductor` | do the stages' work itself; skip a MANDATORY stop; override a HARD-STOP |
+| <img src="assets/roles/memory-curator.png" width="28" alt=""> | keep the recall layer tidy | `/research-master:memory-curator` | gatekeep; edit `core/`; commit a scientific claim |
 
 Five roles run **outside** it, as subagents with a fresh context, so they cannot
 inherit your assumptions. Your session dispatches them — you or the conductor;
@@ -130,7 +130,7 @@ either profile. **Open never means free:** every plan keeps a weekly
 limit. What never changes with the profile: your session is the only thing that
 dispatches, commits or publishes; agents never spawn agents; one deliverable per
 agent; the idle limit holds; every dispatch carries the spec and the hash; the
-blind reviewer stays blind. `claude plugin details research-kernel`
+blind reviewer stays blind. `claude plugin details research-master`
 lists the 9 skills and 5 agents and their always-on token cost.
 
 <details>
@@ -144,7 +144,7 @@ lists the 9 skills and 5 agents and their always-on token cost.
 Model memory (any vendor) is a recall layer, never an authority layer. Git, the
 notes vault and the experiment ledgers are the only scientific source of truth
 (`core/SCIENTIFIC_RULES.md` §0–§1). Formerly `claude_research_team`; renamed on
-GitHub to `research-kernel` — see [`MIGRATION_AUDIT.md`](MIGRATION_AUDIT.md).
+GitHub to `research-kernel` (renamed `research-master` in 0.6.0) — see [`MIGRATION_AUDIT.md`](MIGRATION_AUDIT.md).
 Built on the provider-neutral **research-os** architecture; internal schemas
 keep the `research-os/` namespace.
 
@@ -285,8 +285,8 @@ are reported separately and graded blind.
    in place with `tools/sync.py`). The wrappers are self-contained — each skill
    directory carries `role.md` and `RULES.md` — so `core/` does **not** need to
    be reachable from the project root.
-3. Seed the overlay: copy `templates/research-kernel.overlay.template.md` to
-   `.claude/research-kernel.overlay.md` and fill the slots listed at the end
+3. Seed the overlay: copy `templates/research-master.overlay.template.md` to
+   `.claude/research-master.overlay.md` and fill the slots listed at the end
    of every role spec (paths, protocol block, invariants, guards) and the
    `## Runtime budget` line. Project facts go there and in the state files,
    never into `core/`.
