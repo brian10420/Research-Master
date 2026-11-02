@@ -416,8 +416,8 @@ id: DECISION_008
 title: Plan-tier dispatch profile — the overlay declares the operator's plan, the conductor derives `guarded` or `open`; nested dispatch stays forbidden under both
 date: 2026-11-02
 proposer: fable   # Fable 5.1, from the operator's instruction in chat, 2026-11-02
-decided_by: human
-status: proposed
+decided_by: human        # accepted by the human operator 2026-11-02 (in chat)
+status: accepted
 evidence: [core/dispatch_policy.yaml, core/roles/conductor.md, templates/research-kernel.overlay.template.md, https://claude.com/pricing, https://support.claude.com/en/articles/17728952, https://code.claude.com/docs/en/sub-agents, https://code.claude.com/docs/en/statusline]
 supersedes: ""
 superseded_by: ""

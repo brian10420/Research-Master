@@ -71,8 +71,8 @@ Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
   template no longer calls itself the only home of project facts (the state
   files share it), and conductor rule 13 now names the optional `Dispatch
   profile override:` line the template already offered. The plan-tier figure
-  carries "DECISION_008 (proposed)" in its kicker until the decision is
-  accepted. One checker wording for the `repo-maintainer` cell was
+  carried "DECISION_008 (proposed)" in its kicker until the decision was
+  accepted the same evening. One checker wording for the `repo-maintainer` cell was
   replaced by the roster's exact words ("forced push unasked",
   `core/roles/README.md`) because the public leak-gate flags the checker's
   hyphenated form; the condition is unchanged.
@@ -80,6 +80,8 @@ Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
   `core/SCIENTIFIC_RULES.md` unchanged (RULES_HASH stays `0f0b1f5cddf7`).
 - Listed, not done: an `evals/` suite for `claude plugin eval`; a directory
   submission; the operator's own harness settings (outside the kernel).
+- Decision accepted by the human operator: DECISION_008 on 2026-11-02 (in
+  chat); the plan-tier figure's kicker now reads "accepted".
 
 ## 0.3.0 — 2026-10-30
 

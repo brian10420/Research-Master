@@ -293,7 +293,7 @@ Line numbers as of 2026-11-02.
 
 | # | element on the figure | source (file:line) | quoted source words |
 | --- | --- | --- | --- |
-| 1 | kicker `RESEARCH-KERNEL · DECISION_008 (proposed)` | README.md:5; core/DECISIONS.md:420 | `# research-kernel`; `status: proposed` |
+| 1 | kicker `RESEARCH-KERNEL · DECISION_008 (accepted)` | README.md:5; core/DECISIONS.md:420 | `# research-kernel`; `status: accepted` |
 | 2 | title "Which dispatch profile?" | — | README heading, authored (README.md:107 `## Pick your plan tier`; alt text README.md:109 "Which dispatch profile: …") |
 | 3 | file icon + `.claude/research-kernel.overlay.md` | templates/research-kernel.overlay.template.md:4 | "Copy this file to `.claude/research-kernel.overlay.md`" |
 | 4 | `## Runtime budget` | templates/research-kernel.overlay.template.md:24 | `## Runtime budget` |
