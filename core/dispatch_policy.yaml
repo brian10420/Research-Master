@@ -1,0 +1,27 @@
+# Claude Code dispatch policy — consumed by tools/sync.py (stdlib parser; two-level
+# `profile:` / `  key: value` only, no lists, no inline maps).
+#
+# The operator's subscription plan is a fact the harness exposes neither to hooks nor
+# to the model, so the project overlay declares it once (`## Runtime budget` ->
+# `Plan tier:`) and the conductor derives a DISPATCH PROFILE from it (conductor hard
+# rule 13). The profile decides how many isolated roles the main session may have in
+# flight at once and whether workflow size is constrained. It never changes who
+# dispatches (the main session only), never allows nested dispatch, never removes the
+# one-deliverable or idle rules, and never pins a tier on a role (SCIENTIFIC_RULES §8
+# "no paid-tier pins": the policy adapts to whatever the operator has).
+#
+# Default when the overlay has no `Plan tier:` line, or an unknown value: guarded.
+# "open" never means free: every plan keeps a weekly limit (DECISION_008).
+# Plan names follow the vendor's public pricing page as of 2026-11-02; a new or renamed
+# plan is added here (one word in a `plans:` line), never in a role spec.
+
+guarded:
+  plans: free, pro, max, team-standard, team-premium
+  concurrency: one isolated dispatch at a time from the main session; wait for its return before the next
+  workflow: small (the operator's workflow size guideline; under five agents)
+  rationale: these plans meter a rolling 5-hour window as well as a weekly one; a burst of parallel agents reaches the window wall before the work is done
+open:
+  plans: ultra, enterprise, api
+  concurrency: independent stages in parallel from the main session; the number follows quality and stage dependencies only, never speed; the harness ceiling applies
+  workflow: unconstrained
+  rationale: no 5-hour window (weekly cap only, or pay per token), so parallel independent work costs the same tokens as sequential work and returns sooner

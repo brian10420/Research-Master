@@ -2,6 +2,85 @@
 
 Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
 
+## 0.4.0 — 2026-11-02
+
+- **Plan-tier dispatch profile** (DECISION_008, proposed): new
+  `core/dispatch_policy.yaml` with two profiles — `guarded` (free, pro, max,
+  team-standard, team-premium: one isolated dispatch at a time; workflows small)
+  and `open` (ultra, enterprise, api: independent stages in parallel, the number
+  set by quality and dependencies under the harness ceiling; workflows
+  unconstrained). The overlay template gains `## Runtime budget` (`Plan tier:`,
+  optional `Dispatch profile override:`); `conductor` gains hard rule 13 (derive
+  the profile, state it in the first SLIM line or dashboard, ask once when the
+  slot is missing and run `guarded` meanwhile, never edit the overlay), the
+  input-contract item, the procedure wording and the overlay slot. Unchanged
+  under both profiles: the main session is the only dispatcher, committer and
+  publisher; agents never dispatch; one deliverable per agent; the idle limit;
+  spec + hash in every dispatch; blind-review isolation. "Open never means
+  free": every plan keeps a weekly limit. Both adapters carry the mapping,
+  rendered from the policy file (`CLAUDE.md` adds the harness ceilings
+  `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS` / `…_SPAWN_DEPTH`). Background: the
+  one-at-a-time practice dated from the rolling 5-hour window; the operator
+  asked on 2026-11-02 to lift it only for plans without that window and only
+  after the plugin asks which plan is in use. Sources in DECISION_008.
+- **Wrapper audit against the official Claude Code guidance (read 2026-11-02):**
+  - `blind-reviewer`'s wrapper carries `omitClaudeMd: true` (role frontmatter
+    `harness_instructions: omit`): subagents load the CLAUDE.md hierarchy by
+    default, which would carry a consuming project's story into a
+    context-blind reviewer.
+  - Adapter wording corrected: in Claude Code the agent body *is* the
+    subagent's system prompt; the embedding rule stays for other harnesses and
+    as defence in depth (SCIENTIFIC_RULES §3 unchanged).
+  - `skills/` and `agents/` at the repository root are now regular,
+    byte-identical generated copies of `.claude/skills` and `.claude/agents`
+    (the plugin directory accepts no symlinks); `tools/sync.py` writes 66
+    adapters instead of 34, `tools/check_drift.py` checks and orphan-scans both
+    trees. `CLAUDE_SKILL_DIR` for the installed plugin is unchanged.
+  - The five isolated agents carry a `color:` (guardian `yellow`, matching the
+    amber gate in the figures; cosmetic).
+  - Mechanical checklist over the 14 specs and 14 wrappers: rule 0 canary,
+    `neighbours:`, overlay slots and boundaries present, no tier words;
+    descriptions 214–388 characters (limit 1,536); wrappers ≤ 147 lines
+    (limit 500). Zero findings; no change needing a `SCIENTIFIC_RULES` edit.
+  - `claude plugin validate .` passes; `claude plugin details research-kernel`
+    lists 9 skills + 5 agents (always-on cost ≈ 1.5 k tokens per session).
+- **README rewritten for first-year graduate students** (English) and
+  **`README.zh-TW.md`** added (Traditional Chinese, same headings, tables and
+  figures): is this for you → your first ten minutes → meet the team by need →
+  the workflows → why it will not let you cherry-pick → pick your plan tier;
+  the architecture, layout, compile layer, effort policy, blind review,
+  no-plugin install and provenance notes are folded, not deleted (§9).
+- **Figures** (`assets/`), all hand-written SVG, one §9 claims table per figure in
+  `assets/README.md`: new **logo** (`logo.svg`; `logo.png` 1024 px is the plugin
+  icon; `logo-256.png` heads both READMEs) — a polar bear in a crooked
+  mortarboard; **`team-map.svg` v3** (fourteen roles: nine skills, five
+  subagents; badges exactly as `effort_policy.yaml`; the dispatch-profile tag on
+  the bus; every role tagged with its "never does" cell; closes the 0.3.0 known
+  gap); **`team-flows.svg` v2** (six lanes: code/experiment with the sparring
+  gate, paper with the anonymized-bundle boundary, present, learn, the
+  conductor's pipeline with checkpoint classes and the guarded/open fork, and a
+  stuck lane redrawn so it no longer chains "stuck → /effort max", which
+  contradicted the roster's "never by it got stuck"; v1's unsourced "PDF only"
+  and "otherwise the deck ships at step 4" dropped); new **`day-one.svg`** (the
+  first ten minutes) and **`plan-tier.svg`** (plan → profile → what never
+  changes). Fresh-context §9 check (figures + both READMEs as the gloss): `VERDICT:
+  PASS-WITH-FIXES` — 219 claims rows checked; 23 findings (8 added claims, 10
+  dropped conditions, 2 EN↔zh-TW mismatches, 1 stale line reference, 2
+  unsourced aria-labels), every fix applied verbatim. Two conflicts the check
+  surfaced were resolved at the source rather than on the figure: the overlay
+  template no longer calls itself the only home of project facts (the state
+  files share it), and conductor rule 13 now names the optional `Dispatch
+  profile override:` line the template already offered. The plan-tier figure
+  carries "DECISION_008 (proposed)" in its kicker until the decision is
+  accepted. One checker wording for the `repo-maintainer` cell was
+  replaced by the roster's exact words ("forced push unasked",
+  `core/roles/README.md`) because the public leak-gate flags the checker's
+  hyphenated form; the condition is unchanged.
+- Manifests 0.4.0; `plugin.json` gains `icon` (`assets/logo.png`, 1024 px).
+  `core/SCIENTIFIC_RULES.md` unchanged (RULES_HASH stays `0f0b1f5cddf7`).
+- Listed, not done: an `evals/` suite for `claude plugin eval`; a directory
+  submission; the operator's own harness settings (outside the kernel).
+
 ## 0.3.0 — 2026-10-30
 
 - **New role `conductor`** (shared-context, 14th role; DECISION_007, accepted):

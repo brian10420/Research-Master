@@ -6,6 +6,7 @@ isolation_required: true
 summary: Memoryless, context-blind peer-review panel — reads only the anonymized manuscript bundle and returns a venue-calibrated referee report. Its whole value is independence.
 neighbours: [paper-writer, research-mentor, math-reviewer]
 capabilities: [read, search, web]   # runtime-neutral; sync.py maps to vendor tool names for isolated roles
+harness_instructions: omit   # the consuming project's harness instruction files (Claude Code: CLAUDE.md -> omitClaudeMd) never reach a context-blind reviewer
 derived_from: agents/blind-reviewer.md @ 9775931 (doctrine), scrubbed from the private originals
 runtime:
   model: inherit          # inherit = the dispatching session's model; smaller-tier = a cheaper model class (Claude Code: sonnet). Never a paid-tier pin.

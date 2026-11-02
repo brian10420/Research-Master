@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """tools/sync.py — compile core/ into every runtime adapter.
 
-Generates, from core/SCIENTIFIC_RULES.md, core/roles/*.md and core/effort_policy.yaml:
+Generates, from core/SCIENTIFIC_RULES.md, core/roles/*.md, core/effort_policy.yaml and
+core/dispatch_policy.yaml:
   CLAUDE.md                          Claude Code adapter
   AGENTS.md                          harness-neutral adapter
   .claude/agents/<role>.md           self-contained wrapper per ISOLATED role (spec inlined)
   .claude/skills/<role>/SKILL.md     wrapper per SHARED-CONTEXT role — loads the two files next to it
   .claude/skills/<role>/role.md      verbatim copy of core/roles/<role>.md
   .claude/skills/<role>/RULES.md     condensed SCIENTIFIC_RULES (the adapter:include blocks)
+  skills/ agents/                    byte-identical regular copies of .claude/skills and
+                                     .claude/agents (the plugin tree; no symlinks)
 
 Every wrapper is self-contained (it never resolves a project-root path), so the
-same generated tree works both copied into a project and installed as a Claude
-Code plugin (`skills/` and `agents/` at the repo root are symlinks to `.claude/`).
+same generated tree works both copied into a project (`.claude/`) and installed as a
+Claude Code plugin (`skills/` and `agents/` at the repo root, regular files).
 Project-specific facts arrive through `.claude/research-kernel.overlay.md` in the
 consuming project (template: templates/research-kernel.overlay.template.md).
 
@@ -56,6 +59,19 @@ MODEL_MAP = {"inherit": "inherit", "smaller-tier": "sonnet"}
 POLICY_PATH = CORE / "effort_policy.yaml"
 POLICY_MODELS = {"inherit", "sonnet", "opus", "haiku"}
 POLICY_EFFORTS = {"low", "medium", "high", "xhigh", "max"}
+DISPATCH_PATH = CORE / "dispatch_policy.yaml"
+DISPATCH_PROFILES = ("guarded", "open")
+DISPATCH_KEYS = ("plans", "concurrency", "workflow")
+# Claude Code subagent UI colour per isolated role (cosmetic; the guardian is amber in the figures)
+AGENT_COLORS = {
+    "regression-guardian": "yellow",
+    "blind-reviewer": "purple",
+    "experiment-runner": "green",
+    "repo-maintainer": "blue",
+    "sparring-partner": "orange",
+}
+# root trees that mirror .claude/ byte-for-byte: the repository is itself the plugin, with regular files
+PLUGIN_MIRROR = {".claude/skills/": "skills/", ".claude/agents/": "agents/"}
 OVERLAY_REL = ".claude/research-kernel.overlay.md"   # relative to the consuming project's root
 
 INCLUDE_START = "<!-- adapter:include -->"
@@ -151,6 +167,27 @@ def load_effort_policy() -> dict[str, dict]:
     return policy
 
 
+def load_dispatch_policy() -> dict[str, dict]:
+    """core/dispatch_policy.yaml -> {profile: {plans, concurrency, workflow, rationale?}}; validated."""
+    if not DISPATCH_PATH.exists():
+        raise SystemExit(f"sync.py: {DISPATCH_PATH.name} is missing")
+    policy = parse_simple_yaml(DISPATCH_PATH.read_text(encoding="utf-8"))
+    if tuple(policy) != DISPATCH_PROFILES:
+        raise SystemExit(f"sync.py: {DISPATCH_PATH.name}: profiles must be exactly {DISPATCH_PROFILES}, in that order")
+    seen: dict[str, str] = {}
+    for profile, entry in policy.items():
+        if not isinstance(entry, dict):
+            raise SystemExit(f"sync.py: {DISPATCH_PATH.name}: `{profile}` must be a mapping")
+        for key in DISPATCH_KEYS:
+            if not entry.get(key):
+                raise SystemExit(f"sync.py: {DISPATCH_PATH.name}: `{profile}.{key}` is required")
+        for plan in _as_list(entry["plans"]):
+            if plan in seen:
+                raise SystemExit(f"sync.py: {DISPATCH_PATH.name}: plan `{plan}` listed under both {seen[plan]} and {profile}")
+            seen[plan] = profile
+    return policy
+
+
 def _as_list(value) -> list[str]:
     if isinstance(value, list):
         return value
@@ -193,6 +230,7 @@ def load_roles() -> list[dict]:
                 "effort": runtime.get("effort", "?"),
                 "rationale": runtime.get("rationale", ""),
                 "capabilities": _as_list(fm.get("capabilities", "")),
+                "harness_instructions": fm.get("harness_instructions", ""),
                 "path": f"core/roles/{path.name}",
                 "file": path.name,
             }
@@ -289,6 +327,8 @@ def render_agent_wrapper(r: dict, h: str) -> str:
     effort_line = f"effort: {r['policy']['effort']}\n" if "effort" in r["policy"] else ""
     tools = claude_tools(r)
     tools_line = f"tools: {tools}\n" if tools else ""
+    omit_line = "omitClaudeMd: true\n" if r["harness_instructions"] == "omit" else ""
+    color_line = f"color: {AGENT_COLORS[r['role']]}\n" if r["role"] in AGENT_COLORS else ""
     decline = (
         "Decline any project context, memory, or decision history offered to you; review only the anonymized bundle.\n"
         if r["role"] == "blind-reviewer" else ""
@@ -300,9 +340,11 @@ def render_agent_wrapper(r: dict, h: str) -> str:
         f"{tools_line}"
         f"model: {model}\n"
         f"{effort_line}"
+        f"{omit_line}"
+        f"{color_line}"
         "---\n"
         f"<!-- AUTO-GENERATED by tools/sync.py from core/roles/{r['file']} — edit that file, not this one. -->\n\n"
-        f"You are the `{r['role']}` role of research-kernel. Your canonical spec is inlined below; the line `RULES_HASH=<hash>` must still arrive **in the task prompt itself** (subagents may not receive this body on every harness, so dispatchers keep pasting the spec too).\n\n"
+        f"You are the `{r['role']}` role of research-kernel. Your canonical spec is inlined below; the line `RULES_HASH=<hash>` must still arrive **in the task prompt itself** (in Claude Code this body is your system prompt; other harnesses may drop it, and only the echoed hash proves the rules arrived — so dispatchers keep pasting the spec too).\n\n"
         "Canary protocol (SCIENTIFIC_RULES §3):\n"
         f"1. If the prompt has no `RULES_HASH=` line, halt: output `HALT: RULES_HASH missing — rules not loaded` and report instead of working.\n"
         f"2. If the prompt's hash is not `{h}` (the hash this wrapper was generated with), halt: output `HALT: stale RULES_HASH` and report.\n"
@@ -391,7 +433,27 @@ def render_common_head(title: str, h: str) -> str:
     )
 
 
-def render_claude(h: str, blocks, roles) -> str:
+def dispatch_sentence(dispatch: dict[str, dict], vendor: str = "") -> str:
+    """One sentence per profile, built from core/dispatch_policy.yaml so the adapters cannot drift from it."""
+    bits = []
+    for profile, entry in dispatch.items():
+        plans = ", ".join(_as_list(entry["plans"]))
+        bits.append(f"`{profile}` ({plans} — {entry['concurrency']}; workflows {entry['workflow']})")
+    text = " or ".join(bits)
+    ceiling = (
+        " Claude Code's own ceilings still apply (`CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`, default 20; "
+        "`CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH`)." if vendor == "claude" else ""
+    )
+    return (
+        f"`core/dispatch_policy.yaml` maps the operator's plan tier, declared once in the project overlay's "
+        f"`## Runtime budget`, to a dispatch profile: {text}. Missing or unknown → `guarded`. Under both profiles the "
+        "main session is the only dispatcher, agents never dispatch, one deliverable per agent and the idle limit hold, "
+        "and every dispatch carries the spec and the hash; no role requires a tier. \"Open\" never means free — every plan "
+        f"keeps a weekly limit.{ceiling}"
+    )
+
+
+def render_claude(h: str, blocks, roles, dispatch) -> str:
     parts = [
         banner("Claude Code"),
         render_common_head("CLAUDE.md — Claude Code adapter for research-os", h),
@@ -401,7 +463,9 @@ def render_claude(h: str, blocks, roles) -> str:
         "- **Shared-context roles** are loaded as skills: `.claude/skills/<role>/SKILL.md` is a generated wrapper "
         "that injects `role.md` (a verbatim copy of `core/roles/<role>.md`) and `RULES.md` from its own directory at "
         "load time and carries the RULES_HASH above. The spec text is the authority; the wrapper is a pointer.\n"
-        "- **Plugin install.** `skills/` and `agents/` at the repository root are symlinks to `.claude/`, and "
+        "- **Plugin install.** `skills/` and `agents/` at the repository root are regular, byte-identical generated "
+        "copies of `.claude/skills` and `.claude/agents` (`tools/sync.py` writes both trees; `tools/check_drift.py` "
+        "checks both; the plugin directory accepts no symlinks), and "
         "`.claude-plugin/{plugin,marketplace}.json` make this repository a Claude Code marketplace + plugin "
         "(`/plugin marketplace add <owner>/<repo>` then `/plugin install research-kernel@research-kernel`); skills "
         "then appear as `/research-kernel:<role>`. Nothing in the plugin is ever hand-edited — updates replace it.\n"
@@ -413,13 +477,17 @@ def render_claude(h: str, blocks, roles) -> str:
         "chosen by task shape up front — closed verification saturates at xhigh, mechanical roles run low on a "
         "smaller model, long-horizon work stays at the session default and the operator raises the SESSION effort "
         "for an unbounded-judgement step; no role pins max, and \"stuck\" is a reason to change method, not effort.\n"
-        "- **Custom subagents do load the CLAUDE.md hierarchy** (built-in Explore/Plan agents skip it) but never the "
-        "session's auto-memory, and their own body is not guaranteed to reach them on every harness — so the spec "
-        "and hash are embedded in the prompt regardless.\n"
+        f"- **Dispatch policy.** {dispatch_sentence(dispatch, vendor='claude')}\n"
+        "- **Custom subagents load the CLAUDE.md hierarchy** (built-in Explore/Plan agents skip it; `blind-reviewer`'s "
+        "wrapper carries `omitClaudeMd: true` so the consuming project's instructions never reach a context-blind "
+        "reviewer) but never the session's auto-memory. In Claude Code the agent body is the subagent's system prompt; "
+        "other harnesses may drop it, and only the echoed hash proves the rules arrived — so the spec and hash are "
+        "embedded in the prompt regardless.\n"
         "- **Isolated roles** are dispatched as subagents: `.claude/agents/<role>.md` is a thin wrapper "
         "whose body only states that the full spec and RULES_HASH must arrive in the task prompt. "
         "When you spawn one with the Agent tool, paste the ENTIRE `core/roles/<role>.md` text and the line "
-        f"`RULES_HASH={h}` into the prompt yourself — subagents may not inherit this file or their agent body.\n"
+        f"`RULES_HASH={h}` into the prompt yourself — the ACK line proves the rules arrived, whatever the harness did "
+        "with this file or the agent body.\n"
         "- **Missing ACK is a loud failure.** A role whose first line is not `ACK RULES_HASH=…` did not load the "
         "rules; stop and re-dispatch. `regression-guardian` rejects run logs without it.\n"
         "- **Blind review:** never hand `blind-reviewer` anything but the bundle produced by "
@@ -433,7 +501,7 @@ def render_claude(h: str, blocks, roles) -> str:
     return "\n".join(parts)
 
 
-def render_agents(h: str, blocks, roles) -> str:
+def render_agents(h: str, blocks, roles, dispatch) -> str:
     parts = [
         banner("any harness (AGENTS.md convention)"),
         render_common_head("AGENTS.md — harness-neutral adapter for research-os", h),
@@ -451,7 +519,8 @@ def render_agents(h: str, blocks, roles) -> str:
         "on a reviewer's behalf.\n"
         "6. Model choice is a recommendation (`inherit` for reasoning-heavy roles, a smaller model for mechanical "
         "roles); never a vendor or paid-tier requirement.\n"
-        "7. Never edit this file by hand: edit `core/`, run `python3 tools/sync.py`, commit both.\n",
+        f"7. Dispatch concurrency: {dispatch_sentence(dispatch)}\n"
+        "8. Never edit this file by hand: edit `core/`, run `python3 tools/sync.py`, commit both.\n",
     ]
     return "\n".join(parts)
 
@@ -464,9 +533,10 @@ def generate() -> dict[str, bytes]:
     h = rules_hash(data)
     blocks = extract_includes(data.decode("utf-8"))
     roles = load_roles()
+    dispatch = load_dispatch_policy()
     out = {
-        "CLAUDE.md": render_claude(h, blocks, roles).encode("utf-8"),
-        "AGENTS.md": render_agents(h, blocks, roles).encode("utf-8"),
+        "CLAUDE.md": render_claude(h, blocks, roles, dispatch).encode("utf-8"),
+        "AGENTS.md": render_agents(h, blocks, roles, dispatch).encode("utf-8"),
     }
     rules_file = render_rules_file(h, blocks).encode("utf-8")
     for r in roles:
@@ -476,6 +546,11 @@ def generate() -> dict[str, bytes]:
             out[wrapper_path(r)] = render_skill_wrapper(r, h).encode("utf-8")
             out[f"{skill_dir(r)}/role.md"] = r["spec_bytes"]
             out[f"{skill_dir(r)}/RULES.md"] = rules_file
+    # the plugin tree: regular copies of the .claude/ wrappers (same bytes, so one drift check covers both)
+    for name in list(out):
+        for src, dst in PLUGIN_MIRROR.items():
+            if name.startswith(src):
+                out[dst + name[len(src):]] = out[name]
     return out
 
 
@@ -483,6 +558,11 @@ def wrapper_globs(root: Path) -> list[str]:
     """Every wrapper path that exists on disk under root (to detect orphans)."""
     found = [str(p.relative_to(root)) for p in (root / ".claude" / "agents").glob("*.md")]
     found += [str(p.relative_to(root)) for p in (root / ".claude" / "skills").glob("*/*.md")]
+    for mirror in PLUGIN_MIRROR.values():
+        d = root / mirror.rstrip("/")
+        if d.is_dir() and not d.is_symlink():
+            found += [str(p.relative_to(root)) for p in d.glob("*.md")]
+            found += [str(p.relative_to(root)) for p in d.glob("*/*.md")]
     return sorted(found)
 
 

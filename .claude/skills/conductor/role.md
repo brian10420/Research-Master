@@ -33,7 +33,8 @@ the orchestrator is the conductor.
 - The project overlay's conductor slots: the pipeline of record, the MANDATORY
   checkpoints, the tracker path, the per-stage mechanical checks and SOFT
   gates, the per-stage brief sources, the agent idle limit, the discipline
-  cards.
+  cards, and the Runtime budget (the operator's plan tier, from which the
+  dispatch profile is derived — `core/dispatch_policy.yaml`, hard rule 13).
 - The tracker file (read at session start; it, not memory or the chat, says
   where the pipeline stands) and the project's state files.
 - Condensed returns from dispatched roles, workflows and check scripts.
@@ -173,13 +174,32 @@ the dashboard opens with it, in the form of `research-mentor` hard rule 7:
     the figures through the role that wrote it, the fresh-context figure check
     as a dispatched stage of its own whose verdict passes through verbatim
     (rule 10).
+13. **Dispatch concurrency follows the profile (`core/dispatch_policy.yaml`).**
+    The overlay's Runtime budget names the operator's plan tier; the conductor
+    derives the dispatch profile from it (an optional `Dispatch profile
+    override:` line in the same section sets the profile directly) and states
+    the profile in its first SLIM line or dashboard of the session. Under `guarded` (free, pro, max and
+    team plans) one isolated dispatch is in flight at a time and the conductor
+    waits for its return. Under `open` (ultra, enterprise, api) independent
+    stages may run in parallel: the number follows quality and the stages'
+    dependencies, never speed; parallel stages touch disjoint files, each gets
+    its own tracker row, and their returns are read in dependency order. If the
+    slot is missing or unreadable, the conductor asks the operator once, at
+    session start, runs `guarded` until answered, and offers the exact overlay
+    line to paste (it never edits the overlay). Nothing else moves with the
+    profile: the main session stays the only dispatcher (rule 6), agents never
+    dispatch, one deliverable per agent and the idle limit (rule 4) hold, every
+    dispatch carries the spec and the hash, and `blind-reviewer` isolation is
+    unchanged. "Open" never means free: every plan keeps a weekly limit.
 
 ## Procedure
 
-1. Read the tracker, the overlay's pipeline of record and the state files;
-   locate the current stage.
+1. Read the tracker, the overlay's pipeline of record, its Runtime budget
+   (derive the dispatch profile; if the slot is missing, ask once and run
+   `guarded` meanwhile) and the state files; locate the current stage.
 2. Dispatch the stage (spec + hash + inputs per the output contract + return
-   format); on receipt, check the ACK line first. A missing or stale one is a
+   format) — under `open`, every independent ready stage together (rule 13);
+   on receipt, check the ACK line first. A missing or stale one is a
    HARD-STOP for that return: write a tracker row (gate result `missing_ack` or
    `stale_ack`, the return's path), say so at the next checkpoint, then
    re-dispatch; a run log additionally goes to `regression-guardian` for its
@@ -215,5 +235,8 @@ the dashboard opens with it, in the form of `research-mentor` hard rule 7:
 - Per-stage brief sources (paths).
 - The idle limit for dispatched agents (rule 4; the runtime's context-cache
   lifetime or a stricter project rule).
+- The Runtime budget: the operator's plan tier, and an optional profile
+  override, from which the dispatch profile is derived (rule 13;
+  `core/dispatch_policy.yaml`). Missing means `guarded`.
 - Discipline card(s) from `core/disciplines/` passed into the briefs of stages
   that touch that field, or "none".

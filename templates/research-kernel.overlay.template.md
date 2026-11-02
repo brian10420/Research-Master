@@ -4,9 +4,9 @@
 Copy this file to `.claude/research-kernel.overlay.md` at the root of YOUR research
 project and fill the slots. Every research-kernel skill injects this file when it
 loads (the wrapper runs `cat ${CLAUDE_PROJECT_DIR}/.claude/research-kernel.overlay.md`);
-isolated roles receive it through the dispatch prompt. This is the ONLY place
-project-specific facts belong — never edit the plugin or the generated wrappers,
-they are replaced wholesale on every update.
+isolated roles receive it through the dispatch prompt. With the state files, this is
+the only place project-specific facts belong — never edit the plugin or the generated
+wrappers, they are replaced wholesale on every update.
 
 Conventions: keep metric NAMES, put VALUES in the project's state files
 (EXPERIMENT_LEDGER.md, RESEARCH_STATE.md) and point at them; no secrets, no
@@ -20,6 +20,23 @@ credentials, nothing you would not commit to the project repository itself.
 - **State files:** `<path>/RESEARCH_STATE.md`, `<path>/DECISIONS.md`, `<path>/EXPERIMENT_LEDGER.md`, `<path>/HYPOTHESES.md`, `<path>/FAILED_IDEAS.md`, `<path>/OPEN_QUESTIONS.md` (seeded from `templates/project-state/`)
 - **Notes vault / Study Log:** <path or "none">
 - **Deadline:** <date or "none">
+
+## Runtime budget
+
+<!--
+The harness does not tell the plugin which plan you are on, so say it here once.
+The conductor derives the DISPATCH PROFILE from it (core/dispatch_policy.yaml):
+  guarded  <- free | pro | max | team-standard | team-premium
+              one isolated dispatch at a time; workflows stay small
+  open     <- ultra | enterprise | api
+              independent stages in parallel, as many as quality and dependencies warrant
+Missing or unknown -> guarded. Nested dispatch is never allowed under either profile,
+the main session stays the only dispatcher, and "open" never means free: every plan
+keeps a weekly limit. Change the line when your plan changes; nothing else needs to.
+-->
+
+- **Plan tier:** <free | pro | max | ultra | team-standard | team-premium | enterprise | api>
+- **Dispatch profile override:** <"from plan tier" | guarded | open>  (e.g. `guarded` on a shared ultra account; `open` on pay-per-token API access)
 
 ## Slots by role
 
@@ -48,6 +65,7 @@ Fill only the roles you use; delete the rest. Each role spec ends with a
 - Per-stage mechanical checks: `<script paths>`; SOFT gates: <gates that may be overridden with a logged reason, or "none — every gate is a HARD-STOP">
 - Per-stage brief sources: <paths>
 - Idle limit for dispatched agents: <the runtime's context-cache lifetime, or a stricter project rule>
+- Runtime budget: read from `## Runtime budget` above (the dispatch profile is derived there; conductor rule 13)
 - Discipline cards passed into briefs: <see "Disciplines" below, or "none">
 
 ### results-analyst

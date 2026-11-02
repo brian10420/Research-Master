@@ -410,3 +410,71 @@ the source project pilots it on one chapter before any claim about savings.
   wait at the operator's checkpoints.
 - A project-only orchestrator — the duty is named generically in
   `SCIENTIFIC_RULES` and recurs in every project with a multi-stage pipeline.
+
+```yaml
+id: DECISION_008
+title: Plan-tier dispatch profile — the overlay declares the operator's plan, the conductor derives `guarded` or `open`; nested dispatch stays forbidden under both
+date: 2026-11-02
+proposer: fable   # Fable 5.1, from the operator's instruction in chat, 2026-11-02
+decided_by: human
+status: proposed
+evidence: [core/dispatch_policy.yaml, core/roles/conductor.md, templates/research-kernel.overlay.template.md, https://claude.com/pricing, https://support.claude.com/en/articles/17728952, https://code.claude.com/docs/en/sub-agents, https://code.claude.com/docs/en/statusline]
+supersedes: ""
+superseded_by: ""
+```
+
+**Context.** Under the rolling 5-hour usage window the operator ran one agent
+at a time. Nothing wrote that down as a rule: the conductor's procedure
+dispatches a stage and waits for its return (steps 2–6), the operator's
+harness keeps workflows small, and the operator's own token rules make the
+main session the only dispatcher, deny nested dispatch by a hook and bound
+agent idle time. On 2026-11-02 the operator asked to lift the parallel cap for
+plans that have no window — but only after the plugin asks which plan is in
+use, and without touching the nesting ban. The vendor's public pages on that
+date: Pro and Max meter a 5-hour window and a weekly limit; Ultra (the renamed
+Max 20x) has no 5-hour window for verified accounts and keeps the weekly
+limit; Team and Enterprise seats keep both windows; every plan keeps a weekly
+limit; the plan tier is exposed neither to hooks nor to the model (the status
+line sees only used percentages); the harness caps concurrent subagents at 20
+and spawn depth at 3; subagent tokens count against the same limits.
+
+**Decision (proposed).** A budget policy next to the effort policy:
+`core/dispatch_policy.yaml` names two dispatch profiles. `guarded` (free,
+pro, max, team-standard, team-premium): one isolated dispatch in flight at a
+time from the main session; workflows small. `open` (ultra, enterprise, api):
+independent stages in parallel from the main session, the number decided by
+quality and the stages' dependencies only, never by speed, under the harness
+ceiling; workflows unconstrained. The consuming project declares the
+operator's plan tier once, in the overlay's `## Runtime budget` (with an
+optional profile override); the conductor derives the profile, states it in
+its first SLIM line or dashboard, and — when the slot is missing — asks the
+operator once at session start, runs `guarded` meanwhile and offers the exact
+line to paste, never editing the overlay itself (conductor hard rule 13).
+Nothing else moves with the profile: the main session stays the only
+dispatcher, committer and publisher; agents never dispatch; one deliverable
+per agent and the idle limit hold; every dispatch carries the spec and the
+hash; blind-review isolation is unchanged; parallel stages touch disjoint
+files, get one tracker row each, and are read in dependency order. No role
+requires a tier (SCIENTIFIC_RULES §8 "no paid-tier pins" still holds: the
+policy adapts to whatever the operator has). "Open" never means free: every
+plan keeps a weekly limit.
+
+**Consequences.** `SCIENTIFIC_RULES.md` is unchanged (RULES_HASH stays
+`0f0b1f5cddf7`). `tools/sync.py` reads the policy file and writes the mapping
+into both adapters; the conductor spec and the overlay template carry the
+slot; each consuming project adds one line. The operator's own harness
+settings (workflow size, hooks) stay outside the kernel. Unmeasured: no
+comparison of parallel against sequential spend under `open` exists yet; the
+source project reports after one chapter run on `open`.
+
+**Alternatives rejected.**
+- Detect the plan automatically — the harness does not expose it; a guess
+  that lands on `open` for a windowed plan is exactly the failure the cap
+  prevented.
+- Lift the nesting ban under `open` — a nested dispatcher must re-embed the
+  spec and hash at every level and could commit or publish outside the main
+  session; the operator declined it on 2026-11-02.
+- Put the rule into `SCIENTIFIC_RULES.md` — a budget policy is not
+  methodology, and the hash bump would stale every project adapter.
+- Keep the tier in each project's state files — it is an operator fact, not
+  a scientific record; the overlay is where operator facts already live.

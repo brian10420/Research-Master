@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="428" viewBox="0 0 1400 428" role="img" aria-label="Your first ten minutes: five numbered steps. 1 Install the plugin inside Claude Code with three commands. 2 Seed the six state files from the root of your research project. 3 Seed the overlay: copy the template to .claude/research-kernel.overlay.md and fill the slots, including the Plan tier line. 4 Talk to the mentor with /research-kernel:research-mentor. 5 Its own ideas are filed in HYPOTHESES.md as status: proposed, never as facts.">
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#435954"/>
+    </marker>
+  </defs>
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .sans { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  </style>
+
+  <rect x="0" y="0" width="1400" height="428" fill="#F3F5F4"/>
+
+  <text class="mono" x="24" y="28" font-size="11" letter-spacing="2" fill="#5A6663">RESEARCH-KERNEL</text>
+  <text class="sans" x="24" y="60" font-size="26" font-weight="700" fill="#1D2523">Your first ten minutes</text>
+
+  <g id="card1">
+    <rect x="20" y="86" width="266" height="298" rx="10" fill="#FDFEFD" stroke="#C6CFCB" stroke-width="1.3"/>
+    <circle cx="47" cy="114" r="14" fill="#435954"/>
+    <text class="sans" x="47" y="119" font-size="14" font-weight="700" text-anchor="middle" fill="#F3F5F4">1</text>
+    <text class="sans" x="70" y="120" font-size="16.5" font-weight="700" fill="#1D2523">Install</text>
+    <text class="sans" x="36" y="146" font-size="13" fill="#5A6663">inside Claude Code</text>
+    <rect x="28" y="194" width="250" height="92.0" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
+    <text class="mono" x="36" y="212.5" font-size="12.0" fill="#1D2523">/plugin marketplace add</text>
+    <text class="mono" x="46" y="228.5" font-size="12.0" fill="#1D2523">brian10420/research-kernel</text>
+    <text class="mono" x="36" y="244.5" font-size="12.0" fill="#1D2523">/plugin install</text>
+    <text class="mono" x="46" y="260.5" font-size="12.0" fill="#1D2523">research-kernel@research-kernel</text>
+    <text class="mono" x="36" y="276.5" font-size="12.0" fill="#1D2523">/reload-plugins</text>
+  </g>
+  <line x1="289" y1="114" x2="305" y2="114" stroke="#435954" stroke-width="2" marker-end="url(#head)"/>
+  <g id="card2">
+    <rect x="308" y="86" width="230" height="298" rx="10" fill="#FDFEFD" stroke="#C6CFCB" stroke-width="1.3"/>
+    <circle cx="335" cy="114" r="14" fill="#435954"/>
+    <text class="sans" x="335" y="119" font-size="14" font-weight="700" text-anchor="middle" fill="#F3F5F4">2</text>
+    <text class="sans" x="358" y="120" font-size="16.5" font-weight="700" fill="#1D2523">Seed the state files</text>
+    <text class="sans" x="324" y="146" font-size="13" fill="#5A6663">from the root of your</text>
+    <text class="sans" x="324" y="163.5" font-size="13" fill="#5A6663">research project</text>
+    <rect x="316" y="194" width="214" height="140.0" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
+    <text class="mono" x="324" y="212.5" font-size="12.0" fill="#1D2523">mkdir -p project-state</text>
+    <text class="mono" x="324" y="228.5" font-size="12.0" fill="#1D2523">cp &lt;research-os&gt;/templates/</text>
+    <text class="mono" x="334" y="244.5" font-size="12.0" fill="#1D2523">project-state/{</text>
+    <text class="mono" x="334" y="260.5" font-size="12.0" fill="#1D2523">RESEARCH_STATE,DECISIONS,</text>
+    <text class="mono" x="334" y="276.5" font-size="12.0" fill="#1D2523">EXPERIMENT_LEDGER,</text>
+    <text class="mono" x="334" y="292.5" font-size="12.0" fill="#1D2523">HYPOTHESES,FAILED_IDEAS,</text>
+    <text class="mono" x="334" y="308.5" font-size="12.0" fill="#1D2523">OPEN_QUESTIONS}.md</text>
+    <text class="mono" x="334" y="324.5" font-size="12.0" fill="#1D2523">project-state/</text>
+  </g>
+  <line x1="541" y1="114" x2="557" y2="114" stroke="#435954" stroke-width="2" marker-end="url(#head)"/>
+  <g id="card3">
+    <rect x="560" y="86" width="296" height="298" rx="10" fill="#FDFEFD" stroke="#C6CFCB" stroke-width="1.3"/>
+    <circle cx="587" cy="114" r="14" fill="#435954"/>
+    <text class="sans" x="587" y="119" font-size="14" font-weight="700" text-anchor="middle" fill="#F3F5F4">3</text>
+    <text class="sans" x="610" y="120" font-size="16.5" font-weight="700" fill="#1D2523">Seed the overlay</text>
+    <text class="sans" x="576" y="146" font-size="13" fill="#5A6663">with the state files, the only place</text>
+    <text class="sans" x="576" y="163.5" font-size="13" fill="#5A6663">project-specific facts belong</text>
+    <rect x="568" y="194" width="280" height="76.0" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
+    <text class="mono" x="576" y="212.5" font-size="12.0" fill="#1D2523"><tspan fill="#5A6663">copy</tspan> templates/</text>
+    <text class="mono" x="586" y="228.5" font-size="12.0" fill="#1D2523">research-kernel.overlay.template.md</text>
+    <text class="mono" x="576" y="244.5" font-size="12.0" fill="#1D2523"><tspan fill="#5A6663">to</tspan> .claude/</text>
+    <text class="mono" x="586" y="260.5" font-size="12.0" fill="#1D2523">research-kernel.overlay.md</text>
+    <text class="sans" x="576" y="288.0" font-size="12.5" fill="#5A6663">and fill the slots, e.g.:</text>
+    <rect x="568" y="296.0" width="280" height="76.0" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
+    <text class="mono" x="576" y="314.5" font-size="12.0" fill="#1D2523">## Runtime budget</text>
+    <text class="mono" x="576" y="330.5" font-size="12.0" fill="#1D2523">- **Plan tier:** &lt;free | pro |</text>
+    <text class="mono" x="586" y="346.5" font-size="12.0" fill="#1D2523">max | ultra | team-standard |</text>
+    <text class="mono" x="586" y="362.5" font-size="12.0" fill="#1D2523">team-premium | enterprise | api&gt;</text>
+  </g>
+  <line x1="859" y1="114" x2="875" y2="114" stroke="#435954" stroke-width="2" marker-end="url(#head)"/>
+  <g id="card4">
+    <rect x="878" y="86" width="264" height="298" rx="10" fill="#FDFEFD" stroke="#0F6B62" stroke-width="1.5"/>
+    <circle cx="905" cy="114" r="14" fill="#435954"/>
+    <text class="sans" x="905" y="119" font-size="14" font-weight="700" text-anchor="middle" fill="#F3F5F4">4</text>
+    <text class="sans" x="928" y="120" font-size="16.5" font-weight="700" fill="#1D2523">Talk to the mentor</text>
+    <text class="sans" x="894" y="146" font-size="13" fill="#5A6663">direction, pressure-testing,</text>
+    <text class="sans" x="894" y="163.5" font-size="13" fill="#5A6663">concepts; literature-verified</text>
+    <text class="sans" x="894" y="181.0" font-size="13" fill="#5A6663">claims</text>
+    <rect x="886" y="194" width="248" height="28.0" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
+    <text class="mono" x="894" y="212.5" font-size="12.0" fill="#1D2523">/research-kernel:research-mentor</text>
+    <text class="sans" x="894" y="242.0" font-size="12.5" fill="#5A6663">skills appear as</text>
+    <text class="mono" x="894" y="259.0" font-size="12" fill="#5A6663">/research-kernel:&lt;role&gt;</text>
+  </g>
+  <line x1="1145" y1="114" x2="1161" y2="114" stroke="#435954" stroke-width="2" marker-end="url(#head)"/>
+  <g id="card5">
+    <rect x="1164" y="86" width="216" height="298" rx="10" fill="#FDFEFD" stroke="#C6CFCB" stroke-width="1.3"/>
+    <circle cx="1191" cy="114" r="14" fill="#435954"/>
+    <text class="sans" x="1191" y="119" font-size="14" font-weight="700" text-anchor="middle" fill="#F3F5F4">5</text>
+    <path d="M 1214 104 H 1225 L 1230 109 V 125 H 1214 Z" fill="none" stroke="#77827E" stroke-width="1.3"/>
+    <path d="M 1225 104 V 109 H 1230" fill="none" stroke="#77827E" stroke-width="1.3"/>
+    <text class="mono" x="1238" y="120" font-size="14.5" font-weight="700" fill="#1D2523">HYPOTHESES.md</text>
+    <text class="sans" x="1180" y="146" font-size="13" fill="#5A6663">its own ideas are filed</text>
+    <text class="sans" x="1180" y="163.5" font-size="13" fill="#5A6663">as proposals,</text>
+    <text class="sans" x="1180" y="181.0" font-size="13" fill="#5A6663">never as facts</text>
+    <rect x="1172" y="194" width="200" height="28.0" rx="6" fill="#F3F5F4" stroke="#E4E8E6" stroke-width="1"/>
+    <text class="mono" x="1180" y="212.5" font-size="12.0" fill="#1D2523">status: proposed</text>
+    <text class="sans" x="1180" y="242.0" font-size="12.5" fill="#5A6663">with model provenance</text>
+  </g>
+
+  <g id="legend">
+    <line x1="24" y1="412" x2="50" y2="412" stroke="#435954" stroke-width="2"/>
+    <path d="M 48 408 L 55 412 L 48 416 z" fill="#435954"/>
+    <text class="mono" x="66" y="416" font-size="11.5" fill="#5A6663">next step</text>
+    <rect x="180" y="402" width="40" height="20" rx="4" fill="#F3F5F4" stroke="#E4E8E6"/>
+    <line x1="186" y1="408" x2="210" y2="408" stroke="#77827E" stroke-width="2.5"/>
+    <line x1="192" y1="416" x2="214" y2="416" stroke="#77827E" stroke-width="2.5"/>
+    <text class="mono" x="232" y="416" font-size="11.5" fill="#5A6663">indented line = continues the line above, wrapped to fit; copy commands from the text, not the picture</text>
+    <rect x="980" y="403" width="31" height="18" rx="5" fill="#FDFEFD" stroke="#0F6B62" stroke-width="1.5"/>
+    <text class="mono" x="1024" y="416" font-size="11.5" fill="#5A6663">teal outline = shared-context skill</text>
+  </g>
+</svg>

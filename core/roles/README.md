@@ -91,6 +91,14 @@ DECISION_004); everyone else inherits the session. Effort is chosen by task shap
 an unbounded-judgement step and lowers it again (DECISION_003, amended by
 DECISION_004).
 
+How many isolated roles may be in flight at once is a separate setting,
+`core/dispatch_policy.yaml`: the project overlay names the operator's plan tier,
+the conductor derives a dispatch profile from it — `guarded` (free, pro, max,
+team: one dispatch at a time) or `open` (ultra, enterprise, api: independent
+stages in parallel, as many as quality and dependencies warrant) — and nothing
+else moves with it: the main session remains the only dispatcher, agents never
+dispatch, and no role requires a tier (DECISION_008).
+
 ## Typical flows
 
 **Code / experiment:** discuss (`research-mentor`) → verify theory

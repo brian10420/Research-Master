@@ -2,7 +2,8 @@
 """tools/check_drift.py — fail if the committed adapters are stale relative to core/.
 
 Regenerates every adapter (CLAUDE.md, AGENTS.md, .claude/agents/*.md,
-.claude/skills/*/SKILL.md) in memory with tools/sync.py and compares them
+.claude/skills/*/SKILL.md and their regular copies under agents/ and skills/)
+in memory with tools/sync.py and compares them
 byte-for-byte against either the working tree (default) or the git index
 (--against index, used by .githooks/pre-commit so a commit can never carry
 adapters that disagree with the core/ it commits). Orphaned wrappers (present but
