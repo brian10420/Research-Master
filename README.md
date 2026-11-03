@@ -88,6 +88,72 @@ reviewer only the anonymized bundle; learning cycles back into your Study Log;
 presenting starts from verified numbers; the pipeline lane stops you only at
 named checkpoints; and when you are stuck the team changes **method** first, not effort.
 
+## Scenarios
+
+Nine real situations, each drawn with you as the capped logo bear and the roles
+in the order you call them. Every label on a figure traces to a spec line or to
+the operator's own words; the claims tables are in [`assets/README.md`](assets/README.md).
+
+**1 · "Run my thesis end to end."** `/research-master:conductor` reads the
+tracker, dispatches each stage with spec + hash + brief, and stops you at its
+checkpoints (MANDATORY · FULL · SLIM); it does none of the stages' work.
+
+![Scenario 1: you ask the conductor to run the thesis; it reads the tracker, dispatches each stage across the context boundary, reads the condensed return, classifies the checkpoint and waits for your choice](assets/scenarios/01-thesis.svg)
+
+**2 · "My defense is in two weeks — drill me."** `/research-master:results-analyst`
+→ `/research-master:science-presenter` → `/research-master:study-coach`; the
+Study Log carries each round into the next.
+
+![Scenario 2: verified numbers from the results analyst, a deck with backup-math slides from the science presenter, then a study-coach rehearsal with honest grading that writes the Study Log, all inside your session](assets/scenarios/02-defense-rehearsal.svg)
+
+**3 · "Submit to &lt;venue&gt;."** `dispatch sparring-partner` (claim-set mode) →
+`/research-master:paper-writer` → `tools/anonymize.py` → `dispatch blind-reviewer`
+→ `/research-master:paper-writer` → `dispatch repo-maintainer`.
+
+![Scenario 3: a claim-set audit by the sparring partner, write and compile, anonymize, an isolated blind review that sees only the bundle and the venue, revise again, then commit through the repo maintainer](assets/scenarios/03-submission.svg)
+
+**4 · "My advisor wants results and slides tomorrow."**
+`/research-master:results-analyst` → `/research-master:science-presenter`
+(audience brief → pre-flight source scan → build); "tomorrow" does not waive the brief.
+
+![Scenario 4: the results analyst reports all seeds and folds from the ledger; the science presenter runs the blocking audience brief, verifies every source on disk, then builds what you present](assets/scenarios/04-meeting-tomorrow.svg)
+
+**5 · "New idea for the model — let's try it today."**
+`/research-master:research-mentor` (sparring gate: `dispatch sparring-partner`)
+→ `/research-master:math-reviewer` → `/research-master:dl-engineer` →
+`dispatch regression-guardian`; a ✗ FAIL comes back through you to the engineer.
+
+![Scenario 5: discuss with the research mentor, with a conditional sparring gate; verify the theory; implement; the isolated regression-guardian gate certifies or returns a failure through you; then Lane 1 continues with run, analyze and commit](assets/scenarios/05-daily-deep-learning.svg)
+
+**6 · "Help me write the 研究計畫書 (grant / collaboration proposal)."**
+`/research-master:research-mentor` → sparring gate (`dispatch sparring-partner`)
+→ `/research-master:paper-writer` (document mode) → you read it in full →
+`dispatch repo-maintainer`.
+
+![Scenario 6: explore first with the research mentor, a premise audit by the sparring partner, then the paper writer in document mode drafts from the design of record; you read every outward document in full before it leaves](assets/scenarios/06-grant-proposal.svg)
+
+**7 · "The institution wants it in Word."** *Operator's setup.*
+`/research-master:paper-writer` (document mode) → the docx skill fills the
+institution's template → render and look → your Word pass; after it, your Word
+copy is the master.
+
+![Scenario 7: the paper writer drafts in document mode, the docx skill edits the template in place and validates it, a rendered page check follows, then your Word pass; Claude Code in the terminal, with the desktop app reachable through /desktop](assets/scenarios/07-word.svg)
+
+**8 · "Where do my other plugins fit?"** *Operator's setup.* superpowers before
+any build; ARS `deep-research` feeds `/research-master:research-mentor`'s
+literature verification, ARS `academic-paper` feeds `/research-master:paper-writer`;
+ARS `academic-paper-reviewer` rehearses in your session, while
+`dispatch blind-reviewer` stays the isolated review of record.
+
+![Scenario 8: the two lanes with superpowers attached before the implement step and ARS skills attached to the mentor and the writer; the ARS reviewer panel runs in your session, the blind reviewer below the context boundary](assets/scenarios/08-superpowers-ars.svg)
+
+**9 · "We're crossing into a clinical study — write the IRB protocol and consent."**
+the discipline card (`status: proposed`) → `/research-master:conductor` →
+`/research-master:research-mentor` → sparring gate (`dispatch sparring-partner`)
+→ `/research-master:paper-writer` (document mode) → you read it in full.
+
+![Scenario 9: the human-subjects discipline card, still proposed, is passed by the conductor into the stage briefs; discuss, a conditional premise audit, then the paper writer drafts the protocol and consent form in the card's register; it leaves only after your full read](assets/scenarios/09-irb-cross-discipline.svg)
+
 ## Why it will not let you cherry-pick
 
 Every run gets a ledger row before its numbers exist, every idea carries the

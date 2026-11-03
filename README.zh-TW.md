@@ -65,6 +65,46 @@
 
 建置與測試要通過守護者（guardian）的關卡；論文迴圈只把匿名化後的資料包（bundle）交給盲審者；學習會循環回到你的學習日誌（Study Log）；簡報從已驗證的數字出發；管線泳道只會在具名的檢查點把你叫停；而當你卡關時，團隊會先換**方法**，而不是提高推理強度（effort）。
 
+## 情境
+
+九個真實情境，每張圖裡你都是那隻戴學士帽的圖標熊，角色依你呼叫的順序排列。圖上每個標籤都能追溯到規格的某一行或操作者本人的話；佐證表（claims tables）在 [`assets/README.md`](assets/README.md)。
+
+**1 ·「把我的論文從頭到尾跑完。」** `/research-master:conductor` 讀取追蹤表（tracker），以 spec + hash + brief 派出每個階段，並在檢查點（MANDATORY · FULL · SLIM）停下等你；它不做任何階段的實際工作。
+
+![情境 1：你請指揮（conductor）跑整篇論文；它讀取追蹤表，把每個階段跨過情境邊界派出，讀取精簡回報，判定檢查點類型，再等你決定](assets/scenarios/01-thesis.svg)
+
+**2 ·「兩週後口試——幫我演練。」** `/research-master:results-analyst` → `/research-master:science-presenter` → `/research-master:study-coach`；學習日誌（Study Log）把每一輪帶進下一輪。
+
+![情境 2：結果分析師提供已驗證的數字，科學簡報者做出附備用數學投影片的簡報，學習教練以誠實評分進行演練並寫入學習日誌，全部在你的工作階段內進行](assets/scenarios/02-defense-rehearsal.svg)
+
+**3 ·「投稿到 &lt;venue&gt;。」** `dispatch sparring-partner`（claim-set 模式）→ `/research-master:paper-writer` → `tools/anonymize.py` → `dispatch blind-reviewer` → `/research-master:paper-writer` → `dispatch repo-maintainer`。
+
+![情境 3：陪練夥伴稽核整組主張，撰寫並編譯，匿名化，隔離的盲審只看資料包與投稿目標，再修訂一次，最後由倉庫維護者提交](assets/scenarios/03-submission.svg)
+
+**4 ·「指導教授明天要看結果和投影片。」** `/research-master:results-analyst` → `/research-master:science-presenter`（受眾簡報 → 事前來源掃描 → 製作）；「明天」不能免除受眾簡報。
+
+![情境 4：結果分析師從實驗帳本回報所有種子與折；科學簡報者先完成必要的受眾簡報，逐一在磁碟上驗證來源，再做出你要報告的內容](assets/scenarios/04-meeting-tomorrow.svg)
+
+**5 ·「模型有新點子——今天就試。」** `/research-master:research-mentor`（陪練關卡：`dispatch sparring-partner`）→ `/research-master:math-reviewer` → `/research-master:dl-engineer` → `dispatch regression-guardian`；✗ FAIL 會經過你回到工程師。
+
+![情境 5：與研究導師討論，視條件觸發陪練關卡；驗證理論；實作；隔離的回歸守護者關卡認證或把失敗經由你退回；之後第一泳道接著跑實驗、分析、提交](assets/scenarios/05-daily-deep-learning.svg)
+
+**6 ·「幫我寫研究計畫書（grant / collaboration proposal）。」** `/research-master:research-mentor` → 陪練關卡（`dispatch sparring-partner`）→ `/research-master:paper-writer`（文件模式）→ 你完整讀過 → `dispatch repo-maintainer`。
+
+![情境 6：先與研究導師探索，陪練夥伴稽核前提，再由論文寫手以文件模式依定案設計起草；每份對外文件離手前都由你完整讀過](assets/scenarios/06-grant-proposal.svg)
+
+**7 ·「機構要 Word 檔。」** *操作者的設定。* `/research-master:paper-writer`（文件模式）→ docx skill 填入機構範本 → 轉檔並目視檢查 → 你的 Word 校稿；之後你的 Word 檔就是正本。
+
+![情境 7：論文寫手以文件模式起草，docx skill 就地編輯範本並驗證，接著轉成頁面圖檢查，再由你在 Word 校稿；Claude Code 在終端機執行，可用 /desktop 轉到桌面應用程式](assets/scenarios/07-word.svg)
+
+**8 ·「我的其他外掛放在哪裡？」** *操作者的設定。* superpowers 在任何建置之前；ARS `deep-research` 供給 `/research-master:research-mentor` 的文獻驗證，ARS `academic-paper` 供給 `/research-master:paper-writer`；ARS `academic-paper-reviewer` 在你的工作階段內預演審查，而 `dispatch blind-reviewer` 仍是隔離的正式審查。
+
+![情境 8：兩條泳道，superpowers 接在實作步驟之前，ARS 技能接在導師與寫手上；ARS 審查小組在你的工作階段內運作，盲審者在情境邊界之下](assets/scenarios/08-superpowers-ars.svg)
+
+**9 ·「我們要跨進臨床研究——寫 IRB 計畫書和受試者同意書。」** 學科卡（`status: proposed`）→ `/research-master:conductor` → `/research-master:research-mentor` → 陪練關卡（`dispatch sparring-partner`）→ `/research-master:paper-writer`（文件模式）→ 你完整讀過。
+
+![情境 9：仍為 proposed 的人體研究學科卡由指揮傳入各階段的任務說明；討論、視條件進行前提稽核，再由論文寫手依卡片的語域起草計畫書與同意書；你完整讀過後才離手](assets/scenarios/09-irb-cross-discipline.svg)
+
 ## 為什麼它不讓你只挑好看的結果
 
 每一次執行在數字產生之前，就先在帳本裡有一列；每個點子都帶著提出者的名字；而只有你能把提案變成事實。背後的七條規則寫在 [`core/SCIENTIFIC_RULES.md`](core/SCIENTIFIC_RULES.md)。

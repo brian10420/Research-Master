@@ -2,6 +2,43 @@
 
 Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
 
+## 0.7.0 — 2026-11-03
+
+- **Nine scenario figures** (`assets/scenarios/01-thesis.svg` … `09-irb-cross-discipline.svg`),
+  hand-written SVG at 1400 px, team-flows grammar and palette. The user is always the plain
+  logo bear with the cap; the roles are the character illustrations, each embedded as a
+  192-px, ≤ 128-colour PNG `data:` URI clipped to its own pale square (GitHub blocks external
+  references inside SVG). Sizes 46–156 kB, each under the 600 kB cap. Scenarios: thesis end to
+  end (`/conductor`), defense rehearsal, submission, results and slides by tomorrow, the daily
+  deep-learning flow, a grant or collaboration proposal, the institution's Word template
+  (operator's setup), where superpowers and ARS fit (operator's setup), and an IRB protocol
+  with the discipline card (shown `status: proposed`).
+- **Template locked on a pilot.** Scenario 5 (the operator's most used flow) was drawn first;
+  the operator locked its look as the template ("Lock as is") before the other eight were
+  drawn in parallel, one illustrator each.
+- **§9 check by three fresh-context checkers** (none drew a figure; three figures each, split
+  for context size): verdict PASS-WITH-FIXES on all nine; 61 findings (20 wrong source,
+  18 added claim, 14 dropped condition, 8 missing row, 1 template), every replacement applied
+  verbatim, three geometry re-draws (figure 1: the conductor's repo-maintainer exception;
+  figure 4: a stale-source return ends at you, not in one role's card; figure 9: paper-writer
+  worn by `/conductor`, announced). Leak check clean on all nine. The operator decided four
+  points: figure 3 keeps the claim-set audit as step 1 (the plan's order); figure 8 maps
+  "before any build" to the implement step; figure 9 draws paper-writer as worn; figure 6's
+  bubble reads "Help me write the 研究計畫書" so the speaker matches the student bear.
+- **Sources outside the repository**, cited by name, version and read date (2026-11-03), never
+  by a machine path: the `docx` skill's SKILL.md (no version stated); superpowers 7.0.0
+  (brainstorming, writing-plans, subagent-driven-development, executing-plans); ARS 3.23.1
+  (deep-research, academic-paper, academic-paper-reviewer); `code.claude.com/docs/en/desktop`
+  for `/desktop`. Lines the plan proposed but no source states were left off and listed under
+  each table's "Not drawn" (for example "never regenerate a docx over the operator's copy",
+  "role separation is not independent review").
+- **Both READMEs** gain a `## Scenarios` / `## 情境` section after the workflows: one line and
+  one figure per scenario, the call lines in text, alt text per language.
+- `assets/README.md` gains the nine claims sections.
+- Found while drawing, not changed here (`core/` untouched; RULES_HASH stays `0f0b1f5cddf7`):
+  `core/disciplines/README.md:10` still reads "No cards yet."; `core/roles/README.md:120–121`
+  and `core/roles/conductor.md:208` disagree on when the tracker row is written.
+
 ## 0.6.0 — 2026-11-03
 
 - **Renamed `research-kernel` → `research-master`** (DECISION_011, accepted by

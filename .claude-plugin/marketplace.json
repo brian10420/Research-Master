@@ -10,7 +10,7 @@
       "name": "research-master",
       "source": "./",
       "description": "Fourteen canonical research roles (9 in-session skills + 5 isolated subagents) with the canary handshake, project-state templates, the effort policy and the plan-tier dispatch profile. Install, then seed .claude/research-master.overlay.md in your project.",
-      "version": "0.6.0",
+      "version": "0.7.0",
       "license": "MIT"
     }
   ]
