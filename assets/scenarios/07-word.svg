@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="952" viewBox="0 0 1400 952" role="img" aria-label="Scenario 7, the institution wants it in Word. Operator's setup: tool and plugin names are overlay matters, not part of the canonical specs. You ask: The institution wants it in Word. In your session: step 1, /research-master:paper-writer in document mode, DECISION_012, drafts from the project's state files, the design of record, and hands you the filled document in the template's own format plus a source note; it never sends anything: you read every outward document in full before it leaves. Its rules for this case: rail (a), template sentences are copied verbatim and only the template's own fields, its bracketed or blank slots, change, with no section or table the template lacks; a field the state files cannot fill is left blank and listed as a question for you, never filled by guess. Step 2, the docx skill, the fill tool named in the overlay: a .docx is a ZIP archive of XML files; the template is an existing document, so it is edited: unzip; strip symlink entries, because docx from external parties is untrusted; merge fragmented runs; edit word/document.xml in place, do NOT reformat or pretty-print; zip; validate with XSD checks against the original. Step 3, render it and look at it: soffice, which is LibreOffice, converts to PDF, pdftoppm makes page images, then the images are read. The result is handed to you for a full read, rail (f); the role never sends. Step 4, your Word pass, in Word: Word, not LibreOffice, is the final layout check. Step 5, after your Word pass the Word copy is the master; later changes go as page, old text, new text instructions. Where the session runs: Claude Code in the terminal, here your session for steps 1 to 3 — use the CLI when you need scripting, automation, or prefer a terminal workflow; the /desktop command moves it into the Claude desktop app, then the CLI exits; in the desktop app Claude Code is the Code tab, and /desktop saves your session and opens it there; use Desktop when you want to review changes visually; /desktop is available on macOS and x64 Windows when signed in with a Claude subscription. Source: code.claude.com/docs/en/desktop, fetched 2026-11-03; which surface runs which step was left to Claude by the operator, in chat 2026-11-03. Footnote, the operator's answer to the plan's open question 3, 2026-11-03: after my Word pass the Word copy is the master; later changes go as page / old text / new text instructions; Word, not LibreOffice, is the final layout check.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="898" viewBox="0 0 1400 898" role="img" aria-label="Scenario 7, the institution wants it in Word. Operator's setup: tool and plugin names are overlay matters, not part of the canonical specs. You ask: The institution wants it in Word. In your session: step 1, /research-master:paper-writer in document mode, DECISION_012, drafts from the project's state files, the design of record, and hands you the filled document in the template's own format plus a source note; it never sends anything: you read every outward document in full before it leaves. Its rules for this case: rail (a), template sentences are copied verbatim and only the template's own fields, its bracketed or blank slots, change, with no section or table the template lacks; a field the state files cannot fill is left blank and listed as a question for you, never filled by guess. Step 2, the docx skill, the fill tool named in the overlay: a .docx is a ZIP archive of XML files; the template is an existing document, so it is edited: unzip; strip symlink entries, because docx from external parties is untrusted; merge fragmented runs; edit word/document.xml in place, do NOT reformat or pretty-print; zip; validate with XSD checks against the original. Step 3, render it and look at it: soffice converts to PDF, pdftoppm makes page images, then the images are read. Step 4, the last step, you read it in full: the result is handed to you for a full read, rail (f); the role never sends. Where the session runs: Claude Code in the terminal, here your session for steps 1 to 3 — use the CLI when you need scripting, automation, or prefer a terminal workflow; the /desktop command moves it into the Claude desktop app, then the CLI exits; in the desktop app Claude Code is the Code tab, and /desktop saves your session and opens it there; use Desktop when you want to review changes visually; /desktop is available on macOS and x64 Windows when signed in with a Claude subscription. Source: code.claude.com/docs/en/desktop, fetched 2026-11-03; which surface runs which step was left to Claude by the operator, in chat 2026-11-03. Footnote, rail (f) of core/roles/paper-writer.md, lines 76 to 77: The operator reads every outward document in full before it leaves — this role never sends anything.">
   <title id="t07">Scenario 7 — the institution wants it in Word</title>
-  <desc id="d07">You ask paper-writer in document mode; the docx skill, the fill tool named in the overlay, fills the institution's template by editing word/document.xml in place; the result is rendered and looked at; it is handed to you for a full read; your Word pass is the final layout check, and after it your Word copy is the master, with later changes as page / old text / new text instructions. A setup panel shows Claude Code in the terminal and the Claude desktop app with /desktop moving the session into the app.</desc>
+  <desc id="d07">You ask paper-writer in document mode; the docx skill, the fill tool named in the overlay, fills the institution's template by editing word/document.xml in place; the result is rendered and looked at; in the last step, 4, it is handed to you and you read it in full (rail f); the role never sends. A setup panel shows Claude Code in the terminal and the Claude desktop app with /desktop moving the session into the app.</desc>
   <defs>
     <marker id="fh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 1 L 9 5 L 0 9 z" fill="#435954"/>
@@ -12,12 +12,12 @@
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
     .sans { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
   </style>
-  <rect x="0" y="0" width="1400" height="952" fill="#F3F5F4"/>
+  <rect x="0" y="0" width="1400" height="898" fill="#F3F5F4"/>
   <text class="mono" x="36" y="34" font-size="11" letter-spacing="2" fill="#5A6663">RESEARCH-MASTER · SCENARIO 7</text>
   <text class="mono" x="1376" y="34" font-size="11" letter-spacing="2" text-anchor="end" fill="#5A6663">OPERATOR'S SETUP</text>
   <text class="sans" x="1376" y="52" font-size="12" text-anchor="end" fill="#5A6663">tool and plugin names are overlay matters, not part of the canonical specs</text>
   <text class="sans" x="36" y="66" font-size="26" font-weight="700" fill="#1D2523">The institution wants it in Word</text>
-  <text class="sans" x="36" y="90" font-size="13.5" fill="#5A6663">Draft from the state files → fill the institution's template → render and look → your Word pass — after it, your Word copy is the master.</text>
+  <text class="sans" x="36" y="90" font-size="13.5" fill="#5A6663">Draft from the state files → fill the institution's template → render and look → you read it in full.</text>
 
   <!-- zone: your session -->
   <rect x="24" y="108" width="1352" height="412" rx="12" fill="#E3EDE9"/>
@@ -98,80 +98,56 @@
   <line x1="956" y1="200" x2="1158" y2="200" stroke="#D3DAD7"/>
   <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="956" y="217">“After writing a .docx, render it</tspan><tspan x="956" y="232">and look at it”</tspan></text>
   <text class="mono" font-size="10.5" fill="#1D2523"><tspan x="956" y="254">python scripts/office/</tspan><tspan x="969" y="267">soffice.py --headless</tspan><tspan x="969" y="280">--convert-to pdf out.docx</tspan><tspan x="956" y="298">pdftoppm -jpeg -r 100</tspan><tspan x="969" y="311">out.pdf page</tspan><tspan x="956" y="329">ls page-*.jpg</tspan><tspan x="969" y="342" fill="#5A6663"># then Read the images</tspan></text>
-  <text class="sans" x="956" y="368" font-size="11.5" fill="#1D2523">soffice = LibreOffice</text>
-  <text class="mono" x="956" y="440" font-size="10" fill="#5A6663">SKILL.md l. 38–46, 94</text>
+  <text class="mono" x="956" y="440" font-size="10" fill="#5A6663">SKILL.md l. 38–46</text>
 
-  <!-- hand-over: back through you -->
+  <!-- step 4: handed back through you; you read it in full -->
+  <circle cx="1199" cy="162" r="11" fill="#1D2523"/><text class="mono" x="1199" y="166.2" font-size="12" font-weight="700" text-anchor="middle" fill="#F3F5F4">4</text>
+  <text class="mono" x="1219" y="167" font-size="12" font-weight="700" fill="#1D2523">you read it in full</text>
+  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="1188" y="217">handed to you for a full</tspan><tspan x="1188" y="232">read (rail f); the role</tspan><tspan x="1188" y="247">never sends</tspan></text>
   <line x1="1174" y1="298" x2="1212" y2="298" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
   <circle cx="1238" cy="298" r="18" fill="#0F6B62"/>
   <text class="sans" x="1238" y="302" font-size="11" font-weight="700" text-anchor="middle" fill="#F3F5F4">YOU</text>
-  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="1188" y="228">handed to you for a full</tspan><tspan x="1188" y="243">read (rail f); the role</tspan><tspan x="1188" y="258">never sends</tspan></text>
 
   <!-- paper-writer's rules for this case, under its card -->
   <text class="mono" x="252" y="478" font-size="11" font-weight="600" fill="#1D2523">/paper-writer, document mode:</text>
   <text class="sans" font-size="11" fill="#1D2523"><tspan x="252" y="494">rail (a): template sentences are copied verbatim; only the template's own fields (its bracketed or blank slots) change; no section or table the template lacks</tspan><tspan x="252" y="509">a field the state files cannot fill is left blank and listed as a question for you — <tspan font-weight="700">never</tspan> filled by guess</tspan></text>
 
   <!-- where the session runs: Claude Code in the terminal and the desktop app -->
-  <rect x="24" y="536" width="740" height="250" rx="12" fill="#FFFFFF" stroke="#D3DAD7"/>
+  <rect x="24" y="536" width="1352" height="212" rx="12" fill="#FFFFFF" stroke="#D3DAD7"/>
   <text class="mono" x="44" y="558" font-size="11" letter-spacing="1.5" fill="#5A6663">CLAUDE CODE — TERMINAL AND DESKTOP APP</text>
-  <rect x="44" y="574" width="280" height="134" rx="10" fill="#F3F5F4" stroke="#D3DAD7" stroke-width="1.5"/>
+  <rect x="44" y="574" width="500" height="104" rx="10" fill="#F3F5F4" stroke="#D3DAD7" stroke-width="1.5"/>
   <text class="mono" x="60" y="596" font-size="12" font-weight="700" fill="#1D2523">Claude Code in the terminal</text>
   <text class="sans" x="60" y="615" font-size="12" fill="#5A6663">here: your session for steps 1–3</text>
-  <line x1="60" y1="625" x2="308" y2="625" stroke="#D3DAD7"/>
-  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="60" y="644">“Use the CLI when you need scripting,</tspan><tspan x="60" y="659">automation, or prefer a terminal</tspan><tspan x="60" y="674">workflow.”</tspan></text>
-  <line x1="326" y1="649" x2="454" y2="649" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
-  <text class="mono" x="390" y="639" font-size="11" font-weight="600" text-anchor="middle" fill="#1D2523">/desktop</text>
-  <text class="sans" font-size="11" text-anchor="middle" fill="#5A6663"><tspan x="390" y="668">saves your session,</tspan><tspan x="390" y="682">opens it in the app,</tspan><tspan x="390" y="698">then the CLI exits</tspan></text>
-  <rect x="464" y="574" width="280" height="134" rx="10" fill="#F3F5F4" stroke="#D3DAD7" stroke-width="1.5"/>
-  <text class="mono" x="480" y="596" font-size="12" font-weight="700" fill="#1D2523">Claude desktop app</text>
-  <text class="sans" x="480" y="615" font-size="12" fill="#5A6663">“Claude Code is the Code tab”</text>
-  <line x1="480" y1="625" x2="728" y2="625" stroke="#D3DAD7"/>
-  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="480" y="644">“use Desktop when you want to …</tspan><tspan x="480" y="659">review changes visually”</tspan></text>
-  <text class="sans" font-size="11" fill="#5A6663"><tspan x="480" y="686">/desktop: on macOS and x64 Windows,</tspan><tspan x="480" y="700">signed in with a Claude subscription</tspan></text>
-  <text class="mono" x="44" y="740" font-size="10.5" fill="#5A6663">code.claude.com/docs/en/desktop — “Coming from the CLI?” · fetched 2026-11-03</text>
-  <text class="mono" x="44" y="756" font-size="10.5" fill="#5A6663">which surface runs which step: left to Claude by the operator, in chat 2026-11-03</text>
-
-  <!-- your Word pass -->
-  <rect x="780" y="536" width="596" height="250" rx="12" fill="#FFFFFF" stroke="#D3DAD7"/>
-  <text class="mono" x="800" y="558" font-size="11" letter-spacing="1.5" fill="#5A6663">YOUR WORD PASS</text>
-  <line x1="1238" y1="318" x2="1238" y2="574" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
-  <!-- step 4: Word -->
-  <rect x="1120" y="576" width="240" height="104" rx="10" fill="#F3F5F4" stroke="#D3DAD7" stroke-width="1.5"/>
-  <circle cx="1140" cy="596" r="11" fill="#1D2523"/><text class="mono" x="1140" y="600.2" font-size="12" font-weight="700" text-anchor="middle" fill="#F3F5F4">4</text>
-  <text class="mono" x="1160" y="601" font-size="12" font-weight="700" fill="#1D2523">Word</text>
-  <text class="sans" x="1134" y="622" font-size="12" fill="#5A6663">your Word pass</text>
-  <line x1="1134" y1="632" x2="1346" y2="632" stroke="#D3DAD7"/>
-  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="1134" y="650"><tspan font-weight="700">Word, not LibreOffice,</tspan> is the</tspan><tspan x="1134" y="665">final layout check</tspan></text>
-  <line x1="1118" y1="628" x2="1088" y2="628" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
-  <!-- step 5: the Word copy is the master -->
-  <rect x="800" y="576" width="280" height="104" rx="10" fill="#F3F5F4" stroke="#D3DAD7" stroke-width="1.5"/>
-  <circle cx="820" cy="596" r="11" fill="#1D2523"/><text class="mono" x="820" y="600.2" font-size="12" font-weight="700" text-anchor="middle" fill="#F3F5F4">5</text>
-  <text class="mono" x="840" y="601" font-size="12" font-weight="700" fill="#1D2523">your Word copy</text>
-  <text class="sans" x="814" y="622" font-size="12" fill="#5A6663">the master</text>
-  <line x1="814" y1="632" x2="1066" y2="632" stroke="#D3DAD7"/>
-  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="814" y="650">after your Word pass, the Word copy</tspan><tspan x="814" y="665">is the <tspan font-weight="700">master</tspan></tspan></text>
-  <!-- later changes, as instructions -->
-  <rect x="800" y="708" width="280" height="64" rx="8" fill="#F3F5F4" stroke="#D3DAD7"/>
-  <text class="sans" font-size="11.5" fill="#1D2523"><tspan x="814" y="726">later changes go as page / old text /</tspan><tspan x="814" y="741">new text instructions:</tspan></text>
-  <text class="mono" x="814" y="761" font-size="10.5" fill="#5A6663">page | old text | new text</text>
-  <line x1="940" y1="706" x2="940" y2="686" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
+  <line x1="60" y1="625" x2="528" y2="625" stroke="#D3DAD7"/>
+  <text class="sans" x="60" y="644" font-size="11.5" fill="#1D2523">“Use the CLI when you need scripting, automation, or prefer a terminal workflow.”</text>
+  <line x1="546" y1="626" x2="846" y2="626" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
+  <text class="mono" x="696" y="616" font-size="11" font-weight="600" text-anchor="middle" fill="#1D2523">/desktop</text>
+  <text class="sans" font-size="11" text-anchor="middle" fill="#5A6663"><tspan x="696" y="645">saves your session, opens it in the app,</tspan><tspan x="696" y="659">then the CLI exits</tspan></text>
+  <rect x="856" y="574" width="500" height="104" rx="10" fill="#F3F5F4" stroke="#D3DAD7" stroke-width="1.5"/>
+  <text class="mono" x="872" y="596" font-size="12" font-weight="700" fill="#1D2523">Claude desktop app</text>
+  <text class="sans" x="872" y="615" font-size="12" fill="#5A6663">“Claude Code is the Code tab”</text>
+  <line x1="872" y1="625" x2="1340" y2="625" stroke="#D3DAD7"/>
+  <text class="sans" x="872" y="644" font-size="11.5" fill="#1D2523">“use Desktop when you want to … review changes visually”</text>
+  <text class="sans" x="872" y="664" font-size="11" fill="#5A6663">/desktop: on macOS and x64 Windows, signed in with a Claude subscription</text>
+  <text class="mono" x="44" y="710" font-size="10.5" fill="#5A6663">code.claude.com/docs/en/desktop — “Coming from the CLI?” · fetched 2026-11-03</text>
+  <text class="mono" x="44" y="726" font-size="10.5" fill="#5A6663">which surface runs which step: left to Claude by the operator, in chat 2026-11-03</text>
 
   <!-- footnote: the rule that keeps this scenario honest -->
-  <text class="sans" font-size="12" fill="#1D2523"><tspan x="44" y="814">“after my Word pass <tspan font-weight="700">the Word copy is the master</tspan>; later changes go as page / old text / new text instructions;</tspan><tspan x="44" y="830">Word, not LibreOffice, is the final layout check”</tspan></text>
-  <text class="mono" x="44" y="848" font-size="11" fill="#5A6663">— the operator's answer to the plan's open question 3, 2026-11-03</text>
+  <text class="sans" x="44" y="776" font-size="12" fill="#1D2523">“The operator reads every outward document <tspan font-weight="700">in full</tspan> before it leaves — this role never sends anything.”</text>
+  <text class="mono" x="44" y="794" font-size="11" fill="#5A6663">— core/roles/paper-writer.md l. 76–77, rail (f)</text>
 
   <!-- legend -->
-  <rect x="24" y="872" width="1352" height="62" rx="10" fill="#FFFFFF" stroke="#D3DAD7"/>
-  <rect x="44" y="882" width="44" height="20" rx="6" fill="#FDFEFD" stroke="#0F6B62" stroke-width="1.5"/>
-  <text class="mono" x="66" y="895.5" font-size="11" font-weight="600" text-anchor="middle" fill="#1D2523">/</text>
-  <text class="mono" x="98" y="896" font-size="11" fill="#5A6663">skill — shares your session</text>
-  <rect x="320" y="882" width="44" height="20" rx="6" fill="#F3F5F4" stroke="#D3DAD7"/>
-  <text class="mono" x="374" y="896" font-size="11" fill="#5A6663">step, script or record</text>
-  <circle cx="588" cy="892" r="16" fill="#0F6B62"/>
-  <text class="sans" x="588" y="896" font-size="11" font-weight="700" text-anchor="middle" fill="#F3F5F4">YOU</text>
-  <text class="mono" x="612" y="896" font-size="11" fill="#5A6663">you</text>
-  <line x1="44" y1="918" x2="80" y2="918" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
-  <text class="mono" x="98" y="922" font-size="11" fill="#5A6663">hand-off or next step</text>
-  <circle cx="330" cy="918" r="9" fill="#1D2523"/><text class="mono" x="330" y="921.8" font-size="11" font-weight="600" text-anchor="middle" fill="#F3F5F4">1</text>
-  <text class="mono" x="346" y="922" font-size="11" fill="#5A6663">step order</text>
+  <rect x="24" y="818" width="1352" height="62" rx="10" fill="#FFFFFF" stroke="#D3DAD7"/>
+  <rect x="44" y="828" width="44" height="20" rx="6" fill="#FDFEFD" stroke="#0F6B62" stroke-width="1.5"/>
+  <text class="mono" x="66" y="841.5" font-size="11" font-weight="600" text-anchor="middle" fill="#1D2523">/</text>
+  <text class="mono" x="98" y="842" font-size="11" fill="#5A6663">skill — shares your session</text>
+  <rect x="320" y="828" width="44" height="20" rx="6" fill="#F3F5F4" stroke="#D3DAD7"/>
+  <text class="mono" x="374" y="842" font-size="11" fill="#5A6663">step, script or record</text>
+  <circle cx="588" cy="838" r="16" fill="#0F6B62"/>
+  <text class="sans" x="588" y="842" font-size="11" font-weight="700" text-anchor="middle" fill="#F3F5F4">YOU</text>
+  <text class="mono" x="612" y="842" font-size="11" fill="#5A6663">you</text>
+  <line x1="44" y1="864" x2="80" y2="864" stroke="#435954" stroke-width="2" marker-end="url(#fh)"/>
+  <text class="mono" x="98" y="868" font-size="11" fill="#5A6663">hand-off or next step</text>
+  <circle cx="330" cy="864" r="9" fill="#1D2523"/><text class="mono" x="330" y="867.8" font-size="11" font-weight="600" text-anchor="middle" fill="#F3F5F4">1</text>
+  <text class="mono" x="346" y="868" font-size="11" fill="#5A6663">step order</text>
 </svg>

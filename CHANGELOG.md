@@ -2,6 +2,23 @@
 
 Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
 
+## 0.7.1 — 2026-11-03
+
+- **Removed the discipline card `core/disciplines/human-subjects-clinical.md`.** The human
+  operator found that the card, although written from public sources, mirrored one of the
+  operator's private collaboration cases, and decided to remove it whole rather than edit it. `core/disciplines/` again
+  holds the format only (`core/disciplines/README.md`, "No cards yet."). A future card is
+  written from public sources by an agent that never saw the operator's records.
+- **Figure 9** now shows a generic discipline card (`core/disciplines/<field>.md`, when your
+  overlay names one) and drops the card excerpt from the paper-writer step; **figure 7**
+  ends at "you read it in full" (rail f) instead of a Word-copy workflow; both READMEs say
+  "nine situations" and their scenario 7 and 9 lines and alt texts follow; the two claims
+  sections in `assets/README.md` are rewritten to match; the 0.6.0 and 0.7.0 entries below
+  are reworded where they described the removed content (dated note in the 0.6.0 entry).
+- Only the current tree is changed: commits `c12107d` (0.6.0) and `b869554` (0.7.0) keep the
+  earlier text in the public history, by the operator's decision (no history rewrite).
+- `core/SCIENTIFIC_RULES.md` and every role spec unchanged (RULES_HASH `0f0b1f5cddf7`).
+
 ## 0.7.0 — 2026-11-03
 
 - **Nine scenario figures** (`assets/scenarios/01-thesis.svg` … `09-irb-cross-discipline.svg`),
@@ -30,8 +47,7 @@ Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
   (brainstorming, writing-plans, subagent-driven-development, executing-plans); ARS 3.23.1
   (deep-research, academic-paper, academic-paper-reviewer); `code.claude.com/docs/en/desktop`
   for `/desktop`. Lines the plan proposed but no source states were left off and listed under
-  each table's "Not drawn" (for example "never regenerate a docx over the operator's copy",
-  "role separation is not independent review").
+  each table's "Not drawn" (for example "role separation is not independent review").
 - **Both READMEs** gain a `## Scenarios` / `## 情境` section after the workflows: one line and
   one figure per scenario, the call lines in text, alt text per language.
 - `assets/README.md` gains the nine claims sections.
@@ -89,16 +105,9 @@ Versions follow `.claude-plugin/plugin.json`; bump both manifests together.
   overlay template's `### paper-writer` slot say so; `core/SCIENTIFIC_RULES.md`
   unchanged (RULES_HASH `0f0b1f5cddf7`).
 - **First discipline card** — `core/disciplines/human-subjects-clinical.md`
-  (`status: proposed`, proposer `fable`): human-subjects clinical research —
-  evidence conventions, bilingual terminology (失智症, never 老人癡呆;
-  identifiable / coded / de-linked data; assent, consent, proxy consent), what
-  reviewers ask with the register of an IRB protocol, ethics and consent norms
-  with a `### Jurisdiction: Taiwan` subsection (人體研究法 cited by article,
-  衛生福利部 guidance; Declaration of Helsinki; ICH E6(R3)), and the
-  quantitative / qualitative / mixed methodology switch. Every item carries a
-  `verified: {how, on, by}` note against a public source; seven items are
-  marked `unverified`; no project facts; statute locators written as
-  "Article N". Not yet accepted by the operator.
+  (`status: proposed`, proposer `fable`), in the `core/disciplines/README.md`
+  format. Not accepted by the operator; removed in 0.7.1. (Entry reworded on
+  2026-11-03 in 0.7.1 to drop the card's field-specific detail; see 0.7.1.)
 - **Language bar**: both READMEs carry the same centred `English · 繁體中文`
   switch line under the logo; the language sentences in the intro paragraphs
   are removed.

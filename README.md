@@ -90,7 +90,7 @@ named checkpoints; and when you are stuck the team changes **method** first, not
 
 ## Scenarios
 
-Nine real situations, each drawn with you as the capped logo bear and the roles
+Nine situations, each drawn with you as the capped logo bear and the roles
 in the order you call them. Every label on a figure traces to a spec line or to
 the operator's own words; the claims tables are in [`assets/README.md`](assets/README.md).
 
@@ -134,10 +134,9 @@ Study Log carries each round into the next.
 
 **7 · "The institution wants it in Word."** *Operator's setup.*
 `/research-master:paper-writer` (document mode) → the docx skill fills the
-institution's template → render and look → your Word pass; after it, your Word
-copy is the master.
+institution's template → render and look → you read it in full.
 
-![Scenario 7: the paper writer drafts in document mode, the docx skill edits the template in place and validates it, a rendered page check follows, then your Word pass; Claude Code in the terminal, with the desktop app reachable through /desktop](assets/scenarios/07-word.svg)
+![Scenario 7: the paper writer drafts in document mode, the docx skill edits the template in place and validates it, a rendered page check follows, then you read it in full; Claude Code in the terminal, with the desktop app reachable through /desktop](assets/scenarios/07-word.svg)
 
 **8 · "Where do my other plugins fit?"** *Operator's setup.* superpowers before
 any build; ARS `deep-research` feeds `/research-master:research-mentor`'s
@@ -148,11 +147,11 @@ ARS `academic-paper-reviewer` rehearses in your session, while
 ![Scenario 8: the two lanes with superpowers attached before the implement step and ARS skills attached to the mentor and the writer; the ARS reviewer panel runs in your session, the blind reviewer below the context boundary](assets/scenarios/08-superpowers-ars.svg)
 
 **9 · "We're crossing into a clinical study — write the IRB protocol and consent."**
-the discipline card (`status: proposed`) → `/research-master:conductor` →
+a discipline card, when your overlay names one → `/research-master:conductor` →
 `/research-master:research-mentor` → sparring gate (`dispatch sparring-partner`)
 → `/research-master:paper-writer` (document mode) → you read it in full.
 
-![Scenario 9: the human-subjects discipline card, still proposed, is passed by the conductor into the stage briefs; discuss, a conditional premise audit, then the paper writer drafts the protocol and consent form in the card's register; it leaves only after your full read](assets/scenarios/09-irb-cross-discipline.svg)
+![Scenario 9: a discipline card, when your overlay names one, is passed by the conductor into the stage briefs; discuss, a conditional premise audit, then the paper writer drafts the protocol and consent form on the template; it leaves only after your full read](assets/scenarios/09-irb-cross-discipline.svg)
 
 ## Why it will not let you cherry-pick
 

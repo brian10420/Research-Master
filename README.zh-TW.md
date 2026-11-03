@@ -67,7 +67,7 @@
 
 ## 情境
 
-九個真實情境，每張圖裡你都是那隻戴學士帽的圖標熊，角色依你呼叫的順序排列。圖上每個標籤都能追溯到規格的某一行或操作者本人的話；佐證表（claims tables）在 [`assets/README.md`](assets/README.md)。
+九個情境，每張圖裡你都是那隻戴學士帽的圖標熊，角色依你呼叫的順序排列。圖上每個標籤都能追溯到規格的某一行或操作者本人的話；佐證表（claims tables）在 [`assets/README.md`](assets/README.md)。
 
 **1 ·「把我的論文從頭到尾跑完。」** `/research-master:conductor` 讀取追蹤表（tracker），以 spec + hash + brief 派出每個階段，並在檢查點（MANDATORY · FULL · SLIM）停下等你；它不做任何階段的實際工作。
 
@@ -93,17 +93,17 @@
 
 ![情境 6：先與研究導師探索，陪練夥伴稽核前提，再由論文寫手以文件模式依定案設計起草；每份對外文件離手前都由你完整讀過](assets/scenarios/06-grant-proposal.svg)
 
-**7 ·「機構要 Word 檔。」** *操作者的設定。* `/research-master:paper-writer`（文件模式）→ docx skill 填入機構範本 → 轉檔並目視檢查 → 你的 Word 校稿；之後你的 Word 檔就是正本。
+**7 ·「機構要 Word 檔。」** *操作者的設定。* `/research-master:paper-writer`（文件模式）→ docx skill 填入機構範本 → 轉檔並目視檢查 → 你完整讀過。
 
-![情境 7：論文寫手以文件模式起草，docx skill 就地編輯範本並驗證，接著轉成頁面圖檢查，再由你在 Word 校稿；Claude Code 在終端機執行，可用 /desktop 轉到桌面應用程式](assets/scenarios/07-word.svg)
+![情境 7：論文寫手以文件模式起草，docx skill 就地編輯範本並驗證，接著轉成頁面圖檢查，再由你完整讀過；Claude Code 在終端機執行，可用 /desktop 轉到桌面應用程式](assets/scenarios/07-word.svg)
 
 **8 ·「我的其他外掛放在哪裡？」** *操作者的設定。* superpowers 在任何建置之前；ARS `deep-research` 供給 `/research-master:research-mentor` 的文獻驗證，ARS `academic-paper` 供給 `/research-master:paper-writer`；ARS `academic-paper-reviewer` 在你的工作階段內預演審查，而 `dispatch blind-reviewer` 仍是隔離的正式審查。
 
 ![情境 8：兩條泳道，superpowers 接在實作步驟之前，ARS 技能接在導師與寫手上；ARS 審查小組在你的工作階段內運作，盲審者在情境邊界之下](assets/scenarios/08-superpowers-ars.svg)
 
-**9 ·「我們要跨進臨床研究——寫 IRB 計畫書和受試者同意書。」** 學科卡（`status: proposed`）→ `/research-master:conductor` → `/research-master:research-mentor` → 陪練關卡（`dispatch sparring-partner`）→ `/research-master:paper-writer`（文件模式）→ 你完整讀過。
+**9 ·「我們要跨進臨床研究——寫 IRB 計畫書和受試者同意書。」** 學科卡（若你的 overlay 有指定）→ `/research-master:conductor` → `/research-master:research-mentor` → 陪練關卡（`dispatch sparring-partner`）→ `/research-master:paper-writer`（文件模式）→ 你完整讀過。
 
-![情境 9：仍為 proposed 的人體研究學科卡由指揮傳入各階段的任務說明；討論、視條件進行前提稽核，再由論文寫手依卡片的語域起草計畫書與同意書；你完整讀過後才離手](assets/scenarios/09-irb-cross-discipline.svg)
+![情境 9：若你的 overlay 指定了學科卡，指揮會把它傳入各階段的任務說明；討論、視條件進行前提稽核，再由論文寫手依範本起草計畫書與同意書；你完整讀過後才離手](assets/scenarios/09-irb-cross-discipline.svg)
 
 ## 為什麼它不讓你只挑好看的結果
 
