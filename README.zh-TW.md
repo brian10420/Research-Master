@@ -23,8 +23,8 @@
    /plugin install research-master@research-master
    /reload-plugins
    ```
-2. **建立專案的狀態檔（state files）**——六個 Markdown 檔案，用來記錄結果、決策、假說和未解問題。從 [`templates/project-state/`](templates/project-state/) 複製過來；那裡的 README 寫有確切的指令。
-3. **建立覆蓋檔（overlay）**——把 [`templates/research-master.overlay.template.md`](templates/research-master.overlay.template.md) 複製到你專案裡的 `.claude/research-master.overlay.md`，並填好 `## Project` 區塊和 `Plan tier:`（方案等級，plan tier）這一行（見「選擇你的方案等級」）。它和狀態檔一起存放*你的*專案的事實，外掛（plugin）更新也永遠不會覆寫它。
+2. **建立專案的狀態檔（state files）**——六個 Markdown 檔案，用來記錄結果、決策、假說和未解問題。從 [`templates/project-state/`](templates/project-state/) 複製過來；那裡的 README 寫有確切的指令。安裝外掛後，這些範本已經在磁碟上的外掛市集複本裡（Claude Code 2.1.318 上為 `~/.claude/plugins/marketplaces/research-master/templates/`）；也可以 `git clone https://github.com/brian10420/research-master`。
+3. **建立覆蓋檔（overlay）**——把 [`templates/research-master.overlay.template.md`](templates/research-master.overlay.template.md) 複製到你專案裡的 `.claude/research-master.overlay.md`（先執行 `mkdir -p .claude`），並填好 `## Project` 區塊和 `Plan tier:`（方案等級，plan tier）這一行（見「選擇你的方案等級」）。它和狀態檔一起存放*你的*專案的事實，外掛（plugin）更新也永遠不會覆寫它。
 4. **和導師對話：** `/research-master:research-mentor`。說說你想弄清楚什麼。它會和你討論方向，並對點子做壓力測試；它提出的東西會以 `status: proposed` 記入你的 `HYPOTHESES.md`，並署上它的名字——絕不會被當成事實。
 
 每個角色回覆的第一行都是 `ACK RULES_HASH=…`。這就是證明它已載入規則的握手（handshake）；如果少了這一行，或其中的雜湊值不是目前的版本，就表示這個角色沒有載入目前的規則。
@@ -158,7 +158,7 @@ Claude Code 無法告訴外掛你用的是哪個方案，所以你要在覆蓋�
 ```
 core/                     正本、不綁定供應商——請在「這裡」編輯
   SCIENTIFIC_RULES.md     規則；RULES_HASH = sha256(本檔案)[:12]
-  DECISIONS.md            DECISION_000 … DECISION_008（架構、記憶、推理強度、角色、§9、派工設定檔）
+  DECISIONS.md            DECISION_000 … DECISION_012（架構、記憶、推理強度、角色、§9、派工設定檔、改名、文件模式）
   RESEARCH_STATE.md  EXPERIMENT_LEDGER.md  HYPOTHESES.md  FAILED_IDEAS.md
   LITERATURE_MAP.md  OPEN_QUESTIONS.md  STUDY_LOG.md      （結構定義，各附一個完整範例）
   roles/                  每個角色一份規格 + README 角色名冊
@@ -169,7 +169,7 @@ CLAUDE.md  AGENTS.md      自動產生的轉接檔（adapter）（tools/sync.py�
 .claude/agents/ .claude/skills/   自動產生、自給自足的 Claude Code 包裝檔（wrapper）（規格與規則就放在每個 SKILL.md 旁邊）
 skills/  agents/          自動產生、與 .claude/ 逐位元組相同的副本——外掛目錄樹（一般檔案，沒有符號連結）
 .claude-plugin/           plugin.json + marketplace.json（本儲存庫本身就是自己的外掛市集（marketplace））
-assets/                   標誌、團隊地圖、工作流程、第一天（day-one）與方案等級的圖 + 每張圖各一份主張表（claims table）
+assets/                   標誌、團隊地圖、工作流程、第一天（day-one）、方案等級、角色熊（role-bears）與情境的圖 + 每張圖各一份主張表（claims table）
 adapters/codex/           佔位：AGENTS.md + core/roles 是 Codex 的來源
 tools/                    sync.py · check_drift.py · anonymize.py
 .githooks/pre-commit      拒絕轉接檔與 core/ 不一致的提交
@@ -251,7 +251,7 @@ claude plugin validate .              # the plugin-directory checks
 
 流程文件若沒經過測試，就會說謊。角色檔是針對在基準情況（baseline）下實際觀察到的失敗，以 RED→GREEN 的方式寫成的——[`docs/creating-skills-with-tdd.md`](docs/creating-skills-with-tdd.md)。設計理由（上下文姿態、獨立性、為什麼記憶只能用來回憶）：[`docs/design-notes.md`](docs/design-notes.md)。
 
-搭配使用的第三方技能（未打包進本儲存庫——請從上游安裝）：[mattpocock/skills](https://github.com/mattpocock/skills)（`tdd`、`diagnose`、`grill-me`、`grill-with-docs`、`caveman`、`prototype`、`zoom-out`、`to-prd`、`to-issues`）；[vercel-labs/skills](https://github.com/vercel-labs/skills)（skills 命令列工具（CLI）與 `find-skills`）；[Anthropic superpowers 外掛](https://github.com/anthropics/claude-code)（上述的 TDD 流程就是靠 `writing-skills` 驅動的）。這裡沒有複製它們的任何程式碼；所有署名與授權都仍歸原作者所有。
+搭配使用的第三方技能（未打包進本儲存庫——請從上游安裝）：[mattpocock/skills](https://github.com/mattpocock/skills)（`tdd`、`diagnose`、`grill-me`、`grill-with-docs`、`caveman`、`prototype`、`zoom-out`、`to-prd`、`to-issues`）；[vercel-labs/skills](https://github.com/vercel-labs/skills)（skills 命令列工具（CLI）與 `find-skills`）；[Anthropic superpowers 外掛](https://github.com/obra/superpowers)（上述的 TDD 流程就是靠 `writing-skills` 驅動的）。這裡沒有複製它們的任何程式碼；所有署名與授權都仍歸原作者所有。
 
 **誠實聲明。** 角色內容是從一個進行中、尚未發表的機器學習（ML）研究專案的實際運作設定中提煉出來的。所有指標數值、資料集細節、實驗系列（campaign）名稱、檔案清單和個人細節，都是佔位內容或虛構的通用範例；結構與原則則是真實的，並經過實戰考驗。
 

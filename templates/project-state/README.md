@@ -8,6 +8,13 @@ never contains a project's facts.
 
 ## Install into a project
 
+`<research-os>` below stands for the directory that holds this repository's
+files: a clone of `https://github.com/brian10420/research-master`, or — after
+`/plugin install research-master@research-master` — the plugin's marketplace
+clone (on Claude Code 2.1.318: `~/.claude/plugins/marketplaces/research-master`).
+The `{…}` list is bash brace expansion; in `sh`/`dash` copy the six files one
+by one.
+
 ```bash
 # from the root of your research project
 mkdir -p project-state
@@ -20,8 +27,9 @@ Then, in the project:
 2. Record the adoption as `DECISION_000` in the project's `DECISIONS.md`
    (proposer, date, decided_by: human, status: accepted).
 3. Point the roles at these files through the project's overlay: copy
-   `templates/research-master.overlay.template.md` to
-   `.claude/research-master.overlay.md` in the project and fill the slots (each
+   `<research-os>/templates/research-master.overlay.template.md` to
+   `.claude/research-master.overlay.md` in the project (`mkdir -p .claude`
+   first) and fill the slots (each
    `core/roles/<role>.md` ends with a "Project overlay slots" section listing
    what it expects). Every skill wrapper injects that file when it loads.
 
